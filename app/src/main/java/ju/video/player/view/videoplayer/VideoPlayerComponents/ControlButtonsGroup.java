@@ -14,8 +14,8 @@ import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.Pre
 import javax.swing.BorderFactory;
 
 
-public class ControlButtonsGroup extends JPanel{
-    public ControlButtonsGroup(){
+public class ControlButtonsGroup extends JPanel {
+    public ControlButtonsGroup() {
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
 
@@ -24,7 +24,7 @@ public class ControlButtonsGroup extends JPanel{
         add(new PreviousButton());
         add(new NextButton());
         add(new FullScreenButton());
-        Border border = BorderFactory.createLineBorder(Color.BLUE,2);
+        Border border = BorderFactory.createLineBorder(Color.black,1);
         this.setBorder(border);
     }
 }
