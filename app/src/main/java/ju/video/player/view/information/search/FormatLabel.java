@@ -1,4 +1,4 @@
-package main.java.ju.video.player.view.information.search;
+package ju.video.player.view.information.search;
 
 import javax.swing.*;
 

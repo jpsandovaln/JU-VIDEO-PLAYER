@@ -1,7 +1,7 @@
-package main.java.ju.video.player.view.information;
+package ju.video.player.view.information;
 
-import main.java.ju.video.player.view.information.saved.SavedVideosPanel;
-import main.java.ju.video.player.view.information.search.SearchVideoPanel;
+import ju.video.player.view.information.saved.SavedVideosPanel;
+import ju.video.player.view.information.search.SearchVideoPanel;
 
 import javax.swing.*;
 
