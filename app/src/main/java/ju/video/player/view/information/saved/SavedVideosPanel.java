@@ -1,4 +1,4 @@
-package main.java.ju.video.player.view.information.saved;
+package ju.video.player.view.information.saved;
 
 import javax.swing.*;
 import java.awt.*;

@@ -3,7 +3,7 @@
  * to run 'gradle run'
  */
 package ju.video.player;
-import main.java.ju.video.player.view.MainFrame;
+import ju.video.player.view.MainFrame;
 
 public class App {
     public static void main(String[] args) {
