@@ -23,8 +23,9 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
 
-// https://mavenlibs.com/maven/dependency/uk.co.caprica/vlcj
-implementation group: 'uk.co.caprica', name: 'vlcj', version: '4.8.2'
+    // https://mavenlibs.com/maven/dependency/uk.co.caprica/vlcj
+    implementation group: 'uk.co.caprica', name: 'vlcj', version: '4.8.2'
+
 }
 
 application {
