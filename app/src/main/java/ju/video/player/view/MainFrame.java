@@ -4,8 +4,8 @@ import ju.video.player.view.footer.FooterPanel;
 import ju.video.player.view.information.InformationPanel;
 import ju.video.player.view.videoplayer.VideoPlayerPanel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
     private static final int DEFAULT_POS = 30;
@@ -19,6 +19,7 @@ public class MainFrame extends JFrame {
         add(informationPanel, BorderLayout.WEST);
         add(videoPlayerPanel, BorderLayout.CENTER);
         add(footerPanel, BorderLayout.SOUTH);
+        pack();
     }
 
     private void initialize() {
