@@ -1,8 +1,8 @@
-package main.java.ju.video.player.view.information.search;
+package ju.video.player.view.information.search;
 
-import main.java.ju.video.player.view.information.search.FolderPanel;
+/*import main.java.ju.video.player.view.information.search.FolderPanel;
 import main.java.ju.video.player.view.information.search.FormatPanel;
-import main.java.ju.video.player.view.information.search.SearchPanel;
+import main.java.ju.video.player.view.information.search.SearchPanel;*/
 
 import javax.swing.*;
 
