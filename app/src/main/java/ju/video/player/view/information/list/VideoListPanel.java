@@ -19,10 +19,10 @@ public class VideoListPanel extends JPanel {
 
     public VideoListPanel() {
 
-        JLabel videoNameLabel = new JLabel("ThisIsAMp4Video.mp4");
-        JLabel videoNameLabel1 = new JLabel("ThisIsAMp3Video.mp3");
-        JLabel videoNameLabel2 = new JLabel("ThisIsAMkvVideo.mkv");
-        JLabel videoNameLabel3 = new JLabel("ThisIsAMovVideo.mov");
+        JLabel videoNameLabel = new VideoLabel("ThisIsAMp4Video.mp4");
+        JLabel videoNameLabel1 = new VideoLabel("ThisIsAMp3Video.mp3");
+        JLabel videoNameLabel2 = new VideoLabel("ThisIsAMkvVideo.mkv");
+        JLabel videoNameLabel3 = new VideoLabel("ThisIsAMovVideo.mov");
 
         initialize();
         var list = new DefaultListModel<String>();
