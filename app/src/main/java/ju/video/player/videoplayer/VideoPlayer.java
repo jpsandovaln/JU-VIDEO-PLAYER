@@ -1,5 +1,7 @@
 package ju.video.player.videoplayer;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.BorderLayout;
@@ -13,7 +15,6 @@ import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 
 import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
-import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class VideoPlayer extends JFrame {
@@ -72,6 +73,32 @@ public class VideoPlayer extends JFrame {
       controlsPane.add(othersPane);
       controlsPane.setPreferredSize(new Dimension(400, 120));
       contentPane.add(controlsPane, BorderLayout.SOUTH);
+
+      playButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            mediaPlayerComponent.mediaListPlayer().controls().play();
+         }
+      });
+      pauseButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            mediaPlayerComponent.mediaListPlayer().controls().pause();
+         }
+      });
+      rewindButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            mediaPlayerComponent.mediaListPlayer().controls().playPrevious();
+         }
+      });
+      skipButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            mediaPlayerComponent.mediaListPlayer().controls().playNext();
+         }
+      });
+      toggleButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            mediaPlayerComponent.mediaPlayer().fullScreen().toggle();
+         }
+      });
       this.setContentPane(contentPane);
       this.setVisible(true);
    }
