@@ -1,8 +1,8 @@
-package main.java.ju.video.player.view;
+package ju.video.player.view;
 
-import main.java.ju.video.player.view.footer.FooterPanel;
-import main.java.ju.video.player.view.information.InformationPanel;
-import main.java.ju.video.player.view.videoplayer.VideoPlayerPanel;
+import ju.video.player.view.footer.FooterPanel;
+import ju.video.player.view.information.InformationPanel;
+import ju.video.player.view.videoplayer.VideoPlayerPanel;
 
 import javax.swing.*;
 import java.awt.*;

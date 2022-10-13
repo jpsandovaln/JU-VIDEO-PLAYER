@@ -1,4 +1,4 @@
-package main.java.ju.video.player.view.footer;
+package ju.video.player.view.footer;
 
 import javax.swing.*;
 import java.awt.*;
