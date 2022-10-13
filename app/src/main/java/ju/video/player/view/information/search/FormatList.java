@@ -1,6 +1,6 @@
 package ju.video.player.view.information.search;
 
-import javax.swing.*;
+import javax.swing.JComboBox;
 
 
 public class FormatList extends JComboBox<String> {
@@ -9,7 +9,7 @@ public class FormatList extends JComboBox<String> {
     public FormatList() {
         super();
         new JComboBox<String>();
-        addItem(null);
+        addItem("All");
         for (String format : formats) {
             addItem(format);
         }
