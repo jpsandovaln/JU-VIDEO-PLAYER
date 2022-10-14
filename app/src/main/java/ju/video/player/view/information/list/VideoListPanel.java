@@ -10,6 +10,9 @@ import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
+import ju.video.player.view.videoplayer.VideoPlayerComponents.VideoFrame;
+import uk.co.caprica.vlcj.player.base.MediaPlayer;
+import uk.co.caprica.vlcj.player.component.MediaPlayerComponent;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,6 +24,7 @@ public class VideoListPanel extends JPanel {
     private static final String NAME = "Serif";
     private static final int SIZE = 12;
     private DefaultListModel<String> list;
+
     public VideoListPanel() {
         initialize();
         list = new DefaultListModel<String>();
@@ -33,7 +37,7 @@ public class VideoListPanel extends JPanel {
         Font font = new Font(NAME, Font.BOLD, SIZE);
         setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font));
     }
-    
+
     public void setPlayerLabel() {
 
         list.removeAllElements();
@@ -41,12 +45,13 @@ public class VideoListPanel extends JPanel {
             JLabel playerNameLabel = new JLabel(ListValidVideos.getInstance().getVideoList().get(index).substring(3));
             list.addElement(playerNameLabel.getText());
         }
+
     }
 
-    public void setPlayerLabel(ArrayList<String> listaArchivosmp4 ) {
+    public void setPlayerLabel(ArrayList<String> listaArchivosmp4) {
         list.removeAllElements();
-            for (int index = 0; index < listaArchivosmp4.size(); index++) {
-                JLabel playerNameLabel = new JLabel(listaArchivosmp4.get(index).substring(3));
+        for (int index = 0; index < listaArchivosmp4.size(); index++) {
+            JLabel playerNameLabel = new JLabel(listaArchivosmp4.get(index).substring(3));
             list.addElement(playerNameLabel.getText());
         }
     }

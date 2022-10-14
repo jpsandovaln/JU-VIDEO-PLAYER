@@ -15,7 +15,7 @@ public class VideoPlayerPanel extends JPanel {
         this.mainFrame = mainFrame;
         NameVideoText nameVideoText = new NameVideoText();
         VideoFrame videoFrame = new VideoFrame(mainFrame);
-        ControlButtonsGroup controlButtonsGroup = new ControlButtonsGroup(videoFrame.getMediaPlayer());
+        ControlButtonsGroup controlButtonsGroup = new ControlButtonsGroup(videoFrame);
         BorderLayout borderLayout = new BorderLayout(3, 3);
         setLayout(borderLayout);
         add(nameVideoText, BorderLayout.PAGE_START);

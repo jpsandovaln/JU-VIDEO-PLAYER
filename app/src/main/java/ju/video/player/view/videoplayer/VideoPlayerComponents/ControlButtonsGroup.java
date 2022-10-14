@@ -15,7 +15,6 @@ import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.Ful
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.NextButton;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.PauseButton;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.StopButton;
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.PlayButton;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtons.PreviousButton;
 
@@ -28,18 +27,18 @@ public class ControlButtonsGroup extends JPanel {
     private PreviousButtonController previousButtonController;
     private NextButtonController nextButtonController;
     private FullScreenButtonController fullScreenButtonController;
-    private EmbeddedMediaListPlayerComponent mediaPlayerComponent;
+    VideoFrame videoFrame;
 
-    public ControlButtonsGroup(EmbeddedMediaListPlayerComponent mediaPlayerComponent) {
-        this.mediaPlayerComponent = mediaPlayerComponent;
+    public ControlButtonsGroup(VideoFrame videoFrame) {
+        this.videoFrame = videoFrame;
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
-        playButtonController = new PlayButtonController(mediaPlayerComponent);
-        pauseButtonController = new PauseButtonController(mediaPlayerComponent);
-        stopButtonController = new StopButtonController(mediaPlayerComponent);
-        previousButtonController = new PreviousButtonController(mediaPlayerComponent);
-        nextButtonController = new NextButtonController(mediaPlayerComponent);
-        fullScreenButtonController = new FullScreenButtonController(mediaPlayerComponent);
+        playButtonController = new PlayButtonController(videoFrame);
+        pauseButtonController = new PauseButtonController(videoFrame.getMediaPlayer());
+        stopButtonController = new StopButtonController(videoFrame.getMediaPlayer());
+        previousButtonController = new PreviousButtonController(videoFrame.getMediaPlayer());
+        nextButtonController = new NextButtonController(videoFrame.getMediaPlayer());
+        fullScreenButtonController = new FullScreenButtonController(videoFrame.getMediaPlayer());
         add(new PlayButton(playButtonController));
         add(new PauseButton(pauseButtonController));
         add(new StopButton(stopButtonController));
