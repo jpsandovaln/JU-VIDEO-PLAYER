@@ -8,14 +8,11 @@ import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class VideoPlayer extends JFrame {
-   private static final long serialVersionUID = 1L;
-   private static final String TITLE = "Media Player";
 
    MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
    private static EmbeddedMediaListPlayerComponent mediaPlayerComponent;
 
-   public VideoPlayer(String title) {
-      super(title);
+   public VideoPlayer() {
       mediaPlayerComponent = new EmbeddedMediaListPlayerComponent();
    }
 
