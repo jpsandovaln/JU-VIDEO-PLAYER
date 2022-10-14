@@ -11,9 +11,10 @@ public class MainFrame extends JFrame {
     private static final int DEFAULT_POS = 30;
     private static final int DEFAULT_WIDTH = 700;
     private static final int DEFAULT_HEIGHT = 600;
+
     public MainFrame() {
         InformationPanel informationPanel = new InformationPanel();
-        VideoPlayerPanel videoPlayerPanel = new VideoPlayerPanel();
+        VideoPlayerPanel videoPlayerPanel = new VideoPlayerPanel(this);
         FooterPanel footerPanel = new FooterPanel();
         initialize();
         add(informationPanel, BorderLayout.WEST);
