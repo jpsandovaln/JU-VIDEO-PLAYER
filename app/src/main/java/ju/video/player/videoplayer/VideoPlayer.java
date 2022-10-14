@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -105,6 +106,12 @@ public class VideoPlayer extends JFrame {
 
    public static void main(String[] args) {
       VideoPlayer application = new VideoPlayer(TITLE);
+   }
+
+   public static void createList(List<String> paths) {
+      for (int index = 0; index < paths.size(); index++) {
+         mediaPlayerComponent.mediaListPlayer().list().media().add(paths.get(index));
+      }
    }
 
 }
