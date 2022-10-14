@@ -8,35 +8,22 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
+
+import ju.video.player.model.ListValidVideos;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class VideoListPanel extends JPanel {
 
     private static final String TITLE = " Video List";
     private static final String NAME = "Serif";
     private static final int SIZE = 12;
-
+    private DefaultListModel<String> list;
     public VideoListPanel() {
-
-        JLabel videoNameLabel = new VideoLabel("ThisIsAMp4Video.mp4");
-        JLabel videoNameLabel1 = new VideoLabel("ThisIsAMp3Video.mp3");
-        JLabel videoNameLabel2 = new VideoLabel("ThisIsAMkvVideo.mkv");
-        JLabel videoNameLabel3 = new VideoLabel("ThisIsAMovVideo.mov");
-
         initialize();
-        var list = new DefaultListModel<String>();
-
-        list.addElement(videoNameLabel.getText());
-        list.addElement(videoNameLabel1.getText());
-        list.addElement(videoNameLabel2.getText());
-        list.addElement(videoNameLabel3.getText());
-        list.addElement(videoNameLabel.getText());
-        list.addElement(videoNameLabel.getText());
-        list.addElement(videoNameLabel1.getText());
-        list.addElement(videoNameLabel2.getText());
-        list.addElement(videoNameLabel3.getText());
-
+        list = new DefaultListModel<String>();
         add(new JScrollPane(new JList<>(list)));
         setBackground(Color.CYAN);
     }
@@ -46,4 +33,22 @@ public class VideoListPanel extends JPanel {
         Font font = new Font(NAME, Font.BOLD, SIZE);
         setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font));
     }
+    
+    public void setPlayerLabel() {
+
+        list.removeAllElements();
+        for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
+            JLabel playerNameLabel = new JLabel(ListValidVideos.getInstance().getVideoList().get(index).substring(3));
+            list.addElement(playerNameLabel.getText());
+        }
+    }
+
+    public void setPlayerLabel(ArrayList<String> listaArchivosmp4 ) {
+        list.removeAllElements();
+            for (int index = 0; index < listaArchivosmp4.size(); index++) {
+                JLabel playerNameLabel = new JLabel(listaArchivosmp4.get(index).substring(3));
+            list.addElement(playerNameLabel.getText());
+        }
+    }
+
 }

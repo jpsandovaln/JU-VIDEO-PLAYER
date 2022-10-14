@@ -5,10 +5,10 @@ import javax.swing.JPanel;
 import java.awt.Color;
 
 public class VideoListSectionPanel extends JPanel {
-
+    private VideoListPanel videoListPanel;
     public VideoListSectionPanel() {
 
-        VideoListPanel videoListPanel = new VideoListPanel();
+        videoListPanel = new VideoListPanel();
         ButtonPlayPanel buttonPlayPanel1 = new ButtonPlayPanel();
         initialize();
         add(videoListPanel);
@@ -20,5 +20,8 @@ public class VideoListSectionPanel extends JPanel {
     private void initialize() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+    }
+    public VideoListPanel getVideoListPanel() {
+        return videoListPanel;
     }
 }

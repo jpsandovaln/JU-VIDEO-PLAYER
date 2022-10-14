@@ -2,11 +2,14 @@ package ju.video.player.view.information.search;
 
 import javax.swing.*;
 
+import ju.video.player.view.information.list.VideoListPanel;
+
 public class SearchVideoPanel extends JPanel {
-    public SearchVideoPanel() {
-        FolderPanel folderPanel = new FolderPanel();
+    public SearchVideoPanel(VideoListPanel panelSouth) {
+        FolderPanel folderPanel = new FolderPanel(panelSouth);
         FormatPanel formatPanel = new FormatPanel();
-        SearchPanel searchPanel = new SearchPanel();
+        SearchPanel searchPanel = new SearchPanel(panelSouth);
+
         initialize();
         add(folderPanel);
         add(formatPanel);
