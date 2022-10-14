@@ -11,7 +11,7 @@ public class FullScreenButton extends JToggleButton {
         setLocation(CENTER, CENTER);
         setPreferredSize(new Dimension(30, 30));
         ImageIcon newIcon = new ImageIcon(
-                "JU-VIDEO-PLAYER/app/src/main/java/ju/video/player/src/full-screen-activate.png");
+                "../JU-VIDEO-PLAYER/app/src/main/resources/full-screen-activate.png");
         setIcon(newIcon);
         addActionListener(listener);
     }
