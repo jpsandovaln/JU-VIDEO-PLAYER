@@ -34,11 +34,11 @@ public class ControlButtonsGroup extends JPanel {
         this.mediaPlayerComponent = mediaPlayerComponent;
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
-        playButtonController = new PlayButtonController();
-        pauseButtonController = new PauseButtonController();
-        stopButtonController = new StopButtonController();
-        previousButtonController = new PreviousButtonController();
-        nextButtonController = new NextButtonController();
+        playButtonController = new PlayButtonController(mediaPlayerComponent);
+        pauseButtonController = new PauseButtonController(mediaPlayerComponent);
+        stopButtonController = new StopButtonController(mediaPlayerComponent);
+        previousButtonController = new PreviousButtonController(mediaPlayerComponent);
+        nextButtonController = new NextButtonController(mediaPlayerComponent);
         fullScreenButtonController = new FullScreenButtonController(mediaPlayerComponent);
         add(new PlayButton(playButtonController));
         add(new PauseButton(pauseButtonController));
