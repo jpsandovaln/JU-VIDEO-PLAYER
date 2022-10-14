@@ -9,12 +9,12 @@ import javax.swing.JPanel;
 public class InformationPanel extends JPanel {
 
     public InformationPanel() {
-        SearchVideoPanel searchVideoPanel = new SearchVideoPanel();
+
         VideoListSectionPanel videoListPanel = new VideoListSectionPanel();
+        SearchVideoPanel searchVideoPanel = new SearchVideoPanel(videoListPanel.getVideoListPanel());
         initialize();
         add(searchVideoPanel);
         add(videoListPanel);
-
     }
 
     private void initialize() {
