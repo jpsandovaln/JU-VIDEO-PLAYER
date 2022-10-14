@@ -9,19 +9,19 @@ import javax.swing.filechooser.FileSystemView;
 import ju.video.player.model.Formats;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.videoplayer.VideoPlayerComponents.VideoFrame;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
-
 public class ButtonControler implements ActionListener {
-    String pathOfTheSelectedFolder;
+    static String pathOfTheSelectedFolder;
     String pathVideoFile;
     VideoListPanel panelSouth;
     ArrayList<String> listvalidVideos;
-    ArrayList<String> listPathVideofile;  
+    ArrayList<String> listPathVideofile;
 
     public ButtonControler(VideoListPanel panelSouth) {
         this.panelSouth = panelSouth;
@@ -36,7 +36,7 @@ public class ButtonControler implements ActionListener {
         listPathVideofile.clear();
         // if the user presses the save button show the save dialog
         String com = e.getActionCommand();
-        
+
         if (com.equals("save")) {
             // create an object of JFileChooser class
             JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -44,8 +44,8 @@ public class ButtonControler implements ActionListener {
             jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
             // invoke the showsSaveDialog function to show the save dialog
-            int invoke  = jfileChooser.showSaveDialog(null);
-            if (invoke  == JFileChooser.APPROVE_OPTION) {
+            int invoke = jfileChooser.showSaveDialog(null);
+            if (invoke == JFileChooser.APPROVE_OPTION) {
                 // set the label to the path of the selected directory
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
             }
@@ -59,9 +59,9 @@ public class ButtonControler implements ActionListener {
             jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
             // invoke the showsOpenDialog function to show the save dialog
-            int invoke  = jfileChooser.showOpenDialog(null);
+            int invoke = jfileChooser.showOpenDialog(null);
 
-            if (invoke  == JFileChooser.APPROVE_OPTION) {
+            if (invoke == JFileChooser.APPROVE_OPTION) {
                 // set the label to the path of the selected directory
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
             }
@@ -72,47 +72,49 @@ public class ButtonControler implements ActionListener {
         panelSouth.setPlayerLabel();
     }
 
-    public void   showFilesSelectedFolder() {
+    public void showFilesSelectedFolder() {
         File paths = new File(pathOfTheSelectedFolder);
         String[] nameFiles = paths.list();
-        for(int index = 0; index < nameFiles.length; index++) {
+        for (int index = 0; index < nameFiles.length; index++) {
             pathVideoFile = "../" + nameFiles[index];
             listPathVideofile.add(pathVideoFile);
             File f = new File(paths.getAbsolutePath(), nameFiles[index]);
-            if(f.isDirectory()) {
+            if (f.isDirectory()) {
                 String[] fileinSubfolder = f.list();
-                for(int indej = 0; indej < fileinSubfolder.length;indej++) {
+                for (int indej = 0; indej < fileinSubfolder.length; indej++) {
                     pathVideoFile = "../" + fileinSubfolder[indej];
-                    listPathVideofile.add(pathVideoFile);// 
+                    listPathVideofile.add(pathVideoFile);
                 }
             }
         }
     }
 
-    //verify if a file is of the correct format
-    public void verify(){
+    // verify if a file is of the correct format
+    public void verify() {
         String verifyMetadataVideoFile;
-        for(int index = 0; index < listPathVideofile.size(); index++) {
+        for (int index = 0; index < listPathVideofile.size(); index++) {
             File videoPath = new File(listPathVideofile.get(index));
-            try
-            {
-                verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());     
-                if(verifyMetadataVideoFile != null) {
-                    for(Formats formats : Formats.values()) {
-                        if (verifyMetadataVideoFile.equals(formats.getFormato())){
+            try {
+                verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());
+                if (verifyMetadataVideoFile != null) {
+                    for (Formats formats : Formats.values()) {
+                        if (verifyMetadataVideoFile.equals(formats.getFormato())) {
                             listvalidVideos.add(listPathVideofile.get(index));
                         }
                     }
                 }
-                //grab the list of valid videos and set it to the class of video list valid videos
+                // grab the list of valid videos and set it to the class of video list valid
+                // videos
                 ListValidVideos.getInstance().setVideoList(listvalidVideos);
-            }
-            catch (IOException ioException)
-            {
+            } catch (IOException ioException) {
                 System.out.println("Error: " + ioException.getMessage());
             }
         }
         System.out.println(listvalidVideos);
+    }
+
+    public static String getpathOfTheSelectedFolder() {
+        return pathOfTheSelectedFolder;
     }
 
 }
