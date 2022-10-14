@@ -9,7 +9,6 @@ import javax.swing.filechooser.FileSystemView;
 import ju.video.player.model.Formats;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.information.list.VideoListPanel;
-import ju.video.player.view.videoplayer.VideoPlayerComponents.VideoFrame;
 
 import java.io.File;
 import java.io.IOException;

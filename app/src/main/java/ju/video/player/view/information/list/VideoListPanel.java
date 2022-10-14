@@ -10,7 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.videoplayer.VideoPlayerComponents.VideoFrame;
 import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.component.MediaPlayerComponent;
 
