@@ -8,13 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class NameVideoText extends JPanel {
-    
+    JLabel videoName = new JLabel();
     public NameVideoText() {
-        JLabel videoName = new JLabel();
+        
         videoName.setText("Video Name.mp4");
         Border border = BorderFactory.createLineBorder(Color.black,1);
         this.setLayout(new GridBagLayout());
         this.add(videoName);
         this.setBorder(border);
+    }
+
+    public void updateVideoName(String newVideoName){
+        videoName.setText(newVideoName);
     }
 }
