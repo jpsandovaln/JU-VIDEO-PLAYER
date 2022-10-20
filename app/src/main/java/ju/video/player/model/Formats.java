@@ -11,7 +11,7 @@ public enum Formats {
     VIDEO_3gpp2("video/3gpp2"),
     VIDEO_XM4V("video/x-m4v"),
     VIDEO_MJ2("video/mj2"),
-    VIDEO_AVI("video/x-msvideo"),
+    VIDEO_AVI("video/avi"),
     VIDEO_XFLV("video/x-flv"),
     VIDEO_MKV("video/x-matroska"),
     VIDEO_WEBM("video/webm");
