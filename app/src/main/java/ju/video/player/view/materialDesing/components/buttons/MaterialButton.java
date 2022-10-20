@@ -19,13 +19,13 @@ import ju.video.player.view.materialDesing.utils.Utils;
 
 public class MaterialButton {
 
-	private final int RADIUS = 20;
+	private final int RADIUS = 15;
 	
 	private ResponsiveLayout responsiveLayout;
 	
 	private RoundedButton backgroundButton;
 	private JLabel textLabel;
-	private Font defaultFont = Utils.getMainFont(20);
+	private Font defaultFont = Utils.getMainFont(15);
 	
 	private Color hoverColor;
 	
@@ -68,16 +68,16 @@ public class MaterialButton {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				primaryColor = ResponsiveSwingMaterialDesign.PRIMARY_COLOR;
-				
-				hoverColor = new Color( 
-						
+
+				hoverColor = new Color(
+
 					Math.max((int)(primaryColor.getRed() * factor), 0),
 					Math.max((int)(primaryColor.getGreen() * factor), 0),
 					Math.max((int)(primaryColor.getBlue() * factor), 0),
 					primaryColor.getAlpha()
 							            
 				);
-	
+
 				backgroundButton.recolor(hoverColor, RADIUS, true);
 			}
 			@Override

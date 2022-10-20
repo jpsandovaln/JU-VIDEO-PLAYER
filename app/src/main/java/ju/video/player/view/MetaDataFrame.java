@@ -2,6 +2,7 @@ package ju.video.player.view;
 import ju.video.player.view.information.list.VideoListPanel;
 import ju.video.player.view.information.search.SearchPanel;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
+import ju.video.player.view.materialDesing.components.buttons.MaterialButton;
 import ju.video.player.view.materialDesing.components.date.fields.DateField;
 import ju.video.player.view.materialDesing.components.image.ImageLabel;
 import ju.video.player.view.materialDesing.components.input.TextArea;
@@ -28,6 +29,8 @@ public class MetaDataFrame {
 
         SearchPanel searchPanel = new SearchPanel(new VideoListPanel());
         rl.add(searchPanel);
+        MaterialButton button = new MaterialButton("Click here", rl, null);
+        rl.add(button.getComponent(), 2, 0.5, ResponsiveLayout.ResponsiveConstants.CENTER);
 
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);

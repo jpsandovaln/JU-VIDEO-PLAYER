@@ -7,10 +7,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
@@ -57,7 +54,7 @@ public class DarkDatePicker extends DatePicker {
 
 		panel.setBackground(ResponsiveSwingMaterialDesign.BACKGROUND_COLOR);
 
-		ArrayList<String> yearsList = new ArrayList<>();
+		List<String> yearsList = new ArrayList<>();
 
 		for (int i = 0; i < 14; i++) {
 			yearsList.add(String.valueOf(getYear() - i));

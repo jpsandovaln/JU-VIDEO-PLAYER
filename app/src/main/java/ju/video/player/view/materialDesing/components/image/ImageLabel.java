@@ -30,17 +30,12 @@ public class ImageLabel extends JComponent {
 			String direction = System.getProperty("user.dir");
 			direction+= "\\app\\src\\main\\java\\ju\\video\\player\\view\\materialDesing\\images";
 			BufferedImage from = Utils.resize(ImageIO.read(new File(direction+src)), height - margin, width - margin);
-
 			bufferedImage = Utils.makeRoundedCorner(from, radius);
-			
 			imageWidth = width;
 			imageHeight = height;
-
 			label = new JLabel();
 			label.setIcon(new ImageIcon(bufferedImage));
-
 			label.setHorizontalAlignment(SwingConstants.CENTER);
-
 			rl.add(label);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -2,12 +2,13 @@ package ju.video.player.view.materialDesing.theme;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ThemesManager {
 
 	private ThemeModel currentModel;
 
-	private ArrayList<ThemeModel> themes = new ArrayList<>();
+	private List<ThemeModel> themes = new ArrayList<>();
 	
 	public ThemesManager() {
 		themes.add(new ThemeModel("Light", new Color(0, 110, 204), new Color(128, 134, 139), new Color(255, 0, 0), new Color(128, 134, 139), new Color(246, 248, 250)));
@@ -16,19 +17,6 @@ public class ThemesManager {
 	
 		currentModel = themes.get(0);
 	}
-
-	public void addTheme(ThemeModel model) {
-		this.themes.add(model);
-	}
-
-	public void removeTheme(ThemeModel model) {
-		this.themes.remove(model);
-	}
-
-	public void setCurrentTheme(ThemeModel model) {
-		this.currentModel = model;
-	}
-
 	public void setCurrentTheme(String themeName) {
 		themes.forEach(theme -> {
 			if (theme.getName().equalsIgnoreCase(themeName)) {
@@ -36,12 +24,10 @@ public class ThemesManager {
 			}
 		});
 	}
-
 	public ThemeModel getCurrentModel() {
 		return currentModel;
 	}
-	
-	public ArrayList<ThemeModel> getThemes() {
+	public List<ThemeModel> getThemes() {
 		return themes;
 	}
 

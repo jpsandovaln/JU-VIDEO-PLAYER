@@ -89,9 +89,7 @@ public class DateField {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				responsiveLayout.getBlackFilter().setVisible();
-
 				Date date = null;
-
 				try {
 					date = dateFormat.parse(textField.getText());
 				} catch (ParseException e1) {

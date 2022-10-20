@@ -22,7 +22,7 @@ public abstract class DatePicker {
 	protected String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 	protected String[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
-	protected List<RoundedFillButton> buttons = new ArrayList<>();
+	protected List<RoundedFillButton> buttons;
 
 	protected JPanel panel;
 
@@ -31,14 +31,14 @@ public abstract class DatePicker {
 	public DatePicker(CallbackT callbackT) {
 		this.currentDate = new Date();
 		this.callbackT = callbackT;
-
+		buttons = new ArrayList<>();
 		build();
 	}
 
 	public DatePicker(Date currentDate, CallbackT callbackT) {
 		this.currentDate = currentDate;
 		this.callbackT = callbackT;
-		
+		buttons = new ArrayList<>();
 		build();
 	}
 
