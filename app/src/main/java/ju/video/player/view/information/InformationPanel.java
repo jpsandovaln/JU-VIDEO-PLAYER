@@ -13,7 +13,7 @@ public class InformationPanel extends JPanel {
         VideoListSectionPanel videoListPanel = new VideoListSectionPanel();
         SearchVideoPanel searchVideoPanel = new SearchVideoPanel(videoListPanel.getVideoListPanel());
         initialize();
-        add(searchVideoPanel);
+        //add(searchVideoPanel);
         add(videoListPanel);
     }
 

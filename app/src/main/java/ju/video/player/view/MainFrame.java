@@ -5,12 +5,9 @@ import ju.video.player.view.information.InformationPanel;
 import ju.video.player.view.videoplayer.VideoPlayerPanel;
 
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
+import java.awt.*;
 
 public class MainFrame extends JFrame {
-    private static final int DEFAULT_POS = 30;
-    private static final int DEFAULT_WIDTH = 700;
-    private static final int DEFAULT_HEIGHT = 600;
 
     public MainFrame() {
         InformationPanel informationPanel = new InformationPanel();
@@ -24,11 +21,10 @@ public class MainFrame extends JFrame {
     }
 
     private void initialize() {
-        setBounds(DEFAULT_POS, DEFAULT_POS, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
         setTitle("Video Player");
         setVisible(true);
-
     }
 }

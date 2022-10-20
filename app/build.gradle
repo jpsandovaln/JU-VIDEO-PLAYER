@@ -26,6 +26,8 @@ dependencies {
     // https://mavenlibs.com/maven/dependency/uk.co.caprica/vlcj
     implementation group: 'uk.co.caprica', name: 'vlcj', version: '4.8.2'
 
+    implementation 'io.github.vincenzopalazzo:material-ui-swing:1.1.4'
+
 }
 
 application {
