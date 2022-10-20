@@ -135,11 +135,10 @@ public class ButtonControler implements ActionListener {
     }
 
     private static void printBasicAttributes(BasicFileAttributes attributes) throws Exception {
-        System.out.printf("creationTime     = ", attributes.creationTime());
-        System.out.printf("lastAccessTime   = ", attributes.lastAccessTime());
-        System.out.printf("lastModifiedTime = ", attributes.lastModifiedTime());
-        System.out.printf("size             = ", attributes.size());
-        System.out.printf("directory        = ", attributes.isDirectory());
+        System.out.printf("creationTime     = %s%n", attributes.creationTime());
+        System.out.printf("lastAccessTime   = %s%n", attributes.lastAccessTime());
+        System.out.printf("lastModifiedTime = %s%n", attributes.lastModifiedTime());
+        System.out.printf("size             = %s%n", attributes.size());
 
     }
 
