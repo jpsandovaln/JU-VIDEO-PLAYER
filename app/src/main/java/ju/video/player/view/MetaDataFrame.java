@@ -9,23 +9,17 @@ import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class MetaDataFrame {
     public static void main() {
-
         JFrame frame = FrameUtility.build("Video player", 0, 0, 500, 500, true);
-
         ResponsiveLayout rl = new ResponsiveLayout(10, 4, frame);
         ImageLabel imageLabel = new ImageLabel("\\image.png", rl, 120, 120, 120);
-
         ImageRoundedBorder roundedBorder = new ImageRoundedBorder(120, ResponsiveSwingMaterialDesign.PRIMARY_COLOR);
         roundedBorder.setStroke(2);
-
         imageLabel.setBorder(roundedBorder);
-
         rl.add(imageLabel.getComponent(), 4, 1, ResponsiveLayout.ResponsiveConstants.CENTER);
         TextArea textArea = new TextArea("File size", rl);
         rl.add(textArea.getComponent(), 4, 1);
