@@ -1,13 +1,17 @@
 package ju.video.player.controller;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFileChooser;
+import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 
 import ju.video.player.model.Formats;
 import ju.video.player.model.ListValidVideos;
+import ju.video.player.view.MainFrame;
 import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.materialDesing.components.date.fields.DateField;
+import ju.video.player.view.materialDesing.components.input.TextArea;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +21,7 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ButtonControler implements ActionListener {
     static String pathOfTheSelectedFolder;
@@ -26,17 +31,24 @@ public class ButtonControler implements ActionListener {
     ArrayList<String> listvalidVideos;
     ArrayList<String> listPathVideofile;
     ArrayList<String> simplePathFilename;
+    private JFrame frame;
+    private TextArea fileSize;
+    private DateField dateField;
 
-    public ButtonControler(VideoListPanel panelSouth) {
+
+    public ButtonControler(VideoListPanel panelSouth, JFrame frame, TextArea textArea, DateField date) {
         this.panelSouth = panelSouth;
-
         listvalidVideos = new ArrayList<>();
         listPathVideofile = new ArrayList<>();
         simplePathFilename = new ArrayList<>();
+        this.frame = frame;
+        fileSize = textArea;
+        dateField = date;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        closeFrame();
         listvalidVideos.clear();
         listPathVideofile.clear();
         simplePathFilename.clear();
@@ -76,6 +88,11 @@ public class ButtonControler implements ActionListener {
         showFilesSelectedFolder();
         verify();
         panelSouth.setPlayerLabel();
+        new MainFrame(panelSouth);
+    }
+
+    private void closeFrame() {
+        frame.dispose();
     }
 
     public void showFilesSelectedFolder() {
@@ -116,7 +133,7 @@ public class ButtonControler implements ActionListener {
                 }
                 if (verifyMetadataVideoFile != null) {
                     for (Formats formats : Formats.values()) {
-                        if (verifyMetadataVideoFile.equals(formats.getFormato())) { 
+                        if (verifyMetadataVideoFile.equals(formats.getFormato())&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())) {
                             listvalidVideos.add(listPathVideofile.get(index));
                         }
                     }
@@ -142,7 +159,7 @@ public class ButtonControler implements ActionListener {
 
     }
 
-    public boolean verifysize(BasicFileAttributes attributes, Long definedSize) {
+    public boolean verifySize(BasicFileAttributes attributes, int definedSize) {
         if(attributes.size() <= definedSize){
             return true;
         }

@@ -28,7 +28,7 @@ public class ImageLabel extends JComponent {
 	public ImageLabel(String src, ResponsiveLayout rl, int radius, int width, int height) {
 		try {
 			String direction = System.getProperty("user.dir");
-			direction+= "\\app\\src\\main\\java\\ju\\video\\player\\view\\materialDesing\\images";
+			direction+= "\\app\\src\\main\\resources";
 			BufferedImage from = Utils.resize(ImageIO.read(new File(direction+src)), height - margin, width - margin);
 			bufferedImage = Utils.makeRoundedCorner(from, radius);
 			imageWidth = width;

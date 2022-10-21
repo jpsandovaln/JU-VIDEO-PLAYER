@@ -8,16 +8,16 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
+import ju.video.player.controller.ButtonControler;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
 import ju.video.player.view.materialDesing.callback.CallbackT;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
 import ju.video.player.view.materialDesing.utils.Utils;
 
-public class MaterialButton {
+public class MaterialButton extends JButton {
 
 	private final int RADIUS = 15;
 	
@@ -85,6 +85,40 @@ public class MaterialButton {
 				backgroundButton.recolor(ResponsiveSwingMaterialDesign.PRIMARY_COLOR, RADIUS, true);
 			}
 		});
+		this.backgroundButton.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent componentEvent) {
+				textLabel.setForeground(Color.WHITE);
+				backgroundButton.recolor(ResponsiveSwingMaterialDesign.PRIMARY_COLOR, 20, true);
+				textLabel.setBounds(backgroundButton.getX(), backgroundButton.getY() - 2, backgroundButton.getWidth(),backgroundButton.getHeight());
+			}
+		});
+
+	}
+
+	public MaterialButton(String text, ResponsiveLayout responsiveLayout) {
+		this.responsiveLayout = responsiveLayout;
+		double factor = 0.9;
+		this.backgroundButton = new RoundedButton(text, defaultFont, ResponsiveSwingMaterialDesign.PRIMARY_COLOR, new Rectangle(), RADIUS, 1) {
+			@Override
+			public void repaint() {
+				super.repaint();
+				if (backgroundButton != null && !primaryColor.equals(ResponsiveSwingMaterialDesign.PRIMARY_COLOR)) {
+					primaryColor = ResponsiveSwingMaterialDesign.PRIMARY_COLOR;
+
+					backgroundButton.recolor(ResponsiveSwingMaterialDesign.PRIMARY_COLOR, RADIUS, true);
+				}
+			}
+		};
+		this.hoverColor = new Color(Math.max((int)(ResponsiveSwingMaterialDesign.PRIMARY_COLOR.getRed()  *factor), 0),
+				Math.max((int)(ResponsiveSwingMaterialDesign.PRIMARY_COLOR.getGreen()*factor), 0),
+				Math.max((int)(ResponsiveSwingMaterialDesign.PRIMARY_COLOR.getBlue() *factor), 0),
+				ResponsiveSwingMaterialDesign.PRIMARY_COLOR.getAlpha());
+		this.backgroundButton.setBorder(new RoundedBorder(RADIUS, ResponsiveSwingMaterialDesign.PRIMARY_COLOR, true));
+		this.textLabel = new JLabel(text);
+		this.textLabel.setForeground(Color.WHITE);
+		this.textLabel.setFont(defaultFont);
+		this.textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		this.textLabel.setVerticalAlignment(SwingConstants.CENTER);
 		this.backgroundButton.addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent componentEvent) {
 				textLabel.setForeground(Color.WHITE);

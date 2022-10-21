@@ -7,6 +7,6 @@ import ju.video.player.view.MainFrame;
 
 public class App {
     public static void main(String[] args) {
-        new MainFrame();
+        //new MainFrame();
     }
 }

@@ -62,7 +62,7 @@ public class DateField {
 	public DateField(String caption, ResponsiveLayout responsiveLayout) {
 		this.panel = responsiveLayout;
 		this.caption = caption;
-		dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		textField = new JFormattedTextField() {
 			@Override
 			public void repaint() {
@@ -121,13 +121,13 @@ public class DateField {
 		});
 		responsiveLayout.add(calendarIcon);
 		
-		setMask("##/##/####");
+		setMask("####-##-##");
 
 		setRules(new Callback() {
 			@Override
 			public String done() {
 
-				String value = textField.getText().replace("/", "").replace(" ", "").trim();
+				String value = textField.getText().replace("-", "").replace(" ", "").trim();
 
 				if (value.isEmpty() && required)
 					return "Informe uma Data";
@@ -448,6 +448,9 @@ public class DateField {
 		
 		return color;
 	}
-
-
+	@Override
+	public String toString(){
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
 }

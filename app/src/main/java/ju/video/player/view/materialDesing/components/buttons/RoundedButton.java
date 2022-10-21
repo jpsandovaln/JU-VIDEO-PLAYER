@@ -25,7 +25,11 @@ public class RoundedButton extends JButton {
 	public RoundedButton(String text, Font font, Color color, Rectangle rectangle, int radius, int stroke, CallbackT callback) {
 		draw(text, font, color, null, rectangle, radius, stroke, callback);
 	}
-	
+
+	public RoundedButton(String text, Font defaultFont, Color primaryColor, Rectangle rectangle, int radius, int stroke) {
+		draw(text, defaultFont, primaryColor, null, rectangle, radius, stroke, null);
+	}
+
 	private void draw(String text, Font font, Color foreground, Color background, Rectangle rectangle, int radius, int stroke, CallbackT callback) {
 		setOpaque(false);
 		RoundedBorder border = new RoundedBorder(radius, background);

@@ -1,5 +1,6 @@
 package ju.video.player.view.information;
 
+import ju.video.player.view.information.list.VideoListPanel;
 import ju.video.player.view.information.list.VideoListSectionPanel;
 import ju.video.player.view.information.search.SearchVideoPanel;
 
@@ -8,9 +9,9 @@ import javax.swing.JPanel;
 
 public class InformationPanel extends JPanel {
 
-    public InformationPanel() {
+    public InformationPanel(VideoListPanel videoList) {
 
-        VideoListSectionPanel videoListPanel = new VideoListSectionPanel();
+        VideoListSectionPanel videoListPanel = new VideoListSectionPanel(videoList);
         SearchVideoPanel searchVideoPanel = new SearchVideoPanel(videoListPanel.getVideoListPanel());
         initialize();
         //add(searchVideoPanel);

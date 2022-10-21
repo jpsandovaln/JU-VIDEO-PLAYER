@@ -6,9 +6,9 @@ import java.awt.Color;
 
 public class VideoListSectionPanel extends JPanel {
     private VideoListPanel videoListPanel;
-    public VideoListSectionPanel() {
+    public VideoListSectionPanel(VideoListPanel videoListPanel) {
 
-        videoListPanel = new VideoListPanel();
+        this.videoListPanel = videoListPanel;
         ButtonPlayPanel buttonPlayPanel1 = new ButtonPlayPanel();
         initialize();
         add(videoListPanel);
