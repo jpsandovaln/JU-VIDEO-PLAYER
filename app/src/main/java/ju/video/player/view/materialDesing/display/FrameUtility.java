@@ -10,11 +10,9 @@ public class FrameUtility {
 		Utils.registerFont("GOTHIC.TTF", 1);
 
 		JFrame frame = new JFrame(name);
-
 		frame.setBounds(x, y, width, height);
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		return frame;
 	}
 

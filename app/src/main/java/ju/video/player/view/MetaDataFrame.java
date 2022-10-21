@@ -1,20 +1,20 @@
 package ju.video.player.view;
-import ju.video.player.controller.ButtonControler;
 import ju.video.player.view.information.list.VideoListPanel;
 import ju.video.player.view.information.search.FolderChooserButton;
-import ju.video.player.view.information.search.SearchPanel;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
-import ju.video.player.view.materialDesing.callback.CallbackT;
-import ju.video.player.view.materialDesing.components.buttons.MaterialButton;
 import ju.video.player.view.materialDesing.components.date.fields.DateField;
 import ju.video.player.view.materialDesing.components.image.ImageLabel;
 import ju.video.player.view.materialDesing.components.input.TextArea;
 import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
+import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
-import javax.swing.JFrame;
+
+import javax.swing.*;
+import java.awt.*;
+
 public class MetaDataFrame {
-    public static void main(String[] args) {
+    public static void main() {
 
         JFrame frame = FrameUtility.build("Video player", 0, 0, 500, 500, true);
 
@@ -33,6 +33,8 @@ public class MetaDataFrame {
         rl.add(date.setRequired(false).getComponent(), 4, 1);
         FolderChooserButton button = new FolderChooserButton(new VideoListPanel(), frame, textArea, date);
         rl.add(button, 2, 0.5, ResponsiveLayout.ResponsiveConstants.CENTER);
+        Image icon = new ImageIcon(Constants.RESOURCES_IMAGES+"\\icon.png").getImage();
+        frame.setIconImage(icon);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }

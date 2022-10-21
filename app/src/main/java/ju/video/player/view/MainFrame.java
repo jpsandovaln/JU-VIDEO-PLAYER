@@ -4,9 +4,10 @@ import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.footer.FooterPanel;
 import ju.video.player.view.information.InformationPanel;
 import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.videoplayer.VideoPlayerPanel;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
@@ -23,6 +24,8 @@ public class MainFrame extends JFrame {
     }
 
     private void initialize() {
+        Image icon = new ImageIcon(Constants.RESOURCES_IMAGES+"\\icon.png").getImage();
+        setIconImage(icon);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
