@@ -19,9 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ButtonControler implements ActionListener {
     static String pathOfTheSelectedFolder;
@@ -122,7 +120,7 @@ public class ButtonControler implements ActionListener {
 
         for (int index = 0; index < listPathVideofile.size(); index++) {
             File videoPath = new File(listPathVideofile.get(index));
-            ; 
+            ;
             try {
                 verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());
                 BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index), BasicFileAttributes.class);
@@ -160,15 +158,16 @@ public class ButtonControler implements ActionListener {
     }
 
     public boolean verifySize(BasicFileAttributes attributes, int definedSize) {
-        if(attributes.size() <= definedSize){
+        if(attributes.size() <= definedSize || definedSize == 0){
             return true;
         }
         return false;
     }
 
-    public boolean verifyDate(BasicFileAttributes attributes, String date) {
+    public boolean verifyDate(BasicFileAttributes attributes, String datem) {
         String creation = (attributes.creationTime()).toString();
-        if(creation.contains(date)){
+        System.out.println(datem);
+        if(creation.contains(datem) || datem.equals((java.time.LocalDate.now()).toString())){
             return true;
         }
         return false;
@@ -176,7 +175,7 @@ public class ButtonControler implements ActionListener {
 
     public Path getCompletePath(int index){
         File completePath = new File(simplePathFilename.get(index));
-        Path path = Paths.get(pathOfTheSelectedFolder + "\\" +completePath); 
+        Path path = Paths.get(pathOfTheSelectedFolder + "\\" +completePath);
         return path;
     }
 

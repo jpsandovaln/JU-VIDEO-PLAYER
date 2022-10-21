@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -177,7 +178,7 @@ public class DateField {
 	@Description("Set date format")
 	public void setDateFormat(String format) {
 		this.dateFormat = new SimpleDateFormat(format);
-		this.setMask(format.toLowerCase().replaceAll("d", "#").replaceAll("m", "#").replaceAll("y", "#").replaceAll("h", "#").replaceAll("s", "#"));
+		this.setMask(format.toLowerCase().replaceAll("y", "#").replaceAll("M", "#").replaceAll("d", "#").replaceAll("h", "#").replaceAll("s", "#"));
 	}
 
 	@Description("Get the component propertly")
@@ -210,7 +211,7 @@ public class DateField {
 	/* Utilitary */
 	
 	private String getUnmaskedValue() {
-		String value = textField.getText() == null ? "" : textField.getText().replace("/", "").replace(" ", "").trim();
+		String value = textField.getText() == null ? "" : textField.getText().replace("-", "").replace(" ", "").trim();
 
 		return value;
 	}
@@ -288,7 +289,7 @@ public class DateField {
 			public void keyReleased(KeyEvent e) {
 				update();
 				
-				if (!textField.getText().contains("/")) {
+				if (!textField.getText().contains("-")) {
 					maskData.install(textField);
 				}
 			}
@@ -390,7 +391,7 @@ public class DateField {
 
 			calendarIcon.setBounds((textField.getWidth() - 64) + textField.getX(), textField.getY() + (textField.getHeight() / 2) - 16, 32, 32);
 			
-			if (!textField.getText().contains("/")) {
+			if (!textField.getText().contains("-")) {
 				maskData.install(textField);
 			}
 		}
@@ -450,7 +451,6 @@ public class DateField {
 	}
 	@Override
 	public String toString(){
-		Date date = new Date();
-		return dateFormat.format(date);
+		return textField.getText();
 	}
 }
