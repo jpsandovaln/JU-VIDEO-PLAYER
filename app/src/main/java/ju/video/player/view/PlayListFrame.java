@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
-import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
 
 import java.awt.Image;
 import java.awt.FlowLayout;

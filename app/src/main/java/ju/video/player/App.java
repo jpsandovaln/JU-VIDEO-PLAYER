@@ -3,10 +3,14 @@
  * to run 'gradle run'
  */
 package ju.video.player;
+import java.text.ParseException;
+
+import ju.video.player.view.MetaDataFrame;
 import ju.video.player.view.PlayListFrame;
 
 public class App {
     public static void main(String[] args) {
         new PlayListFrame();
+        //new MetaDataFrame().main();
     }
 }
