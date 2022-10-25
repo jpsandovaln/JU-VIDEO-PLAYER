@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class MetaDataFrame {
     public static void main() {
-        JFrame frame = FrameUtility.build("Video player", 0, 0, 500, 500, true);
+        JFrame frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
         ResponsiveLayout rl = new ResponsiveLayout(10, 4, frame);
         ImageLabel imageLabel = new ImageLabel("\\image.png", rl, 120, 120, 120);
         ImageRoundedBorder roundedBorder = new ImageRoundedBorder(120, ResponsiveSwingMaterialDesign.PRIMARY_COLOR);

@@ -13,6 +13,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
 
     public MainFrame(VideoListPanel videoListPanel) {
+
         InformationPanel informationPanel = new InformationPanel(videoListPanel);
         VideoPlayerPanel videoPlayerPanel = new VideoPlayerPanel(this);
         FooterPanel footerPanel = new FooterPanel();

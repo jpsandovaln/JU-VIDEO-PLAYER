@@ -3,11 +3,10 @@
  * to run 'gradle run'
  */
 package ju.video.player;
-import ju.video.player.view.MetaDataFrame;
+import ju.video.player.view.PlayListFrame;
 
 public class App {
     public static void main(String[] args) {
-        MetaDataFrame metaDataFrame = new MetaDataFrame();
-        metaDataFrame.main();
+        new PlayListFrame();
     }
 }
