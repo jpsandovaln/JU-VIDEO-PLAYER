@@ -1,4 +1,4 @@
-package ju.video.player.view.information.list;
+package ju.video.player.view.playlist.playlistpanel;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.playlist.Colors;
+import ju.video.player.view.commons.Colors;
 import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.component.MediaPlayerComponent;
 
@@ -42,7 +42,7 @@ public class VideoListPanel extends JPanel {
         Font font = new Font(NAME, Font.BOLD, SIZE);
         setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
         setForeground(Colors.COMPONETS_COLOR);
-        setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font));
+        setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font, Colors.COMPONETS_COLOR));
     }
 
     public void setPlayerLabel() {
@@ -56,6 +56,7 @@ public class VideoListPanel extends JPanel {
         Component box = Box.createRigidArea(new Dimension(700, 0));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         add(box);
+        updateUI();
     }
 
     public void setPlayerLabel(ArrayList<String> listaArchivosmp4) {

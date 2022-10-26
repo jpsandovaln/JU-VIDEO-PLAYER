@@ -1,7 +1,8 @@
 package ju.video.player.view.information.search;
 
 import javax.swing.*;
-import ju.video.player.view.information.list.VideoListPanel;
+
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import java.awt.*;
 

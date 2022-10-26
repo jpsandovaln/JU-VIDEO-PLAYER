@@ -1,5 +1,4 @@
 package ju.video.player.view;
-import ju.video.player.view.information.list.VideoListPanel;
 import ju.video.player.view.information.search.FolderChooserButton;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
 import ju.video.player.view.materialDesing.components.date.fields.DateField;
@@ -9,6 +8,8 @@ import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
+
 import javax.swing.*;
 import java.awt.*;
 

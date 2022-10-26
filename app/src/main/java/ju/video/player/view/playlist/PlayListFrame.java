@@ -4,9 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 
+import ju.video.player.view.commons.Colors;
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.playlist.filterspanel.FiltersPanel;
+import ju.video.player.view.playlist.playlistpanel.PlayListPanel;
 
 import java.awt.Image;
 import java.awt.Component;

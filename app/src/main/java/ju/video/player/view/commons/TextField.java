@@ -1,4 +1,4 @@
-package ju.video.player.view.playlist;
+package ju.video.player.view.commons;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
@@ -26,7 +26,7 @@ public class TextField extends JFormattedTextField  {
         //setBackground(null);
         setSize(100, 14);
         setFont(font);
-        setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, new Color(219, 237, 243)));
+        setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, Colors.COMPONETS_COLOR));
         setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
         //setOpaque(false);
     }

@@ -7,10 +7,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import ju.video.player.model.Formats;
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.MainFrame;
-import ju.video.player.view.information.list.VideoListPanel;
-import ju.video.player.view.materialDesing.components.date.fields.DateField;
-import ju.video.player.view.materialDesing.components.input.TextArea;
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import java.io.File;
 import java.io.IOException;

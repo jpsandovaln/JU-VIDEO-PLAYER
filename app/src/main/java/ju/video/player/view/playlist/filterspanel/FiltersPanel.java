@@ -9,8 +9,9 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import ju.video.player.view.playlist.SubtitleLabel;
-import ju.video.player.view.playlist.TitleLabel;
+import ju.video.player.view.commons.Button;
+import ju.video.player.view.commons.SubtitleLabel;
+import ju.video.player.view.commons.TitleLabel;
 
 import javax.swing.JComponent;
 
@@ -29,10 +30,9 @@ public class FiltersPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 5)));
         DateFilterPanel dateFilterPanel = new DateFilterPanel();
         add(dateFilterPanel);
-        /*DateField date = new DateField("Date");
-        add(date.setRequired(false).getComponent());
-        FolderChooserButton button = new FolderChooserButton(new VideoListPanel(), textArea, date);
-        add(button);*/
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        Button applyFiltersButton = new Button("Apply Filters");
+        add(applyFiltersButton);
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         add(box);

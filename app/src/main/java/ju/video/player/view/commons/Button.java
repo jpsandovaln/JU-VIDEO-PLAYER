@@ -1,4 +1,4 @@
-package ju.video.player.view.playlist;
+package ju.video.player.view.commons;
 
 import java.awt.Dimension;
 

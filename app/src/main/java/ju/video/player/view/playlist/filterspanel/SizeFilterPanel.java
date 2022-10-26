@@ -8,8 +8,8 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import ju.video.player.view.playlist.Colors;
-import ju.video.player.view.playlist.TextField;
+import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.TextField;
 
 public class SizeFilterPanel extends JPanel {
 

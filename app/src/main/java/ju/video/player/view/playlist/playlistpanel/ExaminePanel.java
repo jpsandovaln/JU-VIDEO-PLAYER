@@ -1,4 +1,4 @@
-package ju.video.player.view.playlist;
+package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -7,7 +7,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import ju.video.player.controller.ButtonController;
-import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.commons.Button;
+import ju.video.player.view.commons.TextField;
 
 public class ExaminePanel extends JPanel {
 

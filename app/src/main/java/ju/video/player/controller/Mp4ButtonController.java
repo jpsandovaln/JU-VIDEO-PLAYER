@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 public class Mp4ButtonController implements ActionListener {
     public static String ruta;

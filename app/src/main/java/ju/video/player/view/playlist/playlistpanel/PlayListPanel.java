@@ -1,4 +1,4 @@
-package ju.video.player.view.playlist;
+package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,7 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.commons.TitleLabel;
 
 public class PlayListPanel extends JPanel {
     

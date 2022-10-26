@@ -13,9 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.MaskFormatter;
 
+import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.TextField;
 import ju.video.player.view.materialDesing.constants.Constants;
-import ju.video.player.view.playlist.Colors;
-import ju.video.player.view.playlist.TextField;
 
 public class DateComponentsPanel extends JPanel {
 
