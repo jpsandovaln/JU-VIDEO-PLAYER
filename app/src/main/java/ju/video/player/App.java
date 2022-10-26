@@ -6,7 +6,7 @@ package ju.video.player;
 import java.text.ParseException;
 
 import ju.video.player.view.MetaDataFrame;
-import ju.video.player.view.PlayListFrame;
+import ju.video.player.view.playlist.PlayListFrame;
 
 public class App {
     public static void main(String[] args) throws ParseException {

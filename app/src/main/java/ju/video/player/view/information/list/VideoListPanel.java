@@ -22,12 +22,13 @@ public class VideoListPanel extends JPanel {
     private static final String TITLE = " Video List";
     private static final String NAME = "Serif";
     private static final int SIZE = 12;
-    private DefaultListModel<String> list;
+    //private DefaultListModel<String> list;
 
     public VideoListPanel() {
         initialize();
-        list = new DefaultListModel<String>();
-        add(new JScrollPane(new JList<>(list)));
+        //list = new DefaultListModel<String>();
+        //add(new JScrollPane(new JList<>(list)));
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBackground(Color.CYAN);
     }
 
@@ -38,20 +39,19 @@ public class VideoListPanel extends JPanel {
     }
 
     public void setPlayerLabel() {
-
-        list.removeAllElements();
+        removeAll();
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            JLabel playerNameLabel = new JLabel(ListValidVideos.getInstance().getVideoList().get(index).substring(3));
-            list.addElement(playerNameLabel.getText());
+            MediaPanel MediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index).substring(3));
+            add(MediaPanel);
         }
 
     }
 
     public void setPlayerLabel(ArrayList<String> listaArchivosmp4) {
-        list.removeAllElements();
+        removeAll();
         for (int index = 0; index < listaArchivosmp4.size(); index++) {
-            JLabel playerNameLabel = new JLabel(listaArchivosmp4.get(index).substring(3));
-            list.addElement(playerNameLabel.getText());
+            MediaPanel MediaPanel = new MediaPanel(listaArchivosmp4.get(index).substring(3));
+            add(MediaPanel);
         }
     }
 

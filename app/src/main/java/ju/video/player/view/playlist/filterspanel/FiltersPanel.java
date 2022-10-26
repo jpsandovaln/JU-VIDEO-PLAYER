@@ -1,4 +1,4 @@
-package ju.video.player.view;
+package ju.video.player.view.playlist.filterspanel;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -8,6 +8,9 @@ import java.text.ParseException;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+
+import ju.video.player.view.playlist.SubtitleLabel;
+import ju.video.player.view.playlist.TitleLabel;
 
 import javax.swing.JComponent;
 
@@ -38,8 +41,9 @@ public class FiltersPanel extends JPanel {
 
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setBounds(0, 0, 200, 500);
+        setBounds(0, 0, 250, 600);
         setBackground(new Color (64, 75, 105));
+        setAlignmentY(Component.TOP_ALIGNMENT);
     }
 
 }

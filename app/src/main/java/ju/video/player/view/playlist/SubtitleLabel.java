@@ -1,4 +1,4 @@
-package ju.video.player.view;
+package ju.video.player.view.playlist;
 
 import java.awt.Font;
 import java.awt.Color;

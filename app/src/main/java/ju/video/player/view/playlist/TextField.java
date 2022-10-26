@@ -1,4 +1,4 @@
-package ju.video.player.view;
+package ju.video.player.view.playlist;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
@@ -12,14 +12,22 @@ public class TextField extends JFormattedTextField  {
     private static final String NAME = "Arial";
     private static final int SIZE = 12;
 
+    public TextField(String name) {
+        initPanel(name);
+    }
     public TextField(String name, MaskFormatter mask) {
         super(mask);
+        initPanel(name);
+    }
+
+    public void initPanel(String name) {
         Font font = new Font(NAME, Font.BOLD, SIZE); 
-        setForeground(new Color(219, 237, 243));
-        setBackground(new Color (64, 75, 105));
+        setForeground(Colors.COMPONETS_COLOR);
+        //setBackground(null);
         setSize(100, 14);
         setFont(font);
         setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, new Color(219, 237, 243)));
-        setBackground(new Color (64, 75, 105));
+        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        //setOpaque(false);
     }
 }

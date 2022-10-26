@@ -1,4 +1,4 @@
-package ju.video.player.view;
+package ju.video.player.view.playlist.filterspanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,7 +28,7 @@ public class DateFilterPanel extends JPanel {
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(0, 0, 200, 500);
-        setBackground(new Color (64, 75, 105));
+        setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 }

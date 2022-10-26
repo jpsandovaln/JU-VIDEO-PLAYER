@@ -1,6 +1,5 @@
-package ju.video.player.view;
+package ju.video.player.view.playlist.filterspanel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Component;
 import java.awt.Image;
@@ -15,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.text.MaskFormatter;
 
 import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.playlist.Colors;
+import ju.video.player.view.playlist.TextField;
 
 public class DateComponentsPanel extends JPanel {
 
@@ -23,6 +24,7 @@ public class DateComponentsPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(10, 0)));
         MaskFormatter mask = new MaskFormatter("##-##-####");
         TextField field = new TextField(title, mask);
+        field.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
         add(field);
         add(Box.createRigidArea(new Dimension(10, 0)));
         JLabel calendarIcon = new JLabel();
@@ -36,7 +38,7 @@ public class DateComponentsPanel extends JPanel {
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         setBounds(0, 0, 200, 500);
-        setBackground(new Color (64, 75, 105));
+        setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 
