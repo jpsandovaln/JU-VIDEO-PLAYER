@@ -9,6 +9,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import ju.video.player.view.information.list.VideoListPanel;
+
 public class PlayListPanel extends JPanel {
     
     public PlayListPanel() {
@@ -16,8 +18,10 @@ public class PlayListPanel extends JPanel {
         setBounds(250, 0, 585, 600);
         //setBounds(0, 0, 200, 500);
         add(new TitleLabel("My PlayList"));
-        ExaminePanel examinePanel = new ExaminePanel();
+        VideoListPanel videoListPanel = new VideoListPanel();
+        ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
         add(examinePanel);
+        add(videoListPanel);
         Component box = Box.createRigidArea(new Dimension(563, 673));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         add(box);

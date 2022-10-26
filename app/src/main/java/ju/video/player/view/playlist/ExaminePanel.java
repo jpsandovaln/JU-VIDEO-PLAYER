@@ -6,13 +6,17 @@ import java.awt.Component;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import ju.video.player.controller.ButtonController;
+import ju.video.player.view.information.list.VideoListPanel;
+
 public class ExaminePanel extends JPanel {
 
-    public ExaminePanel() {
+    public ExaminePanel(VideoListPanel videoListPanel) {
         initPanel();
         TextField pathField = new TextField("Path");
         add(pathField);
         Button examineButton = new Button("Examine");
+        examineButton.addActionListener(new ButtonController(videoListPanel));
         add(examineButton);
     }
     private void initPanel() {
