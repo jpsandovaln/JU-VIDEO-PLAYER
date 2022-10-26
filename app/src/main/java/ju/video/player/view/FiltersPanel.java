@@ -3,6 +3,7 @@ package ju.video.player.view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.text.ParseException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -12,14 +13,19 @@ import javax.swing.JComponent;
 
 public class FiltersPanel extends JPanel {
 
-    public FiltersPanel() {
+    public FiltersPanel() throws ParseException {
 		initPanel();
         add(new TitleLabel("Filters"));
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(new SubtitleLabel("File Size"));
-        SizeFilterPanel sizeFilterPanel = new SizeFilterPanel();
         add(Box.createRigidArea(new Dimension(0, 5)));
+        SizeFilterPanel sizeFilterPanel = new SizeFilterPanel();
         add(sizeFilterPanel);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(new SubtitleLabel("Creation Date"));
+        add(Box.createRigidArea(new Dimension(0, 5)));
+        DateFilterPanel dateFilterPanel = new DateFilterPanel();
+        add(dateFilterPanel);
         /*DateField date = new DateField("Date");
         add(date.setRequired(false).getComponent());
         FolderChooserButton button = new FolderChooserButton(new VideoListPanel(), textArea, date);

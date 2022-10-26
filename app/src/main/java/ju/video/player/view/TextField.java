@@ -1,17 +1,19 @@
 package ju.video.player.view;
 
 import javax.swing.BorderFactory;
-import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
 
 import java.awt.Color;
 import java.awt.Font;
 
-public class TextField extends JTextField {
+public class TextField extends JFormattedTextField  {
     private static final String NAME = "Arial";
     private static final int SIZE = 12;
 
-    public TextField(String name) {
+    public TextField(String name, MaskFormatter mask) {
+        super(mask);
         Font font = new Font(NAME, Font.BOLD, SIZE); 
         setForeground(new Color(219, 237, 243));
         setBackground(new Color (64, 75, 105));
@@ -20,6 +22,4 @@ public class TextField extends JTextField {
         setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, new Color(219, 237, 243)));
         setBackground(new Color (64, 75, 105));
     }
-
-
 }

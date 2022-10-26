@@ -14,7 +14,7 @@ public class SizeFilterPanel extends JPanel {
     public SizeFilterPanel() {
         initPanel();
         add(Box.createRigidArea(new Dimension(10, 0)));
-        TextField minSizeField = new TextField("Min Size (Mb)");
+        TextField minSizeField = new TextField("Min Size (Mb)", null);
         minSizeField.addKeyListener(new KeyAdapter() {
            public void keyTyped(KeyEvent e)
            {
@@ -28,7 +28,7 @@ public class SizeFilterPanel extends JPanel {
            }
         });
         add(minSizeField);
-        TextField maxSizeField = new TextField("Max Size (Mb)");
+        TextField maxSizeField = new TextField("Max Size (Mb)", null);
         maxSizeField.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e)
             {

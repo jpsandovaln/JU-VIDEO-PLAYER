@@ -9,7 +9,7 @@ import ju.video.player.view.MetaDataFrame;
 import ju.video.player.view.PlayListFrame;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         new PlayListFrame();
         //new MetaDataFrame().main();
     }
