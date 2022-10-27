@@ -14,7 +14,10 @@ public enum Formats {
     VIDEO_AVI("video/avi"),
     VIDEO_XFLV("video/x-flv"),
     VIDEO_MKV("video/x-matroska"),
-    VIDEO_WEBM("video/webm");
+    VIDEO_WEBM("video/webm"),
+    AUDIO_MP3("audio/mpeg"),
+    AUDIO_FLAC("audio/x-flac"),
+    IMAGE_JPEG("image/jpeg");
 
     private String formato;
     private Formats(String formato) {

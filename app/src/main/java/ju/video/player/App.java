@@ -3,11 +3,20 @@
  * to run 'gradle run'
  */
 package ju.video.player;
+import ju.video.player.model.Convert;
 import ju.video.player.view.MetaDataFrame;
 
+import java.io.IOException;
+
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Convert convert = new Convert();
+        //System.out.println("getname" + convert.getName("D:\\videoplayer\\JU-VIDEO-PLAYER\\VID_20220521_212816.mp4"));
+        //convert.sendPost("C:\\Users\\alvar\\Desktop\\Videos\\VID_20220521_212816.mp4", "avi");
+        //convert.sendGet();
         MetaDataFrame metaDataFrame = new MetaDataFrame();
         metaDataFrame.main();
+
+
     }
 }
