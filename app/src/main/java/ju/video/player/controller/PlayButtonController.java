@@ -5,20 +5,19 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 import ju.video.player.commons.logger.At18Logger;
-import ju.video.player.view.videoplayer.VideoPlayerPanel;
+import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class PlayButtonController implements ActionListener {
-    VideoPlayerPanel videoPlayerPanel;
+    EmbeddedMediaListPlayerComponent mediaPlayerComponent;
     private Logger log = new At18Logger().getLogger();
 
-    public PlayButtonController(VideoPlayerPanel videoPlayerPanel) {
-        this.videoPlayerPanel = videoPlayerPanel;
+    public PlayButtonController(EmbeddedMediaListPlayerComponent mediaPlayerComponent) {
+        this.mediaPlayerComponent = mediaPlayerComponent;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        videoPlayerPanel.createList();
-        videoPlayerPanel.getMediaPlayer().mediaListPlayer().controls().play();
+        mediaPlayerComponent.mediaListPlayer().controls().play();
         //System.out.println("Play");
         log.info("Play");
     }

@@ -21,15 +21,25 @@ public enum Formats {
     VIDEO_AVI("video/avi"),
     VIDEO_XFLV("video/x-flv"),
     VIDEO_MKV("video/x-matroska"),
+    VIDEO_WEBM("video/webm"),
     AUDIO_ACC("audio/aac"),
-    AUDIO_ADTS("audio/vnd.dlna.adts"),
-    AUDIO_MP3("audio/mpeg"),
-    VIDEO_WEBM("video/webm");
+    AUDIO_FLAC("audio/x-flac"),
+    IMAGE_JPEG("image/jpeg"),
+    IMAGE_PNG("image/png"),
+    IMAGE_GIF("image/gif"),
+    AUDIO_AIFF("audio/aiff"),
+    AUDIO_3GP2("audio/3gpp2"),
+    AUDIO_MIDI("audio/midi"),
+    AUDIO_MPEG("audio/mpeg"),
+    AUDIO_OGG("audio/ogg"),
+    AUDIO_WAV("audio/wav"),
+    AUDIO_WEBM("audio/webm"),
+    AUDIO_VND("audio/vnd.dlna.adts"),
+    AUDIO_MKG("audio/x-matroska");
 
     private String format;
-
-    private Formats(String formatt) {
-        this.format = formatt;
+    private Formats(String format) {
+        this.format = format;
     }
 
     public String getFormat() {

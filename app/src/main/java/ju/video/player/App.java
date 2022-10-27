@@ -3,14 +3,30 @@
  * to run 'gradle run'
  */
 package ju.video.player;
+import ju.video.player.model.Convert;
 import java.text.ParseException;
 
 import ju.video.player.view.MetaDataFrame;
 import ju.video.player.view.playlist.PlayListFrame;
+import ju.video.player.view.videoconvert.VideoConvertFrame;
+import ju.video.player.view.videoplayer.*;
+
+import java.io.IOException;
 
 public class App {
-    public static void main(String[] args) throws ParseException {
-        new PlayListFrame();
-        //new MetaDataFrame().main();
+    public static void main(String[] args) throws IOException, ParseException {
+        Convert convert = new Convert();
+        //System.out.println("getname" + convert.getName("D:\\videoplayer\\JU-VIDEO-PLAYER\\VID_20220521_212816.mp4"));
+        //convert.sendPost("C:\\Users\\alvar\\Desktop\\Videos\\VID_20220521_212816.mp4", "avi");
+        // convert.sendPost("C:\\Users\\Tonio\\taza.mkv", "avi");
+        // convert.sendGet();
+        //convert.sendGet();
+        // MetaDataFrame metaDataFrame = new MetaDataFrame();
+        // metaDataFrame.main();
+
+        // new MetaDataFrame();
+        new VideoConvertFrame();
+        // new MetaDataFrame().main();
+    //    new PlayListFrame();
     }
 }

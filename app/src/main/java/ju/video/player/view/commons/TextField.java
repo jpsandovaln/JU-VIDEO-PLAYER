@@ -5,7 +5,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
-import java.awt.Color;
 import java.awt.Font;
 
 public class TextField extends JFormattedTextField  {
@@ -23,11 +22,9 @@ public class TextField extends JFormattedTextField  {
     public void initPanel(String name) {
         Font font = new Font(NAME, Font.BOLD, SIZE); 
         setForeground(Colors.COMPONETS_COLOR);
-        //setBackground(null);
         setSize(100, 14);
         setFont(font);
         setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, Colors.COMPONETS_COLOR));
         setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
-        //setOpaque(false);
     }
 }

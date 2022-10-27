@@ -18,6 +18,7 @@ public class ListValidVideos {
     private ListValidVideos() {
         this.videoList = new ArrayList<>();
     }
+
     public static ListValidVideos getInstance(){
         if(instance == null) {
             instance = new ListValidVideos();
