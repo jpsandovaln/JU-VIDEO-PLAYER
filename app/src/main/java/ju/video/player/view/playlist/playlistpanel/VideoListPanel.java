@@ -42,7 +42,7 @@ public class VideoListPanel extends JPanel {
     public void setPlayerLabel() {
         removeAll();
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index).getName());
+            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index).getName(), index);
             //mediaPanel.setLabel();
             mediaPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
             add(mediaPanel);
@@ -51,14 +51,6 @@ public class VideoListPanel extends JPanel {
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         add(box);
         updateUI();
-    }
-
-    public void setPlayerLabel(ArrayList<String> listaArchivosmp4) {
-        removeAll();
-        for (int index = 0; index < listaArchivosmp4.size(); index++) {
-            MediaPanel MediaPanel = new MediaPanel(listaArchivosmp4.get(index).substring(3));
-            add(MediaPanel);
-        }
     }
 
 }

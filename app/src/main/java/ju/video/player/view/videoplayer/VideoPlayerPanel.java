@@ -5,7 +5,6 @@ import javax.swing.border.Border;
 
 import java.awt.*;
 
-import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtonsGroup;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
@@ -13,16 +12,14 @@ import uk.co.caprica.vlcj.player.embedded.fullscreen.adaptive.AdaptiveFullScreen
 
 public class VideoPlayerPanel extends JPanel {
     JFrame mainFrame;
-    private static EmbeddedMediaListPlayerComponent mediaPlayerComponent;
+    private EmbeddedMediaListPlayerComponent mediaPlayerComponent;
 
-    public VideoPlayerPanel(JFrame mainFrame) {
+    public VideoPlayerPanel(MediaPlayerFrame mainFrame) {
         this.mainFrame = mainFrame;
+        this.mediaPlayerComponent = mainFrame.getMediaComponent();
         initialize();
-        //NameVideoText nameVideoText = new NameVideoText();
-        mediaPlayerComponent = new EmbeddedMediaListPlayerComponent();
         mediaPlayerComponent.mediaPlayer().fullScreen().strategy(new AdaptiveFullScreenStrategy(mainFrame));
         ControlButtonsGroup controlButtonsGroup = new ControlButtonsGroup(this);
-        //add(nameVideoText, BorderLayout.PAGE_START);
         add(mediaPlayerComponent, BorderLayout.CENTER);
         add(controlButtonsGroup, BorderLayout.PAGE_END);
     }
@@ -34,17 +31,6 @@ public class VideoPlayerPanel extends JPanel {
         setLayout(borderLayout);
         setVisible(true);
         setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
-    }
-
-    public void createList() {
-        for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            String path = "";
-            /*path = ButtonController.getpathOfTheSelectedFolder()
-                    + ListValidVideos.getInstance().getVideoList().get(index).substring(2);*/
-            System.out.println(ListValidVideos.getInstance().getVideoList().get(index).getPath());
-            path = ListValidVideos.getInstance().getVideoList().get(index).getPath();
-            mediaPlayerComponent.mediaListPlayer().list().media().add(path);
-        }
     }
 
     public EmbeddedMediaListPlayerComponent getMediaPlayer() {

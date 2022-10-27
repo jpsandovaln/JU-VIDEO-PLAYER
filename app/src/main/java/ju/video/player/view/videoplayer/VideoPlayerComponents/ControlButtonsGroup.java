@@ -28,7 +28,7 @@ public class ControlButtonsGroup extends JPanel {
         setLayout(layout);
         setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
 
-        playButtonController = new PlayButtonController(videoPlayerPanel);
+        playButtonController = new PlayButtonController(videoPlayerPanel.getMediaPlayer());
         pauseButtonController = new PauseButtonController(videoPlayerPanel.getMediaPlayer());
         stopButtonController = new StopButtonController(videoPlayerPanel.getMediaPlayer());
         previousButtonController = new PreviousButtonController(videoPlayerPanel.getMediaPlayer());

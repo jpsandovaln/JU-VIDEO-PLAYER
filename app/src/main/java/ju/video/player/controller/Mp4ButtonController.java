@@ -26,7 +26,7 @@ public class Mp4ButtonController implements ActionListener {
             //}
         }
         System.out.println(" archivo mp4 : " + listFilesmp4);
-        panelSouth.setPlayerLabel(listFilesmp4);
+        //panelSouth.setPlayerLabel(listFilesmp4);
     }
 
 }

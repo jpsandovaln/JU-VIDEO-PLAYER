@@ -6,11 +6,15 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 
 import ju.video.player.view.materialDesing.constants.Constants;
+import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 
 public class MediaPlayerFrame extends JFrame {
+    EmbeddedMediaListPlayerComponent mediaComponent;
 
-    public MediaPlayerFrame() {
+    public MediaPlayerFrame(EmbeddedMediaListPlayerComponent mediaComponent) {
+        this.mediaComponent = mediaComponent;
+        
         initialize();
         VideoPlayerPanel videoPlayerPanel = new VideoPlayerPanel(this);
         add(videoPlayerPanel, BorderLayout.CENTER);
@@ -23,5 +27,9 @@ public class MediaPlayerFrame extends JFrame {
         setLayout(new BorderLayout());
         setTitle("Media Player");
         setVisible(true);
+    }
+
+    public EmbeddedMediaListPlayerComponent getMediaComponent() {
+        return mediaComponent;
     }
 }

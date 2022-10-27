@@ -18,13 +18,13 @@ import ju.video.player.view.materialDesing.constants.Constants;
 
 public class MediaPanel extends JPanel{
 
-    public MediaPanel(String mediaName) {
+    public MediaPanel(String mediaName, int index) {
         initPanel();
         JLabel name = new JLabel(mediaName);
         name.setForeground(Colors.COMPONETS_COLOR);
         Button playButton = new Button("");
 		playButton.setIcon("/play.png", 20, 20);
-        playButton.addActionListener(new PlayMediaButtonController());
+        playButton.addActionListener(new PlayMediaButtonController(index));
         Button convertButton = new Button("");
         convertButton.setIcon("/convert.png", 20, 20);
 		
