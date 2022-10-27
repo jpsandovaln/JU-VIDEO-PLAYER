@@ -1,6 +1,5 @@
 package ju.video.player.view.playlist.filterspanel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Component;
 import java.text.ParseException;
@@ -24,7 +23,6 @@ public class DateFilterPanel extends JPanel {
         add(finalDatePanel);
     }
     
-
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(0, 0, 200, 500);

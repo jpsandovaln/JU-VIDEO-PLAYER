@@ -14,8 +14,17 @@ public enum Formats {
     VIDEO_AVI("video/avi"),
     VIDEO_XFLV("video/x-flv"),
     VIDEO_MKV("video/x-matroska"),
-    VIDEO_WEBM("video/webm");
-
+    VIDEO_WEBM("video/webm"),
+    AUDIO_AIFF("audio/aiff"),
+    AUDIO_3GP2("audio/3gpp2"),
+    AUDIO_MIDI("audio/midi"),
+    AUDIO_MPEG("audio/mpeg"),
+    AUDIO_OGG("audio/ogg"),
+    AUDIO_WAV("audio/wav"),
+    AUDIO_WEBM("audio/webm"),
+    AUDIO_VND("audio/vnd.dlna.adts"),
+    AUDIO_MKG("audio/x-matroska");
+    
     private String formato;
     private Formats(String formato) {
         this.formato = formato;

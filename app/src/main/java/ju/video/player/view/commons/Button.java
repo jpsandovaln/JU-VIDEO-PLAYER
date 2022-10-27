@@ -14,7 +14,7 @@ public class Button extends JButton {
     public Button(String text) {
         super(text);
         RoundedBorder border = new RoundedBorder();
-        border.setShape(this);
+        border.roundButton(this);
         setUI(border);
         setOpaque(false);
     }

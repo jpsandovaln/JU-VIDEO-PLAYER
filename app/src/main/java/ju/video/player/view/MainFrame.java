@@ -5,8 +5,11 @@ import ju.video.player.view.information.InformationPanel;
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.ImageIcon;
+
+import java.awt.Image;
+import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
 

@@ -30,7 +30,7 @@ public class ListValidVideos {
         videoList.add(elemet);
     }
 
-    public void removeMedia(String elemet) {
+    public void removeMedia(File elemet) {
         videoList.remove(elemet);
     }
 }

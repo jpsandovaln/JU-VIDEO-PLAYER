@@ -1,20 +1,16 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Dimension;
-import java.awt.Image;
 
-import javax.swing.Icon;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ju.video.player.controller.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.Colors;
-import ju.video.player.view.materialDesing.constants.Constants;
 
 public class MediaPanel extends JPanel{
 
