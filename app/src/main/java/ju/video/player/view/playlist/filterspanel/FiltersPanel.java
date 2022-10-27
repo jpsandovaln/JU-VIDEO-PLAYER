@@ -10,11 +10,8 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-<<<<<<< HEAD
 import ju.video.player.model.ListValidVideos;
-=======
 import ju.video.player.controller.ApplyFilterController;
->>>>>>> ui/JU-VideoPlayer/jose/integration_UI
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.SubtitleLabel;
 import ju.video.player.view.commons.TitleLabel;
@@ -30,7 +27,8 @@ public class FiltersPanel extends JPanel {
         Button applyFiltersButton = new Button("Apply Filters");
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
-        applyFiltersButton.addActionListener(new ApplyFilterController(this));
+        //applyFiltersButton.addActionListener(new ApplyFilterController(this));
+        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         
         add(new TitleLabel("Filters"));
         add(Box.createRigidArea(new Dimension(0, 10)));
@@ -42,8 +40,7 @@ public class FiltersPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 5)));
         add(dateFilterPanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
-        Button applyFiltersButton = new Button("Apply Filters");
-        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
+        //Button applyFiltersButton = new Button("Apply Filters");
         add(applyFiltersButton);
         add(box);
     }

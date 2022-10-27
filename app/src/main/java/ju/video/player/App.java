@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) throws IOException, ParseException {
-        Convert convert = new Convert();
+        //Convert convert = new Convert();
         //System.out.println("getname" + convert.getName("D:\\videoplayer\\JU-VIDEO-PLAYER\\VID_20220521_212816.mp4"));
         //convert.sendPost("C:\\Users\\alvar\\Desktop\\Videos\\VID_20220521_212816.mp4", "avi");
         // convert.sendPost("C:\\Users\\Tonio\\taza.mkv", "avi");
@@ -27,6 +27,6 @@ public class App {
         // new MetaDataFrame();
         new VideoConvertFrame();
         // new MetaDataFrame().main();
-    //    new PlayListFrame();
+        //new PlayListFrame();
     }
 }

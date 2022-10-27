@@ -28,7 +28,7 @@ public class PlayMediaButtonController implements ActionListener {
         int listSize = ListValidVideos.getInstance().getVideoList().size();
         for (int position = 0; position < listSize; position++) {
             int index = (initialMedia + position) < listSize ? initialMedia + position: (initialMedia + position) - listSize;
-            String path = ListValidVideos.getInstance().getVideoList().get(index).getPath();
+            String path = ListValidVideos.getInstance().getPathOfTheSelectedFolder() + ListValidVideos.getInstance().getVideoList().get(index);
             mediaPlayerComponent.mediaListPlayer().list().media().add(path);
         }
     }

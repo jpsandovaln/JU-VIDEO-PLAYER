@@ -60,6 +60,9 @@ public class ListValidVideos {
     public void setPathOfTheSelectedFolder(String pathOfTheSelectedFolder) {
         this.pathOfTheSelectedFolder = pathOfTheSelectedFolder;
     }
+    public String getPathOfTheSelectedFolder() {
+        return pathOfTheSelectedFolder;
+    }
 
     public void setPlayListPanel(VideoListPanel playListPanel) {
         this.playListPanel = playListPanel;

@@ -23,7 +23,7 @@ public class ConvertController implements ActionListener {
         // System.out.println("getname" +
         // convert.getName("D:\\videoplayer\\JU-VIDEO-PLAYER\\VID_20220521_212816.mp4"));
         try {
-            convert.sendPost("C:\\Users\\Tonio\\taza.mkv", "avi");
+            convert.sendPost("C:\\Users\\Hp\\TestVideo\\misky.mp4", "avi");
             convert.sendGet();
         } catch (IOException e1) {
             e1.printStackTrace();
