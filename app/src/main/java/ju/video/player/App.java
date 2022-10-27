@@ -4,12 +4,15 @@
  */
 package ju.video.player;
 import ju.video.player.model.Convert;
+import java.text.ParseException;
+
 import ju.video.player.view.MetaDataFrame;
+import ju.video.player.view.playlist.PlayListFrame;
 
 import java.io.IOException;
 
 public class App {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         Convert convert = new Convert();
         //System.out.println("getname" + convert.getName("D:\\videoplayer\\JU-VIDEO-PLAYER\\VID_20220521_212816.mp4"));
         //convert.sendPost("C:\\Users\\alvar\\Desktop\\Videos\\VID_20220521_212816.mp4", "avi");
@@ -18,5 +21,7 @@ public class App {
         metaDataFrame.main();
 
 
+        //new MetaDataFrame().main();
+        new PlayListFrame();
     }
 }

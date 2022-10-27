@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
-import ju.video.player.controller.ButtonControler;
+import ju.video.player.controller.ButtonController;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
 import ju.video.player.view.materialDesing.callback.CallbackT;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;

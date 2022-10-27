@@ -5,7 +5,7 @@ import javax.swing.border.Border;
 
 import java.awt.*;
 
-import ju.video.player.controller.ButtonControler;
+import ju.video.player.controller.ButtonController;
 import ju.video.player.model.ListValidVideos;
 
 import ju.video.player.view.MainFrame;
@@ -39,7 +39,7 @@ public class VideoPlayerPanel extends JPanel {
         System.out.println(ListValidVideos.getInstance().getVideoList().get(1));
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
             String path = "";
-            path = ButtonControler.getpathOfTheSelectedFolder()
+            path = ButtonController.getpathOfTheSelectedFolder()
                     + ListValidVideos.getInstance().getVideoList().get(index).substring(2);
             mediaPlayerComponent.mediaListPlayer().list().media()
                     .add(path);

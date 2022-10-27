@@ -2,6 +2,9 @@ package ju.video.player.view.information.list;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
+
 import java.awt.Color;
 
 public class VideoListSectionPanel extends JPanel {

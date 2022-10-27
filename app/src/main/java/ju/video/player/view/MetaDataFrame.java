@@ -1,5 +1,4 @@
 package ju.video.player.view;
-import ju.video.player.view.information.list.VideoListPanel;
 import ju.video.player.view.information.search.FolderChooserButton;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
 import ju.video.player.view.materialDesing.components.date.fields.DateField;
@@ -9,12 +8,14 @@ import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MetaDataFrame {
     public static void main() {
-        JFrame frame = FrameUtility.build("Video player", 0, 0, 500, 500, true);
+        JFrame frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
         ResponsiveLayout rl = new ResponsiveLayout(10, 4, frame);
         ImageLabel imageLabel = new ImageLabel("\\image.png", rl, 120, 120, 120);
         ImageRoundedBorder roundedBorder = new ImageRoundedBorder(120, ResponsiveSwingMaterialDesign.PRIMARY_COLOR);
