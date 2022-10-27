@@ -2,7 +2,8 @@ package ju.video.player.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
 import ju.video.player.model.Formats;
@@ -67,13 +68,10 @@ public class ButtonController implements ActionListener {
         else {
             // create an object of JFileChooser class
             JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
             // set the selection mode to directories only
             jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
             // invoke the showsOpenDialog function to show the save dialog
             int invoke = jfileChooser.showOpenDialog(null);
-
             if (invoke == JFileChooser.APPROVE_OPTION) {
                 // set the label to the path of the selected directory
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
@@ -111,13 +109,10 @@ public class ButtonController implements ActionListener {
         }
     }
 
-    // verify if a file is of the correct format
     public void verify() {
         String verifyMetadataVideoFile;
-
         for (int index = 0; index < listPathVideofile.size(); index++) {
             File videoPath = new File(listPathVideofile.get(index));
-            ;
             try {
                 verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());
                 BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index), BasicFileAttributes.class);
@@ -129,12 +124,14 @@ public class ButtonController implements ActionListener {
                 if (verifyMetadataVideoFile != null) {
                     for (Formats formats : Formats.values()) {
                         if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
-                            listvalidVideos.add(listPathVideofile.get(index));
+                            //listvalidVideos.add(pathOfTheSelectedFolder + listPathVideofile.get(index));
+                            System.out.println(pathOfTheSelectedFolder + listPathVideofile.get(index).substring(2));
+                            ListValidVideos.getInstance().addMedia(new File(pathOfTheSelectedFolder, listPathVideofile.get(index).substring(2)));
                         }
                     }
                 }
                 // grab the list of valid videos and set it to the class of video list valid videos
-                ListValidVideos.getInstance().setVideoList(listvalidVideos);
+                //ListValidVideos.getInstance().setVideoList(listvalidVideos);
             } catch (IOException ioException) {
                 System.out.println("Error: " + ioException.getMessage());
             }
@@ -151,7 +148,6 @@ public class ButtonController implements ActionListener {
         System.out.printf("lastAccessTime   = %s%n", attributes.lastAccessTime());
         System.out.printf("lastModifiedTime = %s%n", attributes.lastModifiedTime());
         System.out.printf("size             = %s%n", attributes.size());
-
     }
 
     public boolean verifySize(BasicFileAttributes attributes, int definedSize) {
@@ -175,5 +171,4 @@ public class ButtonController implements ActionListener {
         Path path = Paths.get(pathOfTheSelectedFolder + "\\" +completePath);
         return path;
     }
-
 }

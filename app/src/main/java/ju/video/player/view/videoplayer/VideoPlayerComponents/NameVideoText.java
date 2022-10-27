@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import ju.video.player.view.commons.Colors;
+
 public class NameVideoText extends JPanel {
     JLabel videoName = new JLabel();
     public NameVideoText() {
@@ -16,6 +18,8 @@ public class NameVideoText extends JPanel {
         this.setLayout(new GridBagLayout());
         this.add(videoName);
         this.setBorder(border);
+        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        setOpaque(false);
     }
 
     public void updateVideoName(String newVideoName){
