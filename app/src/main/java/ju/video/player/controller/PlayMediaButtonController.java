@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprieraty information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.controller;
 
 import java.awt.event.ActionEvent;
@@ -28,7 +36,8 @@ public class PlayMediaButtonController implements ActionListener {
         int listSize = ListValidVideos.getInstance().getVideoList().size();
         for (int position = 0; position < listSize; position++) {
             int index = (initialMedia + position) < listSize ? initialMedia + position: (initialMedia + position) - listSize;
-            String path = ListValidVideos.getInstance().getPathOfTheSelectedFolder() + ListValidVideos.getInstance().getVideoList().get(index);
+            String path = ListValidVideos.getInstance().getPathOfTheSelectedFolder() + "\\" + ListValidVideos.getInstance().getVideoList().get(index);
+            System.out.println(path);
             mediaPlayerComponent.mediaListPlayer().list().media().add(path);
         }
     }

@@ -1,5 +1,3 @@
-package ju.video.player.model;
-
 /**
  * Copyright (c) 2022 Jala University.
  *
@@ -8,6 +6,8 @@ package ju.video.player.model;
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
+package ju.video.player.model;
+
 public enum Formats {
     VIDEO_3GPP("video/3gpp"),
     VIDEO_3GPP2("video/3gpp2"),

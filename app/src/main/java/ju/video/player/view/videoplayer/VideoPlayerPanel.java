@@ -1,9 +1,19 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprieraty information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.view.videoplayer;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.BorderLayout;
 
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtonsGroup;
@@ -11,11 +21,9 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.fullscreen.adaptive.AdaptiveFullScreenStrategy;
 
 public class VideoPlayerPanel extends JPanel {
-    JFrame mainFrame;
     private EmbeddedMediaListPlayerComponent mediaPlayerComponent;
 
     public VideoPlayerPanel(MediaPlayerFrame mainFrame) {
-        this.mainFrame = mainFrame;
         this.mediaPlayerComponent = mainFrame.getMediaComponent();
         initialize();
         mediaPlayerComponent.mediaPlayer().fullScreen().strategy(new AdaptiveFullScreenStrategy(mainFrame));

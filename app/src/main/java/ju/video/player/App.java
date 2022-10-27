@@ -25,8 +25,8 @@ public class App {
         // metaDataFrame.main();
 
         // new MetaDataFrame();
-        new VideoConvertFrame();
+        //new VideoConvertFrame();
         // new MetaDataFrame().main();
-        //new PlayListFrame();
+        new PlayListFrame();
     }
 }

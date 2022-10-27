@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprieraty information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.view.playlist.playlistpanel;
 
 import javax.swing.BorderFactory;
@@ -37,7 +45,7 @@ public class VideoListPanel extends JPanel {
     public void setPlayerLabel() {
         removeAll();
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index).substring(2), index);
+            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index), index);
             mediaPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
             add(mediaPanel);
         }
