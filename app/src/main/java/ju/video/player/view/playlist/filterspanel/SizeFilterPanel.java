@@ -7,7 +7,10 @@ import java.awt.event.KeyAdapter;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
+import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.commons.TextField;
 
@@ -30,6 +33,23 @@ public class SizeFilterPanel extends JPanel {
               }
            }
         });
+        minSizeField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                setFileSizeValue();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                setFileSizeValue();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                setFileSizeValue();
+            }
+
+            public void setFileSizeValue() {
+                String text = minSizeField.getText();
+                double value = Double.parseDouble(text);
+                ListValidVideos.getInstance().setMinFileSize(value);
+            }
+        });
         add(minSizeField);
         TextField maxSizeField = new TextField("Max Size (Mb)");
         maxSizeField.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
@@ -45,6 +65,25 @@ public class SizeFilterPanel extends JPanel {
                }
             }
          });
+
+        maxSizeField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                setFileSizeValue();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                setFileSizeValue();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                setFileSizeValue();
+            }
+
+            public void setFileSizeValue() {
+                String text = maxSizeField.getText();
+                double value = Double.parseDouble(text);
+                ListValidVideos.getInstance().setMaxFileSize(value);
+            }
+        });
+
         add(maxSizeField);
         add(Box.createRigidArea(new Dimension(10, 0)));
     }

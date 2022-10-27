@@ -79,10 +79,12 @@ public class ButtonController implements ActionListener {
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
             }
         }
-
-        showFilesSelectedFolder();
-        verify();
-        playListPanel.setPlayerLabel();
+        ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
+        ListValidVideos.getInstance().setPlayListPanel(playListPanel);
+        ListValidVideos.getInstance().applyFilters();
+        //showFilesSelectedFolder();
+        ;
+        //playListPanel.setPlayerLabel();
         //new MainFrame(playListPanel);
     }
 
@@ -128,13 +130,13 @@ public class ButtonController implements ActionListener {
                 }
                 if (verifyMetadataVideoFile != null) {
                     for (Formats formats : Formats.values()) {
-                        if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
+                        if (verifyMetadataVideoFile.equals(formats.getFormat())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
                             listvalidVideos.add(listPathVideofile.get(index));
                         }
                     }
                 }
                 // grab the list of valid videos and set it to the class of video list valid videos
-                ListValidVideos.getInstance().setVideoList(listvalidVideos);
+                //ListValidVideos.getInstance().setVideoList(listvalidVideos);
             } catch (IOException ioException) {
                 System.out.println("Error: " + ioException.getMessage());
             }

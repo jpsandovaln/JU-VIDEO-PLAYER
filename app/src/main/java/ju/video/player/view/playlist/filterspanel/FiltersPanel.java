@@ -3,12 +3,14 @@ package ju.video.player.view.playlist.filterspanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.text.ParseException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.SubtitleLabel;
 import ju.video.player.view.commons.TitleLabel;
@@ -32,6 +34,7 @@ public class FiltersPanel extends JPanel {
         add(dateFilterPanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
         Button applyFiltersButton = new Button("Apply Filters");
+        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         add(applyFiltersButton);
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
