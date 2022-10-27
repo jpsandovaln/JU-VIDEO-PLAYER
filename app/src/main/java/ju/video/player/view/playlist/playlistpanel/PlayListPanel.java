@@ -1,6 +1,5 @@
 package ju.video.player.view.playlist.playlistpanel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Component;
 

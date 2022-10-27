@@ -21,9 +21,9 @@ public class Mp4ButtonController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            if (ListValidVideos.getInstance().getVideoList().get(index).contains(".mp4")) {
-                listFilesmp4.add(ListValidVideos.getInstance().getVideoList().get(index));
-            }
+            //if (ListValidVideos.getInstance().getVideoList().get(index).contains(".mp4")) {
+                //listFilesmp4.add(ListValidVideos.getInstance().getVideoList().get(index));
+            //}
         }
         System.out.println(" archivo mp4 : " + listFilesmp4);
         panelSouth.setPlayerLabel(listFilesmp4);

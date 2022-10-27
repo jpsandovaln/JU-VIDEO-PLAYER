@@ -3,20 +3,14 @@ package ju.video.player.view.playlist.playlistpanel;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JLabel;
-import javax.swing.JList;
+
 import javax.swing.JPanel;
 import javax.swing.JComponent;
-import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Colors;
-import uk.co.caprica.vlcj.player.base.MediaPlayer;
-import uk.co.caprica.vlcj.player.component.MediaPlayerComponent;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Component;
 import java.awt.Font;
@@ -48,7 +42,7 @@ public class VideoListPanel extends JPanel {
     public void setPlayerLabel() {
         removeAll();
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index).substring(3));
+            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index).getName());
             //mediaPanel.setLabel();
             mediaPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
             add(mediaPanel);

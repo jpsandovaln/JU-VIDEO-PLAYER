@@ -117,7 +117,6 @@ public class ButtonController implements ActionListener {
 
         for (int index = 0; index < listPathVideofile.size(); index++) {
             File videoPath = new File(listPathVideofile.get(index));
-            ;
             try {
                 verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());
                 BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index), BasicFileAttributes.class);
@@ -129,12 +128,14 @@ public class ButtonController implements ActionListener {
                 if (verifyMetadataVideoFile != null) {
                     for (Formats formats : Formats.values()) {
                         if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
-                            listvalidVideos.add(listPathVideofile.get(index));
+                            //listvalidVideos.add(pathOfTheSelectedFolder + listPathVideofile.get(index));
+                            System.out.println(pathOfTheSelectedFolder + listPathVideofile.get(index).substring(2));
+                            ListValidVideos.getInstance().addMedia(new File(pathOfTheSelectedFolder, listPathVideofile.get(index).substring(2)));
                         }
                     }
                 }
                 // grab the list of valid videos and set it to the class of video list valid videos
-                ListValidVideos.getInstance().setVideoList(listvalidVideos);
+                //ListValidVideos.getInstance().setVideoList(listvalidVideos);
             } catch (IOException ioException) {
                 System.out.println("Error: " + ioException.getMessage());
             }

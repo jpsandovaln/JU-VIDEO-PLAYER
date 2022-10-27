@@ -8,11 +8,10 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import uk.co.caprica.vlcj.waiter.mediaplayer.PlayingWaiter;
+import ju.video.player.controller.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.materialDesing.constants.Constants;
@@ -27,6 +26,7 @@ public class MediaPanel extends JPanel{
 		ImageIcon playImage = new ImageIcon(Constants.RESOURCES_IMAGES + "/play.png");
         Icon playIcon = new ImageIcon(playImage.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         playButton.setIcon(playIcon);
+        playButton.addActionListener(new PlayMediaButtonController());
         Button convertButton = new Button("");
 		ImageIcon convertImage = new ImageIcon(Constants.RESOURCES_IMAGES + "/convert.png");
         Icon convertIcon = new ImageIcon(convertImage.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
@@ -34,6 +34,7 @@ public class MediaPanel extends JPanel{
         add(name);
         add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));
         add(playButton);
+        add(Box.createRigidArea(new Dimension(5, 0)));
         add(convertButton);
     }
 

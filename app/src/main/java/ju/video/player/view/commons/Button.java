@@ -9,7 +9,7 @@ public class Button extends JButton {
 
     public Button(String text) {
         super(text);
-        setSize(new Dimension(100, 100));
+        //setSize(new Dimension(100, 100));
         RoundedBorder border = new RoundedBorder();
         border.setShape(this);
         setUI(border);

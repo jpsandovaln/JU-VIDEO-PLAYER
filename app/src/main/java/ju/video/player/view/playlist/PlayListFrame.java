@@ -1,7 +1,6 @@
 package ju.video.player.view.playlist;
 
 import javax.swing.JFrame;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 
 import ju.video.player.view.commons.Colors;
@@ -13,7 +12,6 @@ import ju.video.player.view.playlist.playlistpanel.PlayListPanel;
 import java.awt.Image;
 import java.awt.Component;
 import java.text.ParseException;
-import java.awt.FlowLayout;
 
 public class PlayListFrame {
 

@@ -32,6 +32,7 @@ public class FiltersPanel extends JPanel {
         add(dateFilterPanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
         Button applyFiltersButton = new Button("Apply Filters");
+        applyFiltersButton.addActionListener(null);
         add(applyFiltersButton);
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
