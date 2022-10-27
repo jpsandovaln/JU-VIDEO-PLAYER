@@ -23,14 +23,11 @@ public class MediaPanel extends JPanel{
         JLabel name = new JLabel(mediaName);
         name.setForeground(Colors.COMPONETS_COLOR);
         Button playButton = new Button("");
-		ImageIcon playImage = new ImageIcon(Constants.RESOURCES_IMAGES + "/play.png");
-        Icon playIcon = new ImageIcon(playImage.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-        playButton.setIcon(playIcon);
+		playButton.setIcon("/play.png", 20, 20);
         playButton.addActionListener(new PlayMediaButtonController());
         Button convertButton = new Button("");
-		ImageIcon convertImage = new ImageIcon(Constants.RESOURCES_IMAGES + "/convert.png");
-        Icon convertIcon = new ImageIcon(convertImage.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-        convertButton.setIcon(convertIcon);
+        convertButton.setIcon("/convert.png", 20, 20);
+		
         add(name);
         add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));
         add(playButton);
