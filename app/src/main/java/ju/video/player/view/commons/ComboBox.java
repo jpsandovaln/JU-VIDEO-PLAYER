@@ -5,7 +5,6 @@ import javax.swing.JComboBox;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-
 public class ComboBox extends JComboBox<String> implements ItemListener {
     public ComboBox(String[] itemsList) {
         addItems(itemsList);
@@ -21,7 +20,7 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getSource() == this) {
-            String seleccionado = (String) getSelectedItem();
+            //String seleccionado = (String) getSelectedItem();
             //(String) setTitle(seleccionado);
         }
     }

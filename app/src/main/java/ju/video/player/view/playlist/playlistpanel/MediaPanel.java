@@ -27,10 +27,10 @@ public class MediaPanel extends JPanel{
         JLabel name = new JLabel(mediaName);
         name.setForeground(Colors.COMPONETS_COLOR);
         Button playButton = new Button("");
-		playButton.setIcon("/play.png", 20, 20);
+		playButton.setIcon("play.png", 20, 20);
         playButton.addActionListener(new PlayMediaButtonController(index));
         Button convertButton = new Button("");
-        convertButton.setIcon("/convert.png", 20, 20);
+        convertButton.setIcon("convert.png", 20, 20);
 		
         add(name);
         add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));

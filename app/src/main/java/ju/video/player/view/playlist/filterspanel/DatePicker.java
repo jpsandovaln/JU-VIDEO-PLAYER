@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.Fonts;
 
 public class DatePicker {
 	int month = Calendar.getInstance().get(Calendar.MONTH);
@@ -51,7 +52,7 @@ public class DatePicker {
 			}
 			calendarPanel.add(button[index]);
 		}
-		JPanel headerPanel = new JPanel(new GridLayout(1, 3));
+		JPanel headerPanel = new JPanel(new BorderLayout());
 		headerPanel.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
 		
 		Button prevButton = new Button(" << ");
@@ -67,9 +68,10 @@ public class DatePicker {
 				displayDate();
 			}
 		});
-		headerPanel.add(prevButton);
+		headerPanel.add(prevButton, BorderLayout.WEST);
 		label.setForeground(Colors.COMPONETS_COLOR);
-		headerPanel.add(label);
+		label.setFont(Fonts.COMMON_FONT);
+		headerPanel.add(label, BorderLayout.CENTER);
 		Button nextButton = new Button(" >> ");
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -82,7 +84,7 @@ public class DatePicker {
 				displayDate();
 			}
 		});
-		headerPanel.add(nextButton);
+		headerPanel.add(nextButton, BorderLayout.EAST);
 		dialog.add(calendarPanel, BorderLayout.CENTER);
 		dialog.add(headerPanel, BorderLayout.NORTH);
 		dialog.pack();
@@ -111,7 +113,7 @@ public class DatePicker {
 		if (day.equals("")){
 			return day;
 		}
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month, Integer.parseInt(day));
 		return dateFormat.format(cal.getTime());
