@@ -17,8 +17,10 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import ju.video.player.model.Formats;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Button;
+import ju.video.player.view.commons.ComboBox;
 import ju.video.player.view.commons.SubtitleLabel;
 import ju.video.player.view.commons.TitleLabel;
 
@@ -45,6 +47,10 @@ public class FiltersPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 5)));
         add(dateFilterPanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
+        add(new SubtitleLabel("File Format"));
+        add(Box.createRigidArea(new Dimension(0, 5)));
+        add(new ComboBox(createList()));
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(applyFiltersButton);
         add(box);
     }
@@ -54,6 +60,16 @@ public class FiltersPanel extends JPanel {
         setBounds(0, 0, 250, 600);
         setBackground(new Color (64, 75, 105));
         setAlignmentY(Component.TOP_ALIGNMENT);
+    }
+
+    private String[] createList() {
+        String[] list = new String[Formats.values().length];
+        int index = 0;
+        for(Formats format : Formats.values()) {
+            list[index] = format.getFormat();
+            index++;
+        }
+        return list;
     }
 
 }
