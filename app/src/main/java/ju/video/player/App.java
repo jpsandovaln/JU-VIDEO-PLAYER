@@ -6,6 +6,7 @@ package ju.video.player;
 import ju.video.player.model.Convert;
 import java.text.ParseException;
 
+import ju.video.player.model.ConvertFile;
 import ju.video.player.view.MetaDataFrame;
 import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoconvert.VideoConvertFrame;
@@ -23,10 +24,10 @@ public class App {
         //convert.sendGet();
         // MetaDataFrame metaDataFrame = new MetaDataFrame();
         // metaDataFrame.main();
-
+        ConvertFile convertFile = new ConvertFile("C:\\Users\\alvar\\Desktop\\Videos\\VID_20220521_212816.mp4", "mp3");
         // new MetaDataFrame();
         //new VideoConvertFrame();
         // new MetaDataFrame().main();
-        new PlayListFrame();
+        //new PlayListFrame();
     }
 }
