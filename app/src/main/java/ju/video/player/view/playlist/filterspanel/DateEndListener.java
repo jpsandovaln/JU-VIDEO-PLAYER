@@ -45,8 +45,12 @@ public class DateEndListener implements DocumentListener {
         String date = text.getText();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        // convert String to LocalDate
-        LocalDate localDate = LocalDate.parse(date, formatter);
-        ListValidVideos.getInstance().setEndDate(localDate);
+        try {
+            // convert String to LocalDate
+            LocalDate localDate = LocalDate.parse(date, formatter);
+            ListValidVideos.getInstance().setEndDate(localDate);
+        }catch (Exception ex){
+            ListValidVideos.getInstance().setEndDate(null);
+        }
     }
 }

@@ -51,8 +51,12 @@ public class SizeFilterPanel extends JPanel {
 
             public void setFileSizeValue() {
                 String text = minSizeField.getText();
-                double value = Double.parseDouble(text);
-                ListValidVideos.getInstance().setMinFileSize(value);
+                try{
+                    double value = Double.parseDouble(text);
+                    ListValidVideos.getInstance().setMinFileSize(value);
+                }catch (Exception ex){
+                    ListValidVideos.getInstance().setMinFileSize(0);
+                }
             }
         });
         add(minSizeField);
@@ -84,14 +88,17 @@ public class SizeFilterPanel extends JPanel {
 
             public void setFileSizeValue() {
                 String text = maxSizeField.getText();
-                double value = Double.parseDouble(text);
-                ListValidVideos.getInstance().setMaxFileSize(value);
+                try{
+                    double value = Double.parseDouble(text);
+                    ListValidVideos.getInstance().setMaxFileSize(value);
+                }catch(Exception e){
+                    ListValidVideos.getInstance().setMaxFileSize(0);
+                }
             }
         });
         add(maxSizeField);
         add(Box.createRigidArea(new Dimension(10, 0)));
     }
-    
 
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
