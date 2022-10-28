@@ -23,7 +23,6 @@ public class Convert {
     public Convert() {
         createDirectory();
     }
-
     public void sendPost(String path, String format) throws IOException {
         this.path = path;
         this.newFormat = format;
@@ -43,8 +42,6 @@ public class Convert {
         StringBody color = new StringBody("");
         StringBody size = new StringBody("");
         StringBody cropVideo = new StringBody("");
-
-
         MultipartEntity reqEntity = new MultipartEntity();
         reqEntity.addPart("file", bin);
         reqEntity.addPart("outName", outName);
@@ -59,12 +56,10 @@ public class Convert {
         reqEntity.addPart("color", color);
         reqEntity.addPart("size", size);
         reqEntity.addPart("cropVideo", cropVideo);
-
         httppost.setEntity(reqEntity);
         HttpResponse response = httpclient.execute(httppost);
         HttpEntity resEntity = response.getEntity();
     }
-
     public void sendGet() throws IOException {
         URL url = new URL(httpGet + getName(path));
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

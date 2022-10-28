@@ -1,7 +1,19 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprietary information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.model;
-
 import java.util.ArrayList;
-
+/**
+ * Responsible for Verifying the type of request necessary for the consumption of the converter service.
+ *
+ * @author Alvaro Sivila Ramirez
+ * @version 1.0
+ */
 public class VerifyRequest {
     ArrayList<String> audioFormats = new ArrayList<>();
     ArrayList<String> videoFormats = new ArrayList<>();
@@ -20,7 +32,6 @@ public class VerifyRequest {
     }
     public Request getRequest() {
         if(audioFormats.contains(format)) {
-            System.out.println("este es el formato" + format);
             return new AudioRequest();
         }
         if(videoFormats.contains(format)) {
