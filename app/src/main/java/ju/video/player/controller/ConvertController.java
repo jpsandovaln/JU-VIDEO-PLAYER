@@ -15,21 +15,18 @@ public class ConvertController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // if (e.getSource() == convertFrame.getButton()) {
-        // convertFrame.getContentPane().removeAll();
-        // convertFrame.repaint();
-        // convertFrame
+      
         System.out.println("Pressed Convert");
         System.out.println(convertFrame.getPath());
         System.out.println(convertFrame.getFormat().getSelectedItem().toString());
 
         Convert convert = new Convert();
-        // try {
-        //     convert.sendPost(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
-        //     convert.sendGet();
-        // } catch (IOException e1) {
-        //     e1.printStackTrace();
-        // }
+        try {
+            convert.sendPost(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
+            convert.sendGet();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
         
     }
 
