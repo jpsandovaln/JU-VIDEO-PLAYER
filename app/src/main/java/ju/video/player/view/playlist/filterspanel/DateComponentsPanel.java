@@ -6,6 +6,7 @@
  * Information and shall use it only in accordance with the terms of the
  * Licence agreement you entered into with Jalasoft
  */
+
 package ju.video.player.view.playlist.filterspanel;
 
 import java.awt.Dimension;
@@ -26,14 +27,6 @@ import javax.swing.event.DocumentListener;
 import ju.video.player.controller.DatePickerController;
 import ju.video.player.view.materialDesing.constants.Constants;
 
-/**
- * Copyright (c) 2022 Jala University.
- * <p>
- * This software is the confidential and proprietary information of Jala University
- * ("Confidential Information"). You shall not disclose such Confidential
- * Information and shall use it only in accordance with the terms of the
- * license agreement you entered into with Jala University
- */
 public class DateComponentsPanel extends JPanel {
     final JTextField text = new JTextField(20);
 

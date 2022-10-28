@@ -6,6 +6,7 @@
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
+
 package ju.video.player.commons;
 
 import ju.video.player.model.Formats;
@@ -20,14 +21,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Copyright (c) 2022 Jala University.
- * <p>
- * This software is the confidential and proprietary information of Jala University
- * ("Confidential Information"). You shall not disclose such Confidential
- * Information and shall use it only in accordance with the terms of the
- * license agreement you entered into with Jala University
- */
+
 public class FilterFiles {
 
     private String filesFolder;
@@ -63,9 +57,7 @@ public class FilterFiles {
             } else {
                 BasicFileAttributes attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
                 System.out.println(file + " Media:" + verifyIsMediaFile(file) + " - Size:" + verifySize(attributes, initSize, endSize) + " - Date:" + verifyDate(attributes, initDate, endDate));
-                if (verifyIsMediaFile(file)
-                        && verifySize(attributes, initSize, endSize)
-                        && verifyDate(attributes, initDate, endDate)) {
+                if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize) && verifyDate(attributes, initDate, endDate)) {
                     listFilesName.add(fileName);
                 }
             }
@@ -115,7 +107,6 @@ public class FilterFiles {
             return true;
         }
         LocalDate creationDate = attributes.lastModifiedTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return (creationDate.isAfter(initDate) || creationDate.isEqual(initDate))
-                && (creationDate.isBefore(endDate) || creationDate.isEqual(endDate));
+        return (creationDate.isAfter(initDate) || creationDate.isEqual(initDate)) && (creationDate.isBefore(endDate) || creationDate.isEqual(endDate));
     }
 }

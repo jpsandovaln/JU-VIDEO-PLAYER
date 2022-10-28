@@ -1,11 +1,12 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * <p>
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
  * Licence agreement you entered into with Jalasoft
  */
+
 package ju.video.player.view.playlist.filterspanel;
 
 import ju.video.player.model.ListValidVideos;
@@ -27,34 +28,34 @@ public class SizeFilterPanel extends JPanel {
         TextField minSizeField = new TextField("Min Size (Mb)");
         minSizeField.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
         minSizeField.addKeyListener(new KeyAdapter() {
-           public void keyTyped(KeyEvent e)
-           {
-              char caracter = e.getKeyChar();
-              if(((caracter < '0') ||
-                 (caracter > '9')) &&
-                 (caracter != '\b'))
-              {
-                 e.consume();  // ignore the key event
-              }
-           }
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (((caracter < '0') ||
+                        (caracter > '9')) &&
+                        (caracter != '\b')) {
+                    e.consume();  // ignore the key event
+                }
+            }
         });
         minSizeField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 setFileSizeValue();
             }
+
             public void removeUpdate(DocumentEvent e) {
                 setFileSizeValue();
             }
+
             public void insertUpdate(DocumentEvent e) {
                 setFileSizeValue();
             }
 
             public void setFileSizeValue() {
                 String text = minSizeField.getText();
-                try{
+                try {
                     double value = Double.parseDouble(text);
                     ListValidVideos.getInstance().setMinFileSize(value);
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     ListValidVideos.getInstance().setMinFileSize(0);
                 }
             }
@@ -63,35 +64,35 @@ public class SizeFilterPanel extends JPanel {
         TextField maxSizeField = new TextField("Max Size (Mb)");
         maxSizeField.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
         maxSizeField.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e)
-            {
-               char caracter = e.getKeyChar();
-               if(((caracter < '0') ||
-                  (caracter > '9')) &&
-                  (caracter != '\b'))
-               {
-                  e.consume();  // ignore the key event
-               }
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (((caracter < '0') ||
+                        (caracter > '9')) &&
+                        (caracter != '\b')) {
+                    e.consume();  // ignore the key event
+                }
             }
-         });
+        });
 
         maxSizeField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 setFileSizeValue();
             }
+
             public void removeUpdate(DocumentEvent e) {
                 setFileSizeValue();
             }
+
             public void insertUpdate(DocumentEvent e) {
                 setFileSizeValue();
             }
 
             public void setFileSizeValue() {
                 String text = maxSizeField.getText();
-                try{
+                try {
                     double value = Double.parseDouble(text);
                     ListValidVideos.getInstance().setMaxFileSize(value);
-                }catch(Exception e){
+                } catch (Exception e) {
                     ListValidVideos.getInstance().setMaxFileSize(0);
                 }
             }

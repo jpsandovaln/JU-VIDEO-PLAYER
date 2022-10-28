@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ * <p>
+ * This software is the confidential and proprietary information of Jala University
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Jala University
+ */
+
 package ju.video.player.model;
 
 import ju.video.player.commons.FilterFiles;
@@ -8,14 +17,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Copyright (c) 2022 Jala University.
- * <p>
- * This software is the confidential and proprietary information of Jala University
- * ("Confidential Information"). You shall not disclose such Confidential
- * Information and shall use it only in accordance with the terms of the
- * license agreement you entered into with Jala University
- */
 public class ListValidVideos {
     private static ListValidVideos instance;
     private List<String> videoList;
@@ -35,7 +36,7 @@ public class ListValidVideos {
             instance = new ListValidVideos();
         }
         return instance;
-    } // ListValidVideos.getInstance().getVideoList()
+    }
 
     /**
      * Set the list of files filtered to the Panel.
