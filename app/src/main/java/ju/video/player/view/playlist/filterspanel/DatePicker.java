@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprieraty information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.view.playlist.filterspanel;
  
 import java.awt.GridLayout;
@@ -17,6 +25,13 @@ import javax.swing.JPanel;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.commons.Fonts;
+
+/**
+ * It is the Date Piscker Dialog
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 
 public class DatePicker {
 	int month = Calendar.getInstance().get(Calendar.MONTH);
@@ -93,6 +108,9 @@ public class DatePicker {
 		dialog.setVisible(true);
 	}
 
+	/**
+	 * This update the calendar of the dialog
+	 */
 	public void displayDate() {
 		for (int index = 7; index < button.length; index++) {
 			button[index].setText("");
@@ -109,6 +127,11 @@ public class DatePicker {
 		dialog.setTitle("Date Picker");
 	}
 
+	/**
+	 * Create the String for the selected date in the picker
+	 * 
+	 * @return date selected
+	 */
 	public String setPickedDate() {
 		if (day.equals("")){
 			return day;

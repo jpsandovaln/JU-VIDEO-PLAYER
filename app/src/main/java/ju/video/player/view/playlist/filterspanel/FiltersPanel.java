@@ -26,6 +26,13 @@ import ju.video.player.view.commons.TitleLabel;
 
 import javax.swing.JComponent;
 
+/**
+ * It is the Panel of the Filters of the Play List
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class FiltersPanel extends JPanel {
 
     public FiltersPanel() throws ParseException {
@@ -36,6 +43,8 @@ public class FiltersPanel extends JPanel {
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
+        ComboBox formatsBox = new ComboBox(createList());
+        formatsBox.addAllOption("formats");
         
         add(new TitleLabel("Filters"));
         add(Box.createRigidArea(new Dimension(0, 10)));
@@ -49,12 +58,15 @@ public class FiltersPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(new SubtitleLabel("File Format"));
         add(Box.createRigidArea(new Dimension(0, 5)));
-        add(new ComboBox(createList()));
+        add(formatsBox);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(applyFiltersButton);
         add(box);
     }
 
+    /**
+     * Initialize the panel
+     */
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(0, 0, 250, 600);
@@ -62,6 +74,11 @@ public class FiltersPanel extends JPanel {
         setAlignmentY(Component.TOP_ALIGNMENT);
     }
 
+    /**
+     * Create a list of accepted formats 
+     * 
+     * @return list of formats
+     */
     private String[] createList() {
         String[] list = new String[Formats.values().length];
         int index = 0;

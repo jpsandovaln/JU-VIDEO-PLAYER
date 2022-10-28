@@ -8,18 +8,10 @@
  */
 package ju.video.player.view.playlist.filterspanel;
 
-import java.awt.Dimension;
 import java.awt.Component;
-import java.awt.Image;
 import java.awt.BorderLayout;
 import java.text.ParseException;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -28,7 +20,13 @@ import ju.video.player.controller.DatePickerController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.commons.Fonts;
-import ju.video.player.view.materialDesing.constants.Constants;
+
+/**
+ * It is the Panel of the Date Picker for filter the files
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 
 public class DateComponentsPanel extends JPanel {
 
@@ -41,15 +39,14 @@ public class DateComponentsPanel extends JPanel {
 		Button buttonIcon = new Button("");
         buttonIcon.setIcon("calendar-icon.png", 20, 20);
 		buttonIcon.addActionListener(new DatePickerController(this, text));
-		
-        //add(Box.createRigidArea(new Dimension(5, 0)));
         add(label, BorderLayout.WEST);
-        //add(Box.createRigidArea(new Dimension(10, 0)));
 		add(text, BorderLayout.CENTER);
 		add(buttonIcon, BorderLayout.EAST);
-        //add(Box.createRigidArea(new Dimension(10, 0)));
-        
     }
+
+    /**
+     * Initialize the Panel
+     */
     private void initPanel() {
         setLayout(new BorderLayout());
         setBounds(0, 0, 200, 500);
