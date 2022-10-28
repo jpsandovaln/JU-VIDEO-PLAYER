@@ -9,8 +9,8 @@ import java.io.IOException;
 public class ConvertController implements ActionListener {
     private VideoConvertFrame convertFrame;
 
-    public ConvertController(VideoConvertFrame convert) {
-        this.convertFrame = convert;
+    public ConvertController(VideoConvertFrame convertVideo) {
+        this.convertFrame = convertVideo;
     }
 
     @Override
@@ -18,21 +18,20 @@ public class ConvertController implements ActionListener {
         // if (e.getSource() == convertFrame.getButton()) {
         // convertFrame.getContentPane().removeAll();
         // convertFrame.repaint();
+        // convertFrame
         System.out.println("Pressed Convert");
+        System.out.println(convertFrame.getPath());
+        System.out.println(convertFrame.getFormat().getSelectedItem().toString());
+
         Convert convert = new Convert();
-        // System.out.println("getname" +
-        // convert.getName("D:\\videoplayer\\JU-VIDEO-PLAYER\\VID_20220521_212816.mp4"));
-        try {
-            convert.sendPost("C:\\Users\\Hp\\TestVideo\\misky.mp4", "avi");
-            convert.sendGet();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        // convertFrame.addNewComponents();
+        // try {
+        //     convert.sendPost(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
+        //     convert.sendGet();
+        // } catch (IOException e1) {
+        //     e1.printStackTrace();
         // }
-        // convertFrame.setLabels("Game players: " +
-        // convertFrame.getChoice().getSelectedItem().toString());
-        // convertFrame.setVisible(false);
-        // new BoardFrame(convertFrame.getChoice().getSelectedItem().toString());
+        
     }
+
+
 }
