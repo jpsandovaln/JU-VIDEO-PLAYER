@@ -20,6 +20,13 @@ import ju.video.player.controller.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.Colors;
 
+/**
+ * It is the Panel for each File that is showed in the play list
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class MediaPanel extends JPanel{
 
     public MediaPanel(String mediaName, int index) {
@@ -39,6 +46,9 @@ public class MediaPanel extends JPanel{
         add(convertButton);
     }
 
+    /**
+     * Initialize the panel
+     */
     public void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         setBorder(BorderFactory.createLineBorder(Colors.COMPONETS_COLOR));

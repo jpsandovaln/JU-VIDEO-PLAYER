@@ -8,8 +8,15 @@
  */
 package ju.video.player.model;
 
+/**
+ * It is a enum of all the accepted formats with its respective mime type
+ *
+ * @author Sarai Alvarez
+ * @version 1.0
+ */
+
 public enum Formats {
-    VIDEO_MP4("video/mp4"),//video/mp4
+    VIDEO_MP4("video/mp4"),
     VIDEO_AVI("video/avi"),
     VIDEO_3GPP("video/3gpp"),
     VIDEO_3GPP2("video/3gpp2"),
