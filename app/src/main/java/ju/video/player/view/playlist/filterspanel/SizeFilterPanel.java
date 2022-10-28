@@ -8,19 +8,16 @@
  */
 package ju.video.player.view.playlist.filterspanel;
 
-import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyAdapter;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Colors;
 import ju.video.player.view.commons.TextField;
+
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class SizeFilterPanel extends JPanel {
 
@@ -91,7 +88,6 @@ public class SizeFilterPanel extends JPanel {
                 ListValidVideos.getInstance().setMaxFileSize(value);
             }
         });
-
         add(maxSizeField);
         add(Box.createRigidArea(new Dimension(10, 0)));
     }
@@ -102,5 +98,5 @@ public class SizeFilterPanel extends JPanel {
         setBounds(0, 0, 200, 500);
         setOpaque(false);
     }
-    
+
 }
