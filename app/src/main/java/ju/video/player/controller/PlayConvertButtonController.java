@@ -18,7 +18,7 @@ public class PlayConvertButtonController implements ActionListener {
     private String nameMedia;
 
     public PlayConvertButtonController(String mediaName) {
-        this.nameMedia= mediaName;
+        this.nameMedia = mediaName;
     }
 
     @Override

@@ -3,7 +3,7 @@ package ju.video.player.view.information.search;
 import javax.swing.*;
 
 public class FormatLabel extends JLabel {
-    public FormatLabel () {
+    public FormatLabel() {
         super("Format: ");
     }
 }

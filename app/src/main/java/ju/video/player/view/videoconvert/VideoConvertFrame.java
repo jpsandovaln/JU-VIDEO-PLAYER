@@ -8,28 +8,32 @@ import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 
 import javax.swing.JButton;
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import java.awt.*;
 
-public class VideoConvertFrame extends JFrame{
-    // frame
-    static JFrame f;
+public class VideoConvertFrame extends JFrame {
 
-    // label
-    static JLabel l, l1, l3, l4;
-    //
+    private static final int WIDTH_FRAME = 850;
+    private static final int HEIGHT_FRAME = 600;
+    private static final int WIDTH_PANEL = 260;
+    private static final int HEIGHT_PANEL = 50;
 
-    
-    // combobox
-    private JComboBox c1;
+    private static final int POSX_BUTTON = 300;
+    private static final int POSY_BUTTON = 300;
+    private static final int WIDTH_BUTTON = 260;
+    private static final int HEIGHT_BUTTON = 50;
+    private static final int RADIUS_BUTTON = 20;
+
+    private JLabel comboLabel;
+    private JComboBox<String> comboFormat;
     private ConvertController controller;
     private String path;
-    private String format;
 
     public String getPath() {
         return path;
     }
-
 
     public VideoConvertFrame(String path) {
         controller = new ConvertController(this);
@@ -38,11 +42,9 @@ public class VideoConvertFrame extends JFrame{
     }
 
     public void initFrame() {
-        JFrame frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
-        
-        JButton btnV= buttonConv();
-        // btnV.addActionListener(ActionListener listener);
-        
+        JFrame frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
+        JButton btnV = buttonConv();
+
         frame.add(btnV);
         frame.add(panelSelect());
         frame.getContentPane().setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
@@ -54,45 +56,43 @@ public class VideoConvertFrame extends JFrame{
     }
 
     public JButton buttonConv() {
-        JButton Button = new JButton();
-        RoundedBorder border = new RoundedBorder(20);
+        JButton button = new JButton();
+        RoundedBorder border = new RoundedBorder(RADIUS_BUTTON);
 
-        Button.setBorder(border);
-        Button.setBounds(300, 300, 260, 50);
-        Button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Button.setText("Convert");
-        Button.setBackground(Colors.PRIMARY_COLOR);
-       
-        Button.setVisible(true);
-        return Button;
+        button.setBorder(border);
+        button.setBounds(POSX_BUTTON, POSY_BUTTON, WIDTH_BUTTON, HEIGHT_BUTTON);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setText("Convert");
+        button.setBackground(Colors.PRIMARY_COLOR);
+
+        button.setVisible(true);
+        return button;
 
     }
 
     public JPanel panelSelect() {
 
-        String s1[] = { "avi", "mkv", "flv" };;
-        c1 = new JComboBox(s1);
-        c1.setEditable(false);
-        this.format=c1.getSelectedItem()+"";
-        c1.addItemListener(null);
-        // System.out.println(c1.getSelectedItem()+"");
+        String[] formats = {"avi", "mkv", "flv" };
 
-        l = new JLabel("Select One Format ");
-        l.setForeground(Color.WHITE);
+        comboFormat = new JComboBox<String>(formats);
+        comboFormat.setEditable(false);
+        comboFormat.addItemListener(null);
 
-        JPanel p = new JPanel();
-        p.setBounds(0, 0, 260, 50);
-        p.add(l);
-        p.add(c1);
-        p.setLayout(new FlowLayout());
-        p.setOpaque(false);
-        p.setVisible(true);
-        return p;
+        comboLabel = new JLabel("Select One Format ");
+        comboLabel.setForeground(Color.WHITE);
+
+        JPanel panelCombo = new JPanel();
+        panelCombo.setBounds(0, 0, WIDTH_PANEL, HEIGHT_PANEL);
+        panelCombo.add(comboLabel);
+        panelCombo.add(comboFormat);
+        panelCombo.setLayout(new FlowLayout());
+        panelCombo.setOpaque(false);
+        panelCombo.setVisible(true);
+        return panelCombo;
     }
 
-    public JComboBox getFormat()
-    {
-            return this.c1;
+    public JComboBox<String> getFormat() {
+        return this.comboFormat;
     }
 
 }

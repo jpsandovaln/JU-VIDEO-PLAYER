@@ -14,7 +14,8 @@ import java.util.logging.Logger;
 import java.util.logging.LogManager;
 
 /**
- * It is responsible for initialice the Logger and associate it with the properties file.
+ * It is responsible for initialice the Logger and associate it with the
+ * properties file.
  *
  * @author Adriana Olivera Ordoñez
  * @version 1.0
@@ -26,7 +27,7 @@ public class At18Logger {
     private static final String PROPERTIES_PATH = "app\\src\\main\\resources\\application.properties";
     private Logger log = Logger.getLogger("At18Logger");
 
-    public At18Logger () {
+    public At18Logger() {
         try {
             LogManager.getLogManager().readConfiguration(new FileInputStream(PROPERTIES_PATH));
 
@@ -34,6 +35,7 @@ public class At18Logger {
             e1.printStackTrace();
         }
     }
+
     public Logger getLogger() {
         return log;
     }
