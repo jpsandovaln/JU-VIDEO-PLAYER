@@ -30,33 +30,20 @@ public class AudioRequest implements Request {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(httpPost);
         FileBody bin = new FileBody(new File(path));
-        StringBody outName = new StringBody(separateFormat(getName(path)));
-        StringBody outFormat = new StringBody("." + format);
-        StringBody volume = new StringBody("");
-        StringBody removeAudio = new StringBody("");
-        StringBody videoBitrate = new StringBody("");
-        StringBody audioBitrate = new StringBody("");
-        StringBody videoFragment = new StringBody("");
-        StringBody rotate = new StringBody("");
-        StringBody fps = new StringBody("");
-        StringBody color = new StringBody("");
-        StringBody size = new StringBody("");
-        StringBody cropVideo = new StringBody("");
+        //StringBody outName = new StringBody(separateFormat(getName(path)));
+        //StringBody outFormat = new StringBody("." + format);
+        StringBody bitrate = new StringBody("");
+        StringBody channels = new StringBody("");
+        StringBody samplingFrecuency  = new StringBody("");
+        StringBody outFormat = new StringBody(newFormat);
 
         MultipartEntity reqEntity = new MultipartEntity();
         reqEntity.addPart("file", bin);
-        reqEntity.addPart("outName", outName);
-        reqEntity.addPart("outFormat", outFormat);
-        reqEntity.addPart("volume", volume);
-        reqEntity.addPart("removeAudio", removeAudio);
-        reqEntity.addPart("videoBitrate", videoBitrate);
-        reqEntity.addPart("audioBitrate", audioBitrate);
-        reqEntity.addPart("videoFragment", videoFragment);
-        reqEntity.addPart("rotate", rotate);
-        reqEntity.addPart("fps", fps);
-        reqEntity.addPart("color", color);
-        reqEntity.addPart("size", size);
-        reqEntity.addPart("cropVideo", cropVideo);
+        reqEntity.addPart("bitrate", bitrate);
+        reqEntity.addPart("channels", channels);
+        reqEntity.addPart("sampling frequency", samplingFrecuency);
+        reqEntity.addPart("format", outFormat);
+
 
         httppost.setEntity(reqEntity);
         HttpResponse response = httpclient.execute(httppost);
