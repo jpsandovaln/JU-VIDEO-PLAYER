@@ -2,18 +2,19 @@ package ju.video.player.view.information;
 
 import ju.video.player.view.information.list.VideoListSectionPanel;
 import ju.video.player.view.information.search.SearchVideoPanel;
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 public class InformationPanel extends JPanel {
 
-    public InformationPanel() {
+    public InformationPanel(VideoListPanel videoList) {
 
-        VideoListSectionPanel videoListPanel = new VideoListSectionPanel();
+        VideoListSectionPanel videoListPanel = new VideoListSectionPanel(videoList);
         SearchVideoPanel searchVideoPanel = new SearchVideoPanel(videoListPanel.getVideoListPanel());
         initialize();
-        add(searchVideoPanel);
+        //add(searchVideoPanel);
         add(videoListPanel);
     }
 

@@ -1,7 +1,8 @@
 package ju.video.player.view.information.search;
 
 import javax.swing.*;
-import ju.video.player.view.information.list.VideoListPanel;
+
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import java.awt.*;
 
@@ -9,10 +10,10 @@ public class FolderPanel extends JPanel {
 
     public FolderPanel(VideoListPanel panelSouth) {
         FolderLabel folderLabel = new FolderLabel();
-        FolderChooserButton folderChooserButton = new FolderChooserButton(panelSouth);
+        //FolderChooserButton folderChooserButton = new FolderChooserButton(panelSouth);
         initialize();
         add(folderLabel);
-        add(folderChooserButton);
+        //add(folderChooserButton);
         setBackground(Color.CYAN);
     }
 

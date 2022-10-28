@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.information.list.VideoListPanel;
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 public class Mp4ButtonController implements ActionListener {
     public static String ruta;
@@ -21,12 +21,12 @@ public class Mp4ButtonController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            if (ListValidVideos.getInstance().getVideoList().get(index).contains(".mp4")) {
-                listFilesmp4.add(ListValidVideos.getInstance().getVideoList().get(index));
-            }
+            //if (ListValidVideos.getInstance().getVideoList().get(index).contains(".mp4")) {
+                //listFilesmp4.add(ListValidVideos.getInstance().getVideoList().get(index));
+            //}
         }
         System.out.println(" archivo mp4 : " + listFilesmp4);
-        panelSouth.setPlayerLabel(listFilesmp4);
+        //panelSouth.setPlayerLabel(listFilesmp4);
     }
 
 }
