@@ -3,6 +3,7 @@
  * to run 'gradle run'
  */
 package ju.video.player;
+
 import java.text.ParseException;
 
 import ju.video.player.view.Splash;
