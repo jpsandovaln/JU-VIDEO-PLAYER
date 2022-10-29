@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2022 Jala University.
  *
- * This software is the confidential and proprietary information of Jalasoft
+ * This software is the confidential and proprietary information of Jala University
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
- * Licence agreement you entered into with Jalasoft
+ * Licence agreement you entered into with Jala University
  */
 package ju.video.player.model;
 
@@ -16,5 +16,5 @@ import java.io.IOException;
  * @version 1.0
  */
 public interface Request {
-    public void sendPost(String path, String format) throws IOException;
+    void sendPost(String path, String format) throws IOException;
 }

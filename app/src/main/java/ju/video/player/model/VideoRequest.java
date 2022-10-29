@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2022 Jala University.
  *
- * This software is the confidential and proprietary information of Jalasoft
+ * This software is the confidential and proprietary information of Jala University
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
- * Licence agreement you entered into with Jalasoft
+ * Licence agreement you entered into with Jala University
  */
 package ju.video.player.model;
 import java.io.*;
@@ -37,8 +37,9 @@ public class VideoRequest implements  Request{
     }
 
     /**
-     * @param path
-     * @param format
+     * It is responsible for constructing the body of the request and executing the request.
+     * @param path It is the directory where the file to be converted is located.
+     * @param format Is the format to which the file is to be converted.
      * @throws IOException
      */
     @Override
@@ -81,6 +82,7 @@ public class VideoRequest implements  Request{
     }
 
     /**
+     * Is responsible for performing a request to obtain the converted file.
      * @throws IOException
      */
     private void sendGet() throws IOException {
@@ -104,7 +106,7 @@ public class VideoRequest implements  Request{
     }
 
     /**
-     *
+     * It is responsible for creating a folder in the root of the project.
      */
     private void createDirectory() {
         File dir = new File("Download");
@@ -116,8 +118,9 @@ public class VideoRequest implements  Request{
     }
 
     /**
-     * @param name
-     * @return
+     * It is responsible for obtaining the name of the file to be converted from the path received.
+     * @param name Is the complete path of the file to convert
+     * @return Returns the file name as a string
      */
     private String getName(String name) {
         Path path = Paths.get(name);
@@ -125,8 +128,9 @@ public class VideoRequest implements  Request{
     }
 
     /**
-     * @param name
-     * @return
+     * Is responsible for separating the format from the name of the file to be converted
+     * @param name It is the name of the file with its format
+     * @return Returns the file name
      */
     private String separateFormat(String name) {
         String[] parts = name.split("\\.");

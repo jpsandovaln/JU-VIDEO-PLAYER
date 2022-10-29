@@ -24,7 +24,7 @@ public class App {
         //convert.sendGet();
         // MetaDataFrame metaDataFrame = new MetaDataFrame();
         // metaDataFrame.main();
-        ConvertFile convertFile = new ConvertFile("C:\\Users\\alvar\\Music\\4NonBlondesWhatsUp.flac", "mp3");
+        //ConvertFile convertFile = new ConvertFile("C:\\Users\\alvar\\Music\\4NonBlondesWhatsUp.flac", "mp3");
         // new MetaDataFrame();
         //new VideoConvertFrame();
         // new MetaDataFrame().main();
