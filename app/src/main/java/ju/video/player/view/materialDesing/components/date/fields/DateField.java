@@ -34,7 +34,7 @@ import ju.video.player.view.materialDesing.components.date.DatePicker;
 import ju.video.player.view.materialDesing.components.date.picker.DarkDatePicker;
 import ju.video.player.view.materialDesing.components.date.picker.LightDatePicker;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
 import ju.video.player.view.materialDesing.utils.Utils;
 
@@ -82,7 +82,7 @@ public class DateField {
 
 		calendarIcon = new JLabel();
 		try {
-			calendarIcon.setIcon(Utils.convertImageColors(Constants.RESOURCES_DIRECTORY + "/components/icons/calendar-icon.png", ResponsiveSwingMaterialDesign.SECONDARY_COLOR));
+			calendarIcon.setIcon(Utils.convertImageColors(Constant.RESOURCES_DIRECTORY + "/components/icons/calendar-icon.png", ResponsiveSwingMaterialDesign.SECONDARY_COLOR));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -441,7 +441,7 @@ public class DateField {
 
 		new Thread(() -> {
 			try {
-				calendarIcon.setIcon(Utils.convertImageColors(Constants.RESOURCES_DIRECTORY + "/components/icons/calendar-icon.png", color));
+				calendarIcon.setIcon(Utils.convertImageColors(Constant.RESOURCES_DIRECTORY + "/components/icons/calendar-icon.png", color));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

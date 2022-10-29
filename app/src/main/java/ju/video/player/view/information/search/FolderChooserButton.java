@@ -4,7 +4,7 @@ import ju.video.player.controller.ButtonController;
 import ju.video.player.view.materialDesing.components.date.fields.DateField;
 import ju.video.player.view.materialDesing.components.input.TextArea;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import javax.swing.*;

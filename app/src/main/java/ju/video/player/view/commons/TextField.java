@@ -29,10 +29,10 @@ public class TextField extends JFormattedTextField  {
 
     public void initPanel(String name) {
         Font font = new Font(NAME, Font.BOLD, SIZE); 
-        setForeground(Colors.COMPONETS_COLOR);
+        setForeground(UIColor.COMPONETS_COLOR);
         setSize(100, 14);
         setFont(font);
-        setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, Colors.COMPONETS_COLOR));
-        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, UIColor.COMPONETS_COLOR));
+        setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
     }
 }

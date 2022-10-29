@@ -28,7 +28,7 @@ import ju.video.player.view.materialDesing.animation.AnimateComponent;
 import ju.video.player.view.materialDesing.animation.Animation;
 import ju.video.player.view.materialDesing.callback.Callback;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
 import ju.video.player.view.materialDesing.utils.Utils;
 
@@ -77,7 +77,7 @@ public class PasswordField {
 
 		eyeIcon = new JLabel();
 		try {
-			eyeIcon.setIcon(Utils.convertImageColors(Constants.RESOURCES_DIRECTORY + "\\components\\icons\\eye-icon.png", ResponsiveSwingMaterialDesign.SECONDARY_COLOR));
+			eyeIcon.setIcon(Utils.convertImageColors(Constant.RESOURCES_DIRECTORY + "\\components\\icons\\eye-icon.png", ResponsiveSwingMaterialDesign.SECONDARY_COLOR));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -249,7 +249,7 @@ public class PasswordField {
 		new Thread(() -> {
 			try {
 				Color c2 = color.equals(ResponsiveSwingMaterialDesign.PRIMARY_COLOR) ? ResponsiveSwingMaterialDesign.SECONDARY_COLOR : color;
-				eyeIcon.setIcon(Utils.convertImageColors(Constants.RESOURCES_DIRECTORY + "/components/icons/eye-icon.png", c2));
+				eyeIcon.setIcon(Utils.convertImageColors(Constant.RESOURCES_DIRECTORY + "/components/icons/eye-icon.png", c2));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

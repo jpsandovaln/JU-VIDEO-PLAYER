@@ -35,7 +35,7 @@ class RoundedBorder extends BasicButtonUI {
         Graphics2D g2d = (Graphics2D) g;
         Shape buttonShape = null;
         buttonShape = new RoundRectangle2D.Double(0, 0, c.getWidth() , c.getHeight(), 10, 10);
-        g2d.setPaint(Colors.PRIMARY_COLOR);
+        g2d.setPaint(UIColor.PRIMARY_COLOR);
         g2d.fill(buttonShape);
         super.paint(g2d, c);
     }
@@ -45,7 +45,7 @@ class RoundedBorder extends BasicButtonUI {
         Graphics2D g2d = (Graphics2D) g;
         Shape buttonShape = null;
         buttonShape = new RoundRectangle2D.Double(0, 0, b.getWidth(), b.getHeight(), 10, 10);
-        g2d.setPaint(Colors.SECONDARY_COLOR);
+        g2d.setPaint(UIColor.SECONDARY_COLOR);
         g2d.fill(buttonShape);
     }
 }
