@@ -1,11 +1,12 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * 
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
  * Licence agreement you entered into with Jalasoft
  */
+
 package ju.video.player.view.playlist.filterspanel;
 
 import java.awt.Component;
@@ -15,6 +16,7 @@ import java.text.ParseException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
 
 import ju.video.player.controller.DatePickerController;
 import ju.video.player.view.commons.Button;
@@ -29,16 +31,29 @@ import ju.video.player.view.commons.Fonts;
  */
 
 public class DateComponentsPanel extends JPanel {
+    final JTextField text = new JTextField(20);
 
-    public DateComponentsPanel(String title) throws ParseException {
+    public DateComponentsPanel(String title, DateInitListener dateInitListener) throws ParseException {
+        dateInitListener.setText(text);
+        initDateComponentsPanel(title, dateInitListener);
+    }
+
+    public DateComponentsPanel(String title, DateEndListener dateEndListener) throws ParseException {
+        dateEndListener.setText(text);
+        initDateComponentsPanel(title, dateEndListener);
+    }
+
+    public void initDateComponentsPanel(String title, DocumentListener dateListener) throws ParseException {
         initPanel();
         JLabel label = new JLabel(title);
         label.setFont(Fonts.COMMON_FONT);
         label.setForeground(UIColor.COMPONETS_COLOR);
 		JTextField text = new JTextField(20);
+        text.getDocument().addDocumentListener(dateListener);
 		Button buttonIcon = new Button("");
         buttonIcon.setIcon("calendar-icon.png", 20, 20);
 		buttonIcon.addActionListener(new DatePickerController(this, text));
+        buttonIcon.addActionListener(new DatePickerController(this, text));
         add(label, BorderLayout.WEST);
 		add(text, BorderLayout.CENTER);
 		add(buttonIcon, BorderLayout.EAST);
@@ -53,5 +68,4 @@ public class DateComponentsPanel extends JPanel {
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
     }
-
 }

@@ -1,9 +1,19 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ * <p>
+ * This software is the confidential and proprietary information of Jala University
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Jala University
+ */
+
 package ju.video.player.model;
 
-import ju.video.player.controller.FilterFiles;
+import ju.video.player.commons.FilterFiles;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,32 +24,36 @@ public class ListValidVideos {
     private double maxFileSize = 0;
     private String pathOfTheSelectedFolder;
     private VideoListPanel playListPanel;
+    private LocalDate initDate;
+    private LocalDate endDate;
 
     private ListValidVideos() {
         this.videoList = new ArrayList<>();
     }
 
-    public static ListValidVideos getInstance(){
-        if(instance == null) {
+    public static ListValidVideos getInstance() {
+        if (instance == null) {
             instance = new ListValidVideos();
         }
         return instance;
-    }//ListValidVideos.getInstance().getVideoList()
-    public List<String> getVideoList(){
-        return this.videoList;
     }
 
+    /**
+     * Set the list of files filtered to the Panel.
+     */
     public void applyFilters() {
-        FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, null, null);
+        FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate);
         try {
             videoList = filterFiles.getListFiles();
-            System.out.println("Files:" + videoList);
             playListPanel.setPlayerLabel();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public List<String> getVideoList() {
+        return this.videoList;
+    }
 
     public void setMinFileSize(double minFileSize) {
         this.minFileSize = minFileSize;
@@ -60,11 +74,20 @@ public class ListValidVideos {
     public void setPathOfTheSelectedFolder(String pathOfTheSelectedFolder) {
         this.pathOfTheSelectedFolder = pathOfTheSelectedFolder;
     }
+
     public String getPathOfTheSelectedFolder() {
         return pathOfTheSelectedFolder;
     }
 
     public void setPlayListPanel(VideoListPanel playListPanel) {
         this.playListPanel = playListPanel;
+    }
+
+    public void setInitDate(LocalDate initDate) {
+        this.initDate = initDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 }

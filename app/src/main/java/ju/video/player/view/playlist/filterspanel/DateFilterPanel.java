@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * <p>
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -8,29 +8,24 @@
  */
 package ju.video.player.view.playlist.filterspanel;
 
-import java.awt.Dimension;
-import java.awt.Component;
+import javax.swing.*;
+import java.awt.*;
 import java.text.ParseException;
 
-import javax.swing.Box;
-import javax.swing.JComponent;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-
 public class DateFilterPanel extends JPanel {
-
     public DateFilterPanel() throws ParseException {
         initPanel();
-        
-        DateComponentsPanel initDatePanel = new DateComponentsPanel("Initial date");
+        DateInitListener dateInitListener = new DateInitListener();
+        DateEndListener dateEndListener = new DateEndListener();
+        DateComponentsPanel initDatePanel = new DateComponentsPanel("Initial date", dateInitListener);
         add(initDatePanel);
         Component box = Box.createRigidArea(new Dimension(0, 5));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         add(box);
-        DateComponentsPanel finalDatePanel = new DateComponentsPanel("Final date");
+        DateComponentsPanel finalDatePanel = new DateComponentsPanel("Final date", dateEndListener);
         add(finalDatePanel);
     }
-    
+
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(0, 0, 200, 500);
