@@ -27,6 +27,8 @@ public class ListValidVideos {
     private LocalDate initDate;
     private LocalDate endDate;
 
+    private String formatSelected;
+
     private ListValidVideos() {
         this.videoList = new ArrayList<>();
     }
@@ -42,13 +44,17 @@ public class ListValidVideos {
      * Set the list of files filtered to the Panel.
      */
     public void applyFilters() {
-        FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate);
+        FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
         try {
             videoList = filterFiles.getListFiles();
             playListPanel.setPlayerLabel();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setFormatSelected(String formatSelected) {
+        this.formatSelected = formatSelected;
     }
 
     public List<String> getVideoList() {

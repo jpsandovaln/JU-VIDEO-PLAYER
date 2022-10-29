@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * <p>
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -8,8 +8,12 @@
  */
 package ju.video.player.view.commons;
 
+import ju.video.player.model.ListValidVideos;
+
 import javax.swing.JComboBox;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -21,19 +25,29 @@ import java.awt.event.ItemListener;
  */
 
 public class ComboBox extends JComboBox<String> implements ItemListener {
-    
+
     public ComboBox(String[] itemsList) {
+        addItem("All formats");
         addItems(itemsList);
         addItemListener(this);
+        addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent event) {
+                String itemSelected = (String) event.getItem();
+                if (itemSelected.equals("All formats")) {
+                    itemSelected = null;
+                }
+                ListValidVideos.getInstance().setFormatSelected(itemSelected);
+            }
+        });
     }
 
     /**
      * Add a list of items to the comboBox
-     * 
+     *
      * @param itemsList
      */
     private void addItems(String[] itemsList) {
-        for(int index = 0; index < itemsList.length; index++) {
+        for (int index = 0; index < itemsList.length; index++) {
             addItem(itemsList[index]);
         }
     }
@@ -48,6 +62,6 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
      * Add the option All items to the dropDown
      */
     public void addAllOption(String item) {
-        addItem("All " + item);
+        this.addItem("All " + item);
     }
 }
