@@ -15,7 +15,7 @@ import javax.swing.border.Border;
 import java.awt.Color;
 import java.awt.BorderLayout;
 
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtonsGroup;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.fullscreen.adaptive.AdaptiveFullScreenStrategy;
@@ -38,7 +38,7 @@ public class VideoPlayerPanel extends JPanel {
         setVisible(true);
         setLayout(borderLayout);
         setVisible(true);
-        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
     }
 
     public EmbeddedMediaListPlayerComponent getMediaPlayer() {

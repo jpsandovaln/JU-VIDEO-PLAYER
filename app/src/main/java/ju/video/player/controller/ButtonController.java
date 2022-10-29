@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
-import ju.video.player.model.Formats;
+import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
@@ -132,7 +132,7 @@ public class ButtonController implements ActionListener {
                     e.printStackTrace();
                 }
                 if (verifyMetadataVideoFile != null) {
-                    for (Formats formats : Formats.values()) {
+                    for (Format formats : Format.values()) {
                         if (verifyMetadataVideoFile.equals(formats.getFormat())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
                             listvalidVideos.add(listPathVideofile.get(index));
                         /*if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())) {

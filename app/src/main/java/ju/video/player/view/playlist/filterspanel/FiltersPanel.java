@@ -17,7 +17,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import ju.video.player.model.Formats;
+import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.ComboBox;
@@ -80,9 +80,9 @@ public class FiltersPanel extends JPanel {
      * @return list of formats
      */
     private String[] createList() {
-        String[] list = new String[Formats.values().length];
+        String[] list = new String[Format.values().length];
         int index = 0;
-        for(Formats format : Formats.values()) {
+        for(Format format : Format.values()) {
             list[index] = format.getFormat();
             index++;
         }

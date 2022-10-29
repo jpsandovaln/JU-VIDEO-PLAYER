@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 import ju.video.player.controller.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 
 /**
  * It is the Panel for each File that is showed in the play list
@@ -32,7 +32,7 @@ public class MediaPanel extends JPanel{
     public MediaPanel(String mediaName, int index) {
         initPanel();
         JLabel name = new JLabel(mediaName);
-        name.setForeground(Colors.COMPONETS_COLOR);
+        name.setForeground(UIColor.COMPONETS_COLOR);
         Button playButton = new Button("");
 		playButton.setIcon("play.png", 20, 20);
         playButton.addActionListener(new PlayMediaButtonController(index));
@@ -51,8 +51,8 @@ public class MediaPanel extends JPanel{
      */
     public void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        setBorder(BorderFactory.createLineBorder(Colors.COMPONETS_COLOR));
-        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        setBorder(BorderFactory.createLineBorder(UIColor.COMPONETS_COLOR));
+        setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
     }
 
 }

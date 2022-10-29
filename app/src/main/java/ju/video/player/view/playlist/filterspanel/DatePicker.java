@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import ju.video.player.view.commons.Button;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.Fonts;
 
 /**
@@ -34,12 +34,13 @@ import ju.video.player.view.commons.Fonts;
  */
 
 public class DatePicker {
-	int month = Calendar.getInstance().get(Calendar.MONTH);
-	int year = Calendar.getInstance().get(Calendar.YEAR);;
-	JLabel label = new JLabel("", JLabel.CENTER);
-	String day = "";
-	JDialog dialog;
-	JButton[] button = new JButton[49];
+	private static final int WEEKDAYS = 7;
+	private int month = Calendar.getInstance().get(Calendar.MONTH);
+	private int year = Calendar.getInstance().get(Calendar.YEAR);;
+	private JLabel label = new JLabel("", JLabel.CENTER);
+	private String day = "";
+	private JDialog dialog;
+	private JButton[] button = new JButton[49];
 
 	public DatePicker(DateComponentsPanel parent) {
 		dialog = new JDialog();
@@ -52,26 +53,26 @@ public class DatePicker {
 			final int selection = index;
 			button[index] = new JButton();
 			button[index].setFocusPainted(false);
-			button[index].setForeground(Colors.COMPONETS_COLOR);
-			if (index > 6)
-				button[index].setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
+			button[index].setForeground(UIColor.COMPONETS_COLOR);
+			if (index >= WEEKDAYS)
+				button[index].setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
 				button[index].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ae) {
 						day = button[selection].getActionCommand();
 						dialog.dispose();
 					}
 				});
-			if (index < 7) {
-				button[index].setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+			if (index < WEEKDAYS) {
+				button[index].setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
 				button[index].setText(header[index]);
 			}
 			calendarPanel.add(button[index]);
 		}
 		JPanel headerPanel = new JPanel(new BorderLayout());
-		headerPanel.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
+		headerPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
 		
 		Button prevButton = new Button(" << ");
-		prevButton.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
+		prevButton.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
 		prevButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				if(month == 0) {
@@ -84,7 +85,7 @@ public class DatePicker {
 			}
 		});
 		headerPanel.add(prevButton, BorderLayout.WEST);
-		label.setForeground(Colors.COMPONETS_COLOR);
+		label.setForeground(UIColor.COMPONETS_COLOR);
 		label.setFont(Fonts.COMMON_FONT);
 		headerPanel.add(label, BorderLayout.CENTER);
 		Button nextButton = new Button(" >> ");
@@ -112,7 +113,7 @@ public class DatePicker {
 	 * This update the calendar of the dialog
 	 */
 	public void displayDate() {
-		for (int index = 7; index < button.length; index++) {
+		for (int index = WEEKDAYS; index < button.length; index++) {
 			button[index].setText("");
 		}
 		Calendar cal = Calendar.getInstance();
@@ -120,7 +121,7 @@ public class DatePicker {
 		cal.set(year, month, 1);
 		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 		int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		for (int index = 6 + dayOfWeek, day = 1; day <= daysInMonth; index++, day++) {
+		for (int index = WEEKDAYS - 1 + dayOfWeek, day = 1; day <= daysInMonth; index++, day++) {
 			button[index].setText("" + day);
 			label.setText(months[month] + " " + year);
 		}

@@ -11,7 +11,7 @@ package ju.video.player.view.playlist;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.materialDesing.constants.Constants;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.playlist.filterspanel.FiltersPanel;
@@ -38,7 +38,7 @@ public class PlayListFrame {
         frame.setIconImage(icon);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.getContentPane().setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
     }
     
 }

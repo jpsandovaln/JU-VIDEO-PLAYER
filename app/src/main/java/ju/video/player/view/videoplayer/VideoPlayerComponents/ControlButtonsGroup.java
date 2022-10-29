@@ -17,7 +17,7 @@ import ju.video.player.controller.PauseButtonController;
 import ju.video.player.controller.PlayButtonController;
 import ju.video.player.controller.PreviousButtonController;
 import ju.video.player.controller.StopButtonController;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.videoplayer.VideoPlayerPanel;
 
@@ -34,7 +34,7 @@ public class ControlButtonsGroup extends JPanel {
         this.videoPlayerPanel = videoPlayerPanel;
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
-        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
 
         playButtonController = new PlayButtonController(videoPlayerPanel.getMediaPlayer());
         pauseButtonController = new PauseButtonController(videoPlayerPanel.getMediaPlayer());

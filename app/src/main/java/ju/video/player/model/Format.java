@@ -15,7 +15,7 @@ package ju.video.player.model;
  * @version 1.0
  */
 
-public enum Formats {
+public enum Format {
     VIDEO_MP4("video/mp4"),
     VIDEO_AVI("video/avi"),
     VIDEO_3GPP("video/3gpp"),
@@ -45,7 +45,7 @@ public enum Formats {
     VIDEO_VARIOUS("various");
     
     private String format;
-    private Formats(String format) {
+    private Format(String format) {
         this.format = format;
     }
 
@@ -53,8 +53,8 @@ public enum Formats {
         return format;
     }
 
-    public static Formats fromString(String formatt) {
-        for (Formats format : Formats.values()) {
+    public static Format fromString(String formatt) {
+        for (Format format : Format.values()) {
             if (format.format.equalsIgnoreCase(formatt)) {
                 return format;
             }

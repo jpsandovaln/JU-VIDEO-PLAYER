@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import ju.video.player.controller.DatePickerController;
 import ju.video.player.view.commons.Button;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.Fonts;
 
 /**
@@ -34,7 +34,7 @@ public class DateComponentsPanel extends JPanel {
         initPanel();
         JLabel label = new JLabel(title);
         label.setFont(Fonts.COMMON_FONT);
-        label.setForeground(Colors.COMPONETS_COLOR);
+        label.setForeground(UIColor.COMPONETS_COLOR);
 		JTextField text = new JTextField(20);
 		Button buttonIcon = new Button("");
         buttonIcon.setIcon("calendar-icon.png", 20, 20);

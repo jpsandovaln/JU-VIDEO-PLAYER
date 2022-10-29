@@ -19,7 +19,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.TextField;
 
 public class SizeFilterPanel extends JPanel {
@@ -28,7 +28,7 @@ public class SizeFilterPanel extends JPanel {
         initPanel();
         add(Box.createRigidArea(new Dimension(10, 0)));
         TextField minSizeField = new TextField("Min Size (Mb)");
-        minSizeField.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
+        minSizeField.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         minSizeField.addKeyListener(new KeyAdapter() {
            public void keyTyped(KeyEvent e)
            {
@@ -60,7 +60,7 @@ public class SizeFilterPanel extends JPanel {
         });
         add(minSizeField);
         TextField maxSizeField = new TextField("Max Size (Mb)");
-        maxSizeField.setBackground(Colors.SECONDARY_BACKGROUNG_COLOR);
+        maxSizeField.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         maxSizeField.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e)
             {

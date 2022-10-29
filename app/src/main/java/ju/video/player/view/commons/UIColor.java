@@ -10,7 +10,7 @@ package ju.video.player.view.commons;
 
 import java.awt.Color;
 
-public class Colors {
+public class UIColor {
     public static final Color PRIMARY_COLOR = new Color (0, 250, 204); 
     public static final Color SECONDARY_COLOR = new Color (0, 129, 138); 
     public static final Color COMPONETS_COLOR = new Color(219, 237, 243); 

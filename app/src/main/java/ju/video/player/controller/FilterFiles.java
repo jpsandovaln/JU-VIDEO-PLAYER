@@ -8,7 +8,7 @@
  */
 package ju.video.player.controller;
 
-import ju.video.player.model.Formats;
+import ju.video.player.model.Format;
 import ju.video.player.utils.FileUtil;
 
 import java.io.File;
@@ -61,7 +61,7 @@ public class FilterFiles {
 
     public boolean verifyIsMediaFile(File file) throws IOException {
         String fileContentType = Files.probeContentType(file.toPath());
-        Formats formats = Formats.fromString(fileContentType);
+        Format formats = Format.fromString(fileContentType);
         return formats != null;
     }
 
