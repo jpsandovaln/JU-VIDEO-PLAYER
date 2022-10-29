@@ -59,7 +59,6 @@ public class FilterFiles {
                 }
             } else {
                 BasicFileAttributes attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-                // System.out.println(file + " Media:" + verifyIsMediaFile(file) + " - Size:" + verifySize(attributes, initSize, endSize) + " - Date:" + verifyDate(attributes, initDate, endDate));
                 if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
                         && verifyDate(attributes, initDate, endDate)
                         && verifyFormatSelected(file, formatSelected)) {
