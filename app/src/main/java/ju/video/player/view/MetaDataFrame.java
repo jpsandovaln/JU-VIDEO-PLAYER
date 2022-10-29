@@ -5,7 +5,7 @@ import ju.video.player.view.materialDesing.components.date.fields.DateField;
 import ju.video.player.view.materialDesing.components.image.ImageLabel;
 import ju.video.player.view.materialDesing.components.input.TextArea;
 import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
@@ -28,7 +28,7 @@ public class MetaDataFrame {
         rl.add(date.setRequired(false).getComponent(), 4, 1);
         FolderChooserButton button = new FolderChooserButton(new VideoListPanel(), frame, textArea, date);
         rl.add(button, 2, 0.5, ResponsiveLayout.ResponsiveConstants.CENTER);
-        Image icon = new ImageIcon(Constants.RESOURCES_IMAGES+"\\icon.png").getImage();
+        Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();
         frame.setIconImage(icon);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);

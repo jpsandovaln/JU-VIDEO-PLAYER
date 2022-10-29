@@ -10,11 +10,10 @@ package ju.video.player.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
-import ju.video.player.model.Formats;
+import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
@@ -26,6 +25,13 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 
+/**
+ * It is a enum of all the accepted formats with its respective mime type
+ *
+ * @author Sarai Alvarez
+ * @version 1.0
+ */
+
 public class ButtonController implements ActionListener {
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
@@ -34,20 +40,12 @@ public class ButtonController implements ActionListener {
     ArrayList<String> listvalidVideos;
     ArrayList<String> listPathVideofile;
     ArrayList<String> simplePathFilename;
-    private JFrame frame;
-    //private TextArea fileSize;
-    //private DateField dateField;
 
-
-    //public ButtonController(VideoListPanel panelSouth, JFrame frame, TextArea textArea, DateField date) {
     public ButtonController(VideoListPanel playListPanel) {
         this.playListPanel = playListPanel;
         listvalidVideos = new ArrayList<>();
         listPathVideofile = new ArrayList<>();
         simplePathFilename = new ArrayList<>();
-        //this.frame = frame;
-        //fileSize = textArea;
-        //dateField = date;
     }
 
     @Override
@@ -94,10 +92,6 @@ public class ButtonController implements ActionListener {
         //new MainFrame(playListPanel);
     }
 
-    private void closeFrame() {
-        frame.dispose();
-    }
-
     public void showFilesSelectedFolder() {
         File paths = new File(pathOfTheSelectedFolder);
         String[] nameFiles = paths.list();
@@ -132,7 +126,7 @@ public class ButtonController implements ActionListener {
                     e.printStackTrace();
                 }
                 if (verifyMetadataVideoFile != null) {
-                    for (Formats formats : Formats.values()) {
+                    for (Format formats : Format.values()) {
                         if (verifyMetadataVideoFile.equals(formats.getFormat())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
                             listvalidVideos.add(listPathVideofile.get(index));
                         /*if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())) {

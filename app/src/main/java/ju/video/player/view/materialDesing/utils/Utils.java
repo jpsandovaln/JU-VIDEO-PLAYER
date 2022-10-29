@@ -19,7 +19,7 @@ import java.text.Normalizer;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 
 public class Utils {
 
@@ -33,7 +33,7 @@ public class Utils {
 
 	public static void registerFont(String fontName, float size) {
 		try {
-			InputStream inputStream = new BufferedInputStream(new FileInputStream(Constants.RESOURCES_DIRECTORY +"/"+ fontName));
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(Constant.RESOURCES_DIRECTORY +"/"+ fontName));
 			Font customFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
 			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(customFont);
 		} catch (Exception exception) {

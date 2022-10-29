@@ -17,12 +17,21 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Button;
+import ju.video.player.view.commons.ComboBox;
 import ju.video.player.view.commons.SubtitleLabel;
 import ju.video.player.view.commons.TitleLabel;
 
 import javax.swing.JComponent;
+
+/**
+ * It is the Panel of the Filters of the Play List
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 
 public class FiltersPanel extends JPanel {
 
@@ -34,6 +43,8 @@ public class FiltersPanel extends JPanel {
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
+        ComboBox formatsBox = new ComboBox(createList());
+        formatsBox.addAllOption("formats");
         
         add(new TitleLabel("Filters"));
         add(Box.createRigidArea(new Dimension(0, 10)));
@@ -45,15 +56,37 @@ public class FiltersPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 5)));
         add(dateFilterPanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
+        add(new SubtitleLabel("File Format"));
+        add(Box.createRigidArea(new Dimension(0, 5)));
+        add(formatsBox);
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(applyFiltersButton);
         add(box);
     }
 
+    /**
+     * Initialize the panel
+     */
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(0, 0, 250, 600);
         setBackground(new Color (64, 75, 105));
         setAlignmentY(Component.TOP_ALIGNMENT);
+    }
+
+    /**
+     * Create a list of accepted formats 
+     * 
+     * @return list of formats
+     */
+    private String[] createList() {
+        String[] list = new String[Format.values().length];
+        int index = 0;
+        for(Format format : Format.values()) {
+            list[index] = format.getFormat();
+            index++;
+        }
+        return list;
     }
 
 }

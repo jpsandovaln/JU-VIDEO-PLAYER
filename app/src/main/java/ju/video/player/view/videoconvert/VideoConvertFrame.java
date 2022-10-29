@@ -6,7 +6,7 @@ import javax.swing.border.Border;
 
 import ju.video.player.controller.ConvertController;
 import ju.video.player.view.MainFrame;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.information.search.FolderChooserButton;
 import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
 import ju.video.player.view.materialDesing.components.date.fields.DateField;
@@ -24,12 +24,8 @@ import javax.swing.*;
 import java.awt.*;
 
 import ju.video.player.view.materialDesing.components.input.TextArea;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
-
-import java.awt.Dimension;
-
-import javax.swing.JButton;
 
 public class VideoConvertFrame extends JFrame{
     // frame
@@ -53,7 +49,7 @@ public class VideoConvertFrame extends JFrame{
 
         frame.add(panelSelect());
         frame.add(buttonConv(controller));
-        frame.getContentPane().setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
+        frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -69,7 +65,7 @@ public class VideoConvertFrame extends JFrame{
         Button.setAlignmentX(Component.CENTER_ALIGNMENT);
         Button.setText("Convert");
         // Button.setForeground(Color.WHITE);
-        Button.setBackground(Colors.PRIMARY_COLOR);
+        Button.setBackground(UIColor.PRIMARY_COLOR);
         Button.addActionListener(listener);
         Button.setVisible(true);
         return Button;

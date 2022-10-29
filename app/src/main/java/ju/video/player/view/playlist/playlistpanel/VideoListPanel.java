@@ -17,7 +17,7 @@ import javax.swing.JComponent;
 import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.commons.Colors;
+import ju.video.player.view.commons.UIColor;
 
 import java.awt.Dimension;
 import java.awt.Component;
@@ -37,9 +37,9 @@ public class VideoListPanel extends JPanel {
     private void initialize() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         Font font = new Font(NAME, Font.BOLD, SIZE);
-        setBackground(Colors.PRIMARY_BACKGROUNG_COLOR);
-        setForeground(Colors.COMPONETS_COLOR);
-        setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font, Colors.COMPONETS_COLOR));
+        setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
+        setForeground(UIColor.COMPONETS_COLOR);
+        setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font, UIColor.COMPONETS_COLOR));
     }
 
     public void setPlayerLabel() {

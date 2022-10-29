@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
 import ju.video.player.view.materialDesing.utils.Utils;
 
@@ -28,7 +28,7 @@ public class ImageLabel extends JComponent {
 
 	public ImageLabel(String src, ResponsiveLayout rl, int radius, int width, int height) {
 		try {
-			BufferedImage from = Utils.resize(ImageIO.read(new File(Constants.RESOURCES_IMAGES +src)), height - margin, width - margin);
+			BufferedImage from = Utils.resize(ImageIO.read(new File(Constant.RESOURCES_IMAGES +src)), height - margin, width - margin);
 			bufferedImage = Utils.makeRoundedCorner(from, radius);
 			imageWidth = width;
 			imageHeight = height;

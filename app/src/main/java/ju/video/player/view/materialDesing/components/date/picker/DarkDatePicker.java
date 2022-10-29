@@ -24,7 +24,7 @@ import ju.video.player.view.materialDesing.components.buttons.RoundedFillButton;
 import ju.video.player.view.materialDesing.components.date.DatePicker;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
 import ju.video.player.view.materialDesing.components.utils.RoundedPane;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.materialDesing.utils.Utils;
 
 public class DarkDatePicker extends DatePicker {
@@ -92,7 +92,7 @@ public class DarkDatePicker extends DatePicker {
 		});
 
 		try {
-			ready.getTextLabel().setIcon(Utils.convertImageColors(Constants.RESOURCES_DIRECTORY + "/components/icons/check-icon.png", ResponsiveSwingMaterialDesign.TEXT_COLOR));
+			ready.getTextLabel().setIcon(Utils.convertImageColors(Constant.RESOURCES_DIRECTORY + "/components/icons/check-icon.png", ResponsiveSwingMaterialDesign.TEXT_COLOR));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
