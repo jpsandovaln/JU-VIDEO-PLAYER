@@ -72,9 +72,9 @@ public class FilterFiles {
     /**
      * Verify the file belongs to the format selected in the Combobox.
      *
-     * @param file
-     * @param formatSelected
-     * @return
+     * @param file, is to verify if has the format required by the user.
+     * @param formatSelected, it is the format requerired by the user.
+     * @return True or False if the file accomplish with the format.
      * @throws IOException
      */
     public boolean verifyFormatSelected(File file, String formatSelected) throws IOException {

@@ -44,7 +44,7 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
     /**
      * Add a list of items to the comboBox
      *
-     * @param itemsList
+     * @param itemsList, this is the list of formats to display in the combo box.
      */
     private void addItems(String[] itemsList) {
         for (int index = 0; index < itemsList.length; index++) {
