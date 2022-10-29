@@ -21,7 +21,7 @@ import javax.swing.event.DocumentListener;
 import ju.video.player.controller.DatePickerController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.commons.Fonts;
+import ju.video.player.view.commons.UIFont;
 
 /**
  * It is the Panel of the Date Picker for filter the files
@@ -46,14 +46,13 @@ public class DateComponentsPanel extends JPanel {
     public void initDateComponentsPanel(String title, DocumentListener dateListener) throws ParseException {
         initPanel();
         JLabel label = new JLabel(title);
-        label.setFont(Fonts.COMMON_FONT);
+        label.setFont(UIFont.COMMON_FONT);
         label.setForeground(UIColor.COMPONETS_COLOR);
 		JTextField text = new JTextField(20);
         text.getDocument().addDocumentListener(dateListener);
 		Button buttonIcon = new Button("");
         buttonIcon.setIcon("calendar-icon.png", 20, 20);
 		buttonIcon.addActionListener(new DatePickerController(this, text));
-        buttonIcon.addActionListener(new DatePickerController(this, text));
         add(label, BorderLayout.WEST);
 		add(text, BorderLayout.CENTER);
 		add(buttonIcon, BorderLayout.EAST);

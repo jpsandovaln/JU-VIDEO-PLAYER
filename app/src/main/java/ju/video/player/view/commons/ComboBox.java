@@ -24,7 +24,6 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
     
     public ComboBox(String[] itemsList) {
         addItems(itemsList);
-        setBounds(10,10,80,20);
         addItemListener(this);
     }
 

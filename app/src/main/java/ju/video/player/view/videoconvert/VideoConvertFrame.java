@@ -24,7 +24,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import ju.video.player.view.materialDesing.components.input.TextArea;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 public class VideoConvertFrame extends JFrame{

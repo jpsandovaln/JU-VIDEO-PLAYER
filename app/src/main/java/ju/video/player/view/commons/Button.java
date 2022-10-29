@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 import java.awt.Image;
 
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 
 
 public class Button extends JButton {
@@ -28,7 +28,7 @@ public class Button extends JButton {
     }
 
     public void setIcon(String path, int width, int height) {
-        ImageIcon convertImage = new ImageIcon(Constants.RESOURCES_IMAGES + path);
+        ImageIcon convertImage = new ImageIcon(Constant.RESOURCES_IMAGES + path);
         Icon convertIcon = new ImageIcon(convertImage.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
         setIcon(convertIcon);
     }

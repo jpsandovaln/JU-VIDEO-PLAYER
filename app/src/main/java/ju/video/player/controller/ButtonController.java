@@ -10,7 +10,6 @@ package ju.video.player.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
@@ -26,6 +25,13 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 
+/**
+ * It is a enum of all the accepted formats with its respective mime type
+ *
+ * @author Sarai Alvarez
+ * @version 1.0
+ */
+
 public class ButtonController implements ActionListener {
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
@@ -34,20 +40,12 @@ public class ButtonController implements ActionListener {
     ArrayList<String> listvalidVideos;
     ArrayList<String> listPathVideofile;
     ArrayList<String> simplePathFilename;
-    private JFrame frame;
-    //private TextArea fileSize;
-    //private DateField dateField;
 
-
-    //public ButtonController(VideoListPanel panelSouth, JFrame frame, TextArea textArea, DateField date) {
     public ButtonController(VideoListPanel playListPanel) {
         this.playListPanel = playListPanel;
         listvalidVideos = new ArrayList<>();
         listPathVideofile = new ArrayList<>();
         simplePathFilename = new ArrayList<>();
-        //this.frame = frame;
-        //fileSize = textArea;
-        //dateField = date;
     }
 
     @Override
@@ -92,10 +90,6 @@ public class ButtonController implements ActionListener {
         ;
         //playListPanel.setPlayerLabel();
         //new MainFrame(playListPanel);
-    }
-
-    private void closeFrame() {
-        frame.dispose();
     }
 
     public void showFilesSelectedFolder() {

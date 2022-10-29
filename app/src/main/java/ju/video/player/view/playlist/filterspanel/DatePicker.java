@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.commons.Fonts;
+import ju.video.player.view.commons.UIFont;
 
 /**
  * It is the Date Piscker Dialog
@@ -54,7 +54,7 @@ public class DatePicker {
 			button[index] = new JButton();
 			button[index].setFocusPainted(false);
 			button[index].setForeground(UIColor.COMPONETS_COLOR);
-			if (index >= WEEKDAYS)
+			if (index >= WEEKDAYS) {
 				button[index].setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
 				button[index].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ae) {
@@ -62,6 +62,7 @@ public class DatePicker {
 						dialog.dispose();
 					}
 				});
+			}
 			if (index < WEEKDAYS) {
 				button[index].setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
 				button[index].setText(header[index]);
@@ -86,7 +87,7 @@ public class DatePicker {
 		});
 		headerPanel.add(prevButton, BorderLayout.WEST);
 		label.setForeground(UIColor.COMPONETS_COLOR);
-		label.setFont(Fonts.COMMON_FONT);
+		label.setFont(UIFont.COMMON_FONT);
 		headerPanel.add(label, BorderLayout.CENTER);
 		Button nextButton = new Button(" >> ");
 		nextButton.addActionListener(new ActionListener() {

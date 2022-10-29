@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import java.awt.BorderLayout;
 import java.awt.Image;
 
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 
@@ -28,7 +28,7 @@ public class MediaPlayerFrame extends JFrame {
         add(videoPlayerPanel, BorderLayout.CENTER);
     }
     private void initialize() {
-        Image icon = new ImageIcon(Constants.RESOURCES_IMAGES+"\\icon.png").getImage();
+        Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();
         setIconImage(icon);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);

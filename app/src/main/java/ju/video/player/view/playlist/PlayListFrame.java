@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.constants.Constants;
+import ju.video.player.view.materialDesing.constants.Constant;
 import ju.video.player.view.materialDesing.display.FrameUtility;
 import ju.video.player.view.playlist.filterspanel.FiltersPanel;
 import ju.video.player.view.playlist.playlistpanel.PlayListPanel;
@@ -34,7 +34,7 @@ public class PlayListFrame {
         playListPanel.setAlignmentY(Component.TOP_ALIGNMENT);
         frame.add(playListPanel);
 
-        Image icon = new ImageIcon(Constants.RESOURCES_IMAGES + "\\icon.png").getImage();
+        Image icon = new ImageIcon(Constant.RESOURCES_IMAGES + "\\icon.png").getImage();
         frame.setIconImage(icon);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
