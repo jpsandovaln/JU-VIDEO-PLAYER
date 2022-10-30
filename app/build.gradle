@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
     // Use JUnit test framework.
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'junit:junit:4.12'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
@@ -31,7 +31,8 @@ dependencies {
     implementation 'io.github.vincenzopalazzo:material-ui-swing:1.1.4'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
     implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.1.2'
-    testImplementation 'org.mockito:mockito-core:2.1.0'
+    testImplementation 'org.mockito:mockito-core:4.6.1'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.6.1'
 
 }
 
