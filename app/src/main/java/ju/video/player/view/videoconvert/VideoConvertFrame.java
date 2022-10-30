@@ -1,54 +1,72 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprieraty information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.view.videoconvert;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-
 import ju.video.player.controller.ConvertController;
-import ju.video.player.view.MainFrame;
+import ju.video.player.controller.FormatConvertController;
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.information.search.FolderChooserButton;
-import ju.video.player.view.materialDesing.ResponsiveSwingMaterialDesign;
-import ju.video.player.view.materialDesing.components.date.fields.DateField;
-import ju.video.player.view.materialDesing.components.image.ImageLabel;
-import ju.video.player.view.materialDesing.components.utils.ImageRoundedBorder;
 import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
 import ju.video.player.view.materialDesing.display.FrameUtility;
-import ju.video.player.view.materialDesing.layouts.ResponsiveLayout;
-import java.awt.event.ActionListener;
-import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.FlowLayout;
 
-import javax.swing.*;
-import java.awt.*;
+/**
+ * This class is responsible for running the view to convert.
+ *
+ * @author Jose Antonio Romay Ayarachi 
+ * @version 1.0
+ */
 
-import ju.video.player.view.materialDesing.components.input.TextArea;
-import ju.video.player.view.materialDesing.constants.Constant;
-import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
+public class VideoConvertFrame extends JFrame {
 
-public class VideoConvertFrame extends JFrame{
-    // frame
-    static JFrame f;
+    private static final int WIDTH_FRAME = 850;
+    private static final int HEIGHT_FRAME = 600;
+    private static final int WIDTH_PANEL = 260;
+    private static final int HEIGHT_PANEL = 150;
 
-    // label
-    static JLabel l, l1, l3, l4;
+    private static final int POSX_BUTTON = 280;
+    private static final int POSY_BUTTON = 460;
+    private static final int WIDTH_BUTTON = 260;
+    private static final int HEIGHT_BUTTON = 50;
+    private static final int RADIUS_BUTTON = 20;
 
-    
-    // combobox
-    static JComboBox c1, c2;
     private ConvertController controller;
+    private FormatConvertController formatController;
+    private String path;
 
-    public VideoConvertFrame() {
+    private JComboBox<String> combotype;
+    private JComboBox<String> comboformat;
+
+    public VideoConvertFrame(String path) {
+        formatController = new FormatConvertController(this);
         controller = new ConvertController(this);
+        this.path = path;
         initFrame();
+
     }
 
     public void initFrame() {
-        JFrame frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
-
-        frame.add(panelSelect());
-        frame.add(buttonConv(controller));
+        JFrame frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
+        frame.add(IcoLabel());
+        frame.add(TxtLabel());
+        frame.add(panelFormat());
+        frame.add(panelType());
+        frame.add(buttonConv());
         frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         frame.setLayout(null);
         frame.setVisible(true);
@@ -56,39 +74,104 @@ public class VideoConvertFrame extends JFrame{
 
     }
 
-    public JButton buttonConv(ActionListener listener) {
-        JButton Button = new JButton();
-        RoundedBorder border = new RoundedBorder(20);
-
-        Button.setBorder(border);
-        Button.setBounds(300, 300, 260, 50);
-        Button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        Button.setText("Convert");
-        // Button.setForeground(Color.WHITE);
-        Button.setBackground(UIColor.PRIMARY_COLOR);
-        Button.addActionListener(listener);
-        Button.setVisible(true);
-        return Button;
-
+    private JLabel IcoLabel() {
+        ImageIcon iconf = new ImageIcon(this.getClass().getResource("/att1.png"));
+        JLabel label = new JLabel();
+        label.setBounds(310, 30, 250, 150);
+        label.setIcon(iconf);
+        label.setVisible(true);
+        return label;
     }
 
-    public JPanel panelSelect() {
+    private JLabel TxtLabel() {
+        JLabel labelT = new JLabel();
+        labelT.setBounds(230, 150, 450, 150);
+        labelT.setText("Select an Output Format");
+        labelT.setFont(new Font("Serif", Font.PLAIN, 40));
+        labelT.setForeground(Color.WHITE);
+        labelT.setVisible(true);
+        return labelT;
+    }
 
-        String s1[] = { "AVI", "MKV", "FLV" };
-        c1 = new JComboBox(s1);
-        c1.setEditable(false);
+    public JButton buttonConv() {
+        JButton button = new JButton();
+        RoundedBorder border = new RoundedBorder(RADIUS_BUTTON);
 
-        l = new JLabel("Select One Format ");
-        l.setForeground(Color.WHITE);
+        button.setBorder(border);
+        button.setBounds(POSX_BUTTON, POSY_BUTTON, WIDTH_BUTTON, HEIGHT_BUTTON);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setText("Convert");
+        button.setFont(new Font("Serif", Font.PLAIN, 25));
+        button.setBackground(UIColor.PRIMARY_COLOR);
+        button.addActionListener(controller);
+        button.setVisible(true);
+        return button;
+    }
 
-        JPanel p = new JPanel();
-        p.setBounds(0, 0, 260, 50);
-        p.add(l);
-        p.add(c1);
-        p.setLayout(new FlowLayout());
-        p.setOpaque(false);
-        p.setVisible(true);
-        return p;
+    public JPanel panelType() {
+
+        comboformat = new JComboBox();
+        fillFormat((String) combotype.getSelectedItem());
+        comboformat.setFont(new Font("Serif", Font.PLAIN, 30));
+        comboformat.setEditable(false);
+
+        JPanel panelCombo = new JPanel();
+        panelCombo.setBounds(380, 290, WIDTH_PANEL, HEIGHT_PANEL);
+        panelCombo.add(comboformat);
+        panelCombo.setLayout(new FlowLayout());
+        panelCombo.setOpaque(false);
+        panelCombo.setVisible(true);
+        return panelCombo;
+    }
+
+    public JPanel panelFormat() {
+
+        combotype = new JComboBox();
+        fillType();
+        combotype.addActionListener(formatController);
+        combotype.setFont(new Font("Serif", Font.PLAIN, 30));
+        combotype.setEditable(false);
+
+        JPanel panelCombo = new JPanel();
+        panelCombo.setBounds(190, 290, WIDTH_PANEL, HEIGHT_PANEL);
+        panelCombo.add(combotype);
+        panelCombo.setLayout(new FlowLayout());
+        panelCombo.setOpaque(false);
+        panelCombo.setVisible(true);
+        return panelCombo;
+    }
+
+    public JComboBox<String> getFormat() {
+        return this.comboformat;
+    }
+
+    private void fillType() {
+        combotype.addItem("Video");
+        combotype.addItem("Audio");
+    }
+
+    public void fillFormat(String select) {
+        comboformat.removeAllItems();
+        if (select.equals("Video")) {
+            comboformat.addItem("flv");
+            comboformat.addItem("mkv");
+            comboformat.addItem("avi");
+        } else if (select.equals("Audio")) {
+            comboformat.addItem("mp3");
+            comboformat.addItem("aac");
+            comboformat.addItem("ogg");
+            comboformat.addItem("flac");
+            comboformat.addItem("wma");
+            comboformat.addItem("wav");
+        }
+    }
+
+    public JComboBox<String> getTypeFormat() {
+        return combotype;
+    }
+
+    public String getPath() {
+        return path;
     }
 
 }
