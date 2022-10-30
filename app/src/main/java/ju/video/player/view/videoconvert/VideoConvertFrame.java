@@ -49,8 +49,8 @@ public class VideoConvertFrame extends JFrame {
     private FormatConvertController formatController;
     private String path;
 
-    private JComboBox<String> combotype;
-    private JComboBox<String> comboformat;
+    private JComboBox<String> comboType;
+    private JComboBox<String> comboFormat;
 
     public VideoConvertFrame(String path) {
         formatController = new FormatConvertController(this);
@@ -110,14 +110,14 @@ public class VideoConvertFrame extends JFrame {
 
     public JPanel panelType() {
 
-        comboformat = new JComboBox();
-        fillFormat((String) combotype.getSelectedItem());
-        comboformat.setFont(new Font("Serif", Font.PLAIN, 30));
-        comboformat.setEditable(false);
+        comboFormat = new JComboBox();
+        fillFormat((String) comboType.getSelectedItem());
+        comboFormat.setFont(new Font("Serif", Font.PLAIN, 30));
+        comboFormat.setEditable(false);
 
         JPanel panelCombo = new JPanel();
         panelCombo.setBounds(380, 290, WIDTH_PANEL, HEIGHT_PANEL);
-        panelCombo.add(comboformat);
+        panelCombo.add(comboFormat);
         panelCombo.setLayout(new FlowLayout());
         panelCombo.setOpaque(false);
         panelCombo.setVisible(true);
@@ -126,15 +126,15 @@ public class VideoConvertFrame extends JFrame {
 
     public JPanel panelFormat() {
 
-        combotype = new JComboBox();
+        comboType = new JComboBox();
         fillType();
-        combotype.addActionListener(formatController);
-        combotype.setFont(new Font("Serif", Font.PLAIN, 30));
-        combotype.setEditable(false);
+        comboType.addActionListener(formatController);
+        comboType.setFont(new Font("Serif", Font.PLAIN, 30));
+        comboType.setEditable(false);
 
         JPanel panelCombo = new JPanel();
         panelCombo.setBounds(190, 290, WIDTH_PANEL, HEIGHT_PANEL);
-        panelCombo.add(combotype);
+        panelCombo.add(comboType);
         panelCombo.setLayout(new FlowLayout());
         panelCombo.setOpaque(false);
         panelCombo.setVisible(true);
@@ -142,32 +142,32 @@ public class VideoConvertFrame extends JFrame {
     }
 
     public JComboBox<String> getFormat() {
-        return this.comboformat;
+        return this.comboFormat;
     }
 
     private void fillType() {
-        combotype.addItem("Video");
-        combotype.addItem("Audio");
+        comboType.addItem("Video");
+        comboType.addItem("Audio");
     }
 
     public void fillFormat(String select) {
-        comboformat.removeAllItems();
+        comboFormat.removeAllItems();
         if (select.equals("Video")) {
-            comboformat.addItem("flv");
-            comboformat.addItem("mkv");
-            comboformat.addItem("avi");
+            comboFormat.addItem("flv");
+            comboFormat.addItem("mkv");
+            comboFormat.addItem("avi");
         } else if (select.equals("Audio")) {
-            comboformat.addItem("mp3");
-            comboformat.addItem("aac");
-            comboformat.addItem("ogg");
-            comboformat.addItem("flac");
-            comboformat.addItem("wma");
-            comboformat.addItem("wav");
+            comboFormat.addItem("mp3");
+            comboFormat.addItem("aac");
+            comboFormat.addItem("ogg");
+            comboFormat.addItem("flac");
+            comboFormat.addItem("wma");
+            comboFormat.addItem("wav");
         }
     }
 
     public JComboBox<String> getTypeFormat() {
-        return combotype;
+        return comboType;
     }
 
     public String getPath() {
