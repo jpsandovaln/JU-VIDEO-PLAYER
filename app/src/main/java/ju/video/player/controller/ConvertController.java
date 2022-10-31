@@ -33,7 +33,7 @@ public class ConvertController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         try {
-            new ConvertFile(convertFrame.getFormat().getSelectedItem().toString(), convertFrame.getPath());
+            new ConvertFile(convertFrame.getPath(),convertFrame.getFormat().getSelectedItem().toString());
         } catch (IOException e1) {
             e1.printStackTrace();
         }
