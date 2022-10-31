@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * <p>
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -21,8 +21,9 @@ import java.awt.event.ItemListener;
  */
 
 public class ComboBox extends JComboBox<String> implements ItemListener {
-    
+
     public ComboBox(String[] itemsList) {
+        addItem("All formats");
         addItems(itemsList);
         addItemListener(this);
         setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
@@ -32,11 +33,11 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
 
     /**
      * Add a list of items to the comboBox
-     * 
-     * @param itemsList
+     *
+     * @param itemsList, this is the list of formats to display in the combo box.
      */
     private void addItems(String[] itemsList) {
-        for(int index = 0; index < itemsList.length; index++) {
+        for (int index = 0; index < itemsList.length; index++) {
             addItem(itemsList[index]);
         }
     }
@@ -51,6 +52,6 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
      * Add the option All items to the dropDown
      */
     public void addAllOption(String item) {
-        addItem("All " + item);
+        this.addItem("All " + item);
     }
 }

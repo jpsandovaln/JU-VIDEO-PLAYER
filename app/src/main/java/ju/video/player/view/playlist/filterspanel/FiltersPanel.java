@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * <p>
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -36,7 +36,7 @@ import javax.swing.JComponent;
 public class FiltersPanel extends JPanel {
 
     public FiltersPanel() throws ParseException {
-		initPanel();
+        initPanel();
         SizeFilterPanel sizeFilterPanel = new SizeFilterPanel();
         DateFilterPanel dateFilterPanel = new DateFilterPanel();
         Button applyFiltersButton = new Button("Apply Filters");
@@ -44,8 +44,7 @@ public class FiltersPanel extends JPanel {
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         ComboBox formatsBox = new ComboBox(createList());
-        formatsBox.addAllOption("formats");
-        
+
         add(new TitleLabel("Filters"));
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(new SubtitleLabel("File Size"));
@@ -70,19 +69,19 @@ public class FiltersPanel extends JPanel {
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(0, 0, 250, 600);
-        setBackground(new Color (64, 75, 105));
+        setBackground(new Color(64, 75, 105));
         setAlignmentY(Component.TOP_ALIGNMENT);
     }
 
     /**
      * Create a list of accepted formats 
-     * 
+     *
      * @return list of formats
      */
     private String[] createList() {
         String[] list = new String[Format.values().length];
         int index = 0;
-        for(Format format : Format.values()) {
+        for (Format format : Format.values()) {
             list[index] = format.getFormat();
             index++;
         }

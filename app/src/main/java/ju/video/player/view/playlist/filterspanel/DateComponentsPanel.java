@@ -48,7 +48,6 @@ public class DateComponentsPanel extends JPanel {
         JLabel label = new JLabel(title);
         label.setFont(UIFont.COMMON_FONT);
         label.setForeground(UIColor.COMPONETS_COLOR);
-		JTextField text = new JTextField(20);
         text.getDocument().addDocumentListener(dateListener);
 		Button buttonIcon = new Button("");
         buttonIcon.setIcon("calendar-icon.png", 20, 20);

@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ju.video.player.controller.PlayConvertButtonController;
 import ju.video.player.controller.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
@@ -38,7 +39,8 @@ public class MediaPanel extends JPanel{
 		playButton.setIcon("play.png", 20, 20);
         playButton.addActionListener(new PlayMediaButtonController(playListFrame, index));
         Button convertButton = new Button("");
-        convertButton.setIcon("convert.png", 20, 20);
+        convertButton.setIcon("/convert.png", 20, 20);
+        convertButton.addActionListener(new PlayConvertButtonController(mediaName));
 		
         add(name);
         add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));

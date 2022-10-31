@@ -40,7 +40,8 @@ public class DateInitListener implements DocumentListener {
 
     public void setInitDateValue(DocumentEvent e) {
         String date = text.getText();
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy");
+        // java.text.SimpleDateFormat sdf = new
+        // java.text.SimpleDateFormat("dd-MM-yyyy");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         try {
             // convert String to LocalDate

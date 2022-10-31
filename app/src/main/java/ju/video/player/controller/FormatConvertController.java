@@ -9,35 +9,27 @@
 package ju.video.player.controller;
 
 import ju.video.player.view.videoconvert.VideoConvertFrame;
-import ju.video.player.model.ConvertFile;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 /**
- * This class is responsible for sending the path and format to the spring converter service.
+ * This class is responsible for updating the ComboBox of the formats.
  *
  * @author Jose Antonio Romay Ayarachi 
  * @version 1.0
  */
 
-public class ConvertController implements ActionListener {
+public class FormatConvertController implements ActionListener {
     private VideoConvertFrame convertFrame;
 
-    public ConvertController(VideoConvertFrame convertVideo) {
+    public FormatConvertController(VideoConvertFrame convertVideo) {
         this.convertFrame = convertVideo;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-        try {
-            new ConvertFile(convertFrame.getFormat().getSelectedItem().toString(), convertFrame.getPath());
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-
+    public void actionPerformed(ActionEvent arg0) {
+        
+        convertFrame.fillFormat((String) convertFrame.getTypeFormat().getSelectedItem());
     }
 
 }

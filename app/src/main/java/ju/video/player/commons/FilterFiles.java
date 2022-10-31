@@ -30,12 +30,15 @@ public class FilterFiles {
     private LocalDate initDate;
     private LocalDate endDate;
 
-    public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate) {
+    private String formatSelected;
+
+    public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
         this.filesFolder = filesFolder;
         this.initSize = initSize;
         this.endSize = endSize;
         this.initDate = initDate;
         this.endDate = endDate;
+        this.formatSelected = formatSelected;
     }
 
     /**
@@ -56,13 +59,31 @@ public class FilterFiles {
                 }
             } else {
                 BasicFileAttributes attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-                System.out.println(file + " Media:" + verifyIsMediaFile(file) + " - Size:" + verifySize(attributes, initSize, endSize) + " - Date:" + verifyDate(attributes, initDate, endDate));
-                if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize) && verifyDate(attributes, initDate, endDate)) {
+                if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
+                        && verifyDate(attributes, initDate, endDate)
+                        && verifyFormatSelected(file, formatSelected)) {
                     listFilesName.add(fileName);
                 }
             }
         }
         return listFilesName;
+    }
+
+    /**
+     * Verify the file belongs to the format selected in the Combobox.
+     *
+     * @param file, is to verify if has the format required by the user.
+     * @param formatSelected, it is the format requerired by the user.
+     * @return True or False if the file accomplish with the format.
+     * @throws IOException
+     */
+    public boolean verifyFormatSelected(File file, String formatSelected) throws IOException {
+        if (formatSelected == null || formatSelected.isEmpty()) {
+            return true;
+        }
+        String fileContentType = Files.probeContentType(file.toPath());
+        Format format = Format.fromString(fileContentType);
+        return formatSelected.equals(format.getFormat());
     }
 
     /**
