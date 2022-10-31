@@ -1,3 +1,19 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ * <p>
+ * This software is the confidential and proprietary information of Jala University
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Jala University
+ */
+
+/**
+ * This test is responsible for test DataComponentsPanel class
+ *
+ * @author Sergio A. Lema Estevez
+ * @version 1.0
+ */
+
 package ju.video.player.view.playlist.filterspanel;
 
 import org.junit.Test;

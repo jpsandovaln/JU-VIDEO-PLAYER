@@ -6,22 +6,27 @@
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
-package ju.video.player.view.footer;
+package ju.video.player.view.information.search;
 
 import org.junit.Test;
+
+import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
+
 import static org.junit.Assert.assertEquals;
 
 /**
- * This test is responsible for test FooterPanel class
+ * This test is responsible for test SearchVideoPanel class
  *
  * @author Sergio A. Lema Estevez
  * @version 1.0
  */
 
-public class FooterPanelTest {
+public class SearchVideoPanelTest {
+    VideoListPanel videoListPanel = new VideoListPanel();
+
     @Test
-    public void shouldSetFooterPanel() {
-        FooterPanel footerPanel = new FooterPanel();
-        assertEquals(1, footerPanel.getComponentCount());
+    public void SetSearchVideoPanel() {
+        SearchVideoPanel searchVideoPanel = new SearchVideoPanel(videoListPanel);
+        assertEquals(3, searchVideoPanel.getComponentCount());
     }
 }

@@ -6,22 +6,23 @@
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
-package ju.video.player.view.footer;
+package ju.video.player.view.information.search;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 /**
- * This test is responsible for test FooterPanel class
+ * This test is responsible for test FormatPanel class
  *
  * @author Sergio A. Lema Estevez
  * @version 1.0
  */
 
-public class FooterPanelTest {
+public class FormatPanelTest {
     @Test
-    public void shouldSetFooterPanel() {
-        FooterPanel footerPanel = new FooterPanel();
-        assertEquals(1, footerPanel.getComponentCount());
+    public void shouldSetFormatPanel() {
+        FormatPanel formatPanel = new FormatPanel();
+        assertEquals(2, formatPanel.getComponentCount());
     }
 }
