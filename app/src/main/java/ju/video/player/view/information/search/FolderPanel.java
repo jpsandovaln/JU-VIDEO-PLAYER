@@ -10,10 +10,8 @@ public class FolderPanel extends JPanel {
 
     public FolderPanel(VideoListPanel panelSouth) {
         FolderLabel folderLabel = new FolderLabel();
-        //FolderChooserButton folderChooserButton = new FolderChooserButton(panelSouth);
         initialize();
         add(folderLabel);
-        //add(folderChooserButton);
         setBackground(Color.CYAN);
     }
 
