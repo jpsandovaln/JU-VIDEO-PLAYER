@@ -22,49 +22,60 @@ import ju.video.player.view.commons.Button;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class ControlButtonsGroup extends JPanel {
-    private PlayButtonController playButtonController;
-    private PauseButtonController pauseButtonController;
-    private StopButtonController stopButtonController;
     private PreviousButtonController previousButtonController;
     private NextButtonController nextButtonController;
     private FullScreenButtonController fullScreenButtonController;
+    private EmbeddedMediaListPlayerComponent mediaComponent;
+    private Button playButton;
+    private Button stopButton;
+    private Button previousButton;
+    private Button nextButton;
+    private Button fullScreenButton;
 
     public ControlButtonsGroup(EmbeddedMediaListPlayerComponent mediaComponent) {
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
 
-        playButtonController = new PlayButtonController(mediaComponent);
-        pauseButtonController = new PauseButtonController(mediaComponent);
-        stopButtonController = new StopButtonController(mediaComponent);
-        previousButtonController = new PreviousButtonController(mediaComponent);
-        nextButtonController = new NextButtonController(mediaComponent);
-        fullScreenButtonController = new FullScreenButtonController(mediaComponent);
-
-        Button playButton = new Button("");
+        playButton = new Button("");
 		playButton.setIcon("/play.png", 20, 20);
-        playButton.addActionListener(playButtonController);
-        Button pauseButton = new Button("");
-		pauseButton.setIcon("/pause.png", 20, 20);
-        pauseButton.addActionListener(pauseButtonController);
-        Button stopButton = new Button("");
+        stopButton = new Button("");
 		stopButton.setIcon("/stop.png", 20, 20);
-        stopButton.addActionListener(stopButtonController);
-        Button previousButton = new Button("");
+        previousButton = new Button("");
 		previousButton.setIcon("/previous.png", 20, 20);
-        previousButton.addActionListener(previousButtonController);
-        Button nextButton = new Button("");
+        nextButton = new Button("");
 		nextButton.setIcon("/next.png", 20, 20);
-        nextButton.addActionListener(nextButtonController);
-        Button fullScreanButton = new Button("");
-		fullScreanButton.setIcon("/fullScreen.png", 20, 20);
-        fullScreanButton.addActionListener(fullScreenButtonController);
-
+        fullScreenButton = new Button("");
+		fullScreenButton.setIcon("/full_screen.png", 20, 20);
+        //fullScreenButton.addActionListener(new FullScreenButtonController(mediaComponent));
+        
         add(playButton);
-        add(pauseButton);
         add(stopButton);
         add(previousButton);
         add(nextButton);
-        add(fullScreanButton);
+        add(fullScreenButton);
+
+        PlayButtonController controlButtonsController = new PlayButtonController(mediaComponent, this);
     }
+
+    public EmbeddedMediaListPlayerComponent getMediaComponent() {
+        return mediaComponent;
+    }
+
+    public Button getPlayButton() {
+        return playButton;
+    }
+    public Button getPreviousButton() {
+        return previousButton;
+    }
+    public Button getNextButton() {
+        return nextButton;
+    }
+    public Button getStopButton() {
+        return stopButton;
+    }
+    public Button getFullScreenButton() {
+        return fullScreenButton;
+    }
+
 }
