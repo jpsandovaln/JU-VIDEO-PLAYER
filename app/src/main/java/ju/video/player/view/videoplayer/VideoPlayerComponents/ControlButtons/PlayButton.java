@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class PlayButton extends JButton {
     public PlayButton(ActionListener listener) {
         setLocation(CENTER, CENTER);
-        setPreferredSize(new Dimension(30, 30));
+        setSize(new Dimension(30, 30));
         ImageIcon newIcon = new ImageIcon(Constant.RESOURCES_IMAGES + "/play.png");
         setIcon(newIcon);
         addActionListener(listener);

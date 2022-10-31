@@ -24,7 +24,6 @@ public class PlayListPanel extends JPanel {
     public PlayListPanel(PlayListFrame playListFrame) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(250, 0, 585, 600);
-        //setBounds(0, 0, 200, 500);
         add(new TitleLabel("My PlayList"));
         VideoListPanel videoListPanel = new VideoListPanel(playListFrame);
         ExaminePanel examinePanel = new ExaminePanel(videoListPanel);

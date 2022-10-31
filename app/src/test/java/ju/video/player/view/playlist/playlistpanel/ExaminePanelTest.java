@@ -6,22 +6,25 @@
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
-package ju.video.player.view.footer;
+package ju.video.player.view.playlist.playlistpanel;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
- * This test is responsible for test FooterPanel class
+ * This test is responsible for test ExaminePanel class
  *
  * @author Sergio A. Lema Estevez
  * @version 1.0
  */
 
-public class FooterPanelTest {
+public class ExaminePanelTest {
     @Test
-    public void shouldSetFooterPanel() {
-        FooterPanel footerPanel = new FooterPanel();
-        assertEquals(1, footerPanel.getComponentCount());
+    public void shouldSetExaminePanel() {
+        VideoListPanel videoListPanel = new VideoListPanel();
+        ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
+        assertEquals(2, examinePanel.getComponentCount());
+        assertFalse(examinePanel.isOpaque());
     }
 }
