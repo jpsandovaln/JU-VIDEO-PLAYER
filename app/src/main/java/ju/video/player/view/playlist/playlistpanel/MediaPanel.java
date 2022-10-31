@@ -40,7 +40,7 @@ public class MediaPanel extends JPanel{
         playButton.addActionListener(new PlayMediaButtonController(playListFrame, index));
         Button convertButton = new Button("");
         convertButton.setIcon("/convert.png", 20, 20);
-        convertButton.addActionListener(new PlayConvertButtonController(mediaName));
+        convertButton.addActionListener(new PlayConvertButtonController(mediaName, playListFrame));
 		
         add(name);
         add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));

@@ -12,19 +12,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ju.video.player.model.ListValidVideos;
+import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoconvert.VideoConvertFrame;
 
 public class PlayConvertButtonController implements ActionListener {
     private String nameMedia;
+    private PlayListFrame playListFrame;
 
-    public PlayConvertButtonController(String mediaName) {
+    public PlayConvertButtonController(String mediaName, PlayListFrame playListFrame) {
         this.nameMedia = mediaName;
+        this.playListFrame = playListFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String path = ListValidVideos.getInstance().getPathOfTheSelectedFolder() + "\\" + this.nameMedia;
-        new VideoConvertFrame(path);
+        playListFrame.setVisible(false);
+        new VideoConvertFrame(path, playListFrame);
     }
 
 }
