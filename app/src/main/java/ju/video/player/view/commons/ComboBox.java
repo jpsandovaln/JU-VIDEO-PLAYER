@@ -8,6 +8,8 @@
  */
 package ju.video.player.view.commons;
 
+import ju.video.player.model.ListValidVideos;
+
 import javax.swing.JComboBox;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
@@ -26,6 +28,15 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
         addItem("All formats");
         addItems(itemsList);
         addItemListener(this);
+        addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent event) {
+                String itemSelected = (String) event.getItem();
+                if (itemSelected.equals("All formats")) {
+                    itemSelected = null;
+                }
+                ListValidVideos.getInstance().setFormatSelected(itemSelected);
+            }
+        });
         setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         setForeground(UIColor.COMPONETS_COLOR);
         setAlignmentX(Component.LEFT_ALIGNMENT);
