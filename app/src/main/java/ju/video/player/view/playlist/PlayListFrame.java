@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.constants.Constant;
-import ju.video.player.view.materialDesing.display.FrameUtility;
+import ju.video.player.view.commons.constants.Constant;
+import ju.video.player.view.commons.display.FrameUtility;
 import ju.video.player.view.playlist.filterspanel.FiltersPanel;
 import ju.video.player.view.playlist.playlistpanel.PlayListPanel;
 
@@ -44,6 +44,10 @@ public class PlayListFrame {
 
     public void setVisible(Boolean isVisible) {
         frame.setVisible(isVisible);
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
     
 }

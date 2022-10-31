@@ -16,8 +16,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ju.video.player.controller.PlayConvertButtonController;
-import ju.video.player.controller.PlayMediaButtonController;
+import ju.video.player.controller.componentscontrollers.PlayConvertButtonController;
+import ju.video.player.controller.componentscontrollers.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.playlist.PlayListFrame;

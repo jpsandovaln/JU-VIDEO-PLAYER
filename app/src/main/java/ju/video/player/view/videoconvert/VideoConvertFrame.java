@@ -11,9 +11,9 @@ package ju.video.player.view.videoconvert;
 import javax.swing.JPanel;
 import ju.video.player.controller.ConvertController;
 import ju.video.player.controller.FormatConvertController;
+import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
-import ju.video.player.view.materialDesing.display.FrameUtility;
+import ju.video.player.view.commons.display.FrameUtility;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -94,15 +94,11 @@ public class VideoConvertFrame extends JFrame {
     }
 
     public JButton buttonConv() {
-        JButton button = new JButton();
-        RoundedBorder border = new RoundedBorder(RADIUS_BUTTON);
+        Button button = new Button("Convert");
 
-        button.setBorder(border);
         button.setBounds(POSX_BUTTON, POSY_BUTTON, WIDTH_BUTTON, HEIGHT_BUTTON);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setText("Convert");
         button.setFont(new Font("Serif", Font.PLAIN, 25));
-        button.setBackground(UIColor.PRIMARY_COLOR);
         button.addActionListener(controller);
         button.setVisible(true);
         return button;

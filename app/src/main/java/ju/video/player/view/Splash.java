@@ -9,7 +9,7 @@
 package ju.video.player.view;
 
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.display.FrameUtility;
+import ju.video.player.view.commons.display.FrameUtility;
 import ju.video.player.view.playlist.PlayListFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

@@ -23,7 +23,7 @@ public class MediaPanelTest {
     public void shouldSetMediaPanel() {
         String mediaName = "test";
         int index = 2;
-        MediaPanel mediaPanel = new MediaPanel(mediaName, index);
+        MediaPanel mediaPanel = new MediaPanel(mediaName, index, null);
         assertEquals(5, mediaPanel.getComponentCount());
         assertEquals(0, mediaPanel.getWidth());
         assertEquals(0, mediaPanel.getHeight());
