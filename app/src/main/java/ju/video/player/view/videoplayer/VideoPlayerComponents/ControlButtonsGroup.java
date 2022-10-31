@@ -11,21 +11,12 @@ package ju.video.player.view.videoplayer.VideoPlayerComponents;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 
-import ju.video.player.controller.FullScreenButtonController;
-import ju.video.player.controller.NextButtonController;
-import ju.video.player.controller.PauseButtonController;
-import ju.video.player.controller.PlayButtonController;
-import ju.video.player.controller.PreviousButtonController;
-import ju.video.player.controller.StopButtonController;
+import ju.video.player.controller.ControlButtonsController;
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.Button;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class ControlButtonsGroup extends JPanel {
-    private PreviousButtonController previousButtonController;
-    private NextButtonController nextButtonController;
-    private FullScreenButtonController fullScreenButtonController;
-    private EmbeddedMediaListPlayerComponent mediaComponent;
     private Button playButton;
     private Button stopButton;
     private Button previousButton;
@@ -47,19 +38,13 @@ public class ControlButtonsGroup extends JPanel {
 		nextButton.setIcon("/next.png", 20, 20);
         fullScreenButton = new Button("");
 		fullScreenButton.setIcon("/full_screen.png", 20, 20);
-        //fullScreenButton.addActionListener(new FullScreenButtonController(mediaComponent));
         
         add(playButton);
         add(stopButton);
         add(previousButton);
         add(nextButton);
         add(fullScreenButton);
-
-        PlayButtonController controlButtonsController = new PlayButtonController(mediaComponent, this);
-    }
-
-    public EmbeddedMediaListPlayerComponent getMediaComponent() {
-        return mediaComponent;
+        new ControlButtonsController(mediaComponent, this);
     }
 
     public Button getPlayButton() {

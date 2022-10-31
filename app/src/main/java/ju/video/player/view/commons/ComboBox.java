@@ -9,7 +9,7 @@
 package ju.video.player.view.commons;
 
 import javax.swing.JComboBox;
-
+import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -25,6 +25,9 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
     public ComboBox(String[] itemsList) {
         addItems(itemsList);
         addItemListener(this);
+        setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
+        setForeground(UIColor.COMPONETS_COLOR);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 
     /**

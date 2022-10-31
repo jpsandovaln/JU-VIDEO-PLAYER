@@ -6,14 +6,14 @@ import ju.video.player.commons.logger.At18Logger;
 import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtonsGroup;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
-public class PlayButtonController {
+public class ControlButtonsController {
     EmbeddedMediaListPlayerComponent mediaPlayerComponent;
     private Logger log = new At18Logger().getLogger();
     private Boolean isPlay;
     private Boolean isFullScrean;
     private ControlButtonsGroup controlButtons;
 
-    public PlayButtonController(EmbeddedMediaListPlayerComponent mediaComponent, ControlButtonsGroup controlButtons) {
+    public ControlButtonsController(EmbeddedMediaListPlayerComponent mediaComponent, ControlButtonsGroup controlButtons) {
         this.mediaPlayerComponent = mediaComponent;
         this.controlButtons = controlButtons;
         controlButtons.getPlayButton().addActionListener(e -> playButtonAction());
