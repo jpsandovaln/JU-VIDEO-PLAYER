@@ -7,7 +7,7 @@
  * Licence agreement you entered into with Jalasoft
  */
 package ju.video.player.view.playlist.filterspanel;
- 
+
 import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
@@ -40,6 +40,7 @@ public class DatePicker {
 	private JLabel label = new JLabel("", JLabel.CENTER);
 	private String day = "";
 	private JDialog dialog;
+	private JPanel headerPanel;
 	private JButton[] button = new JButton[49];
 
 	public DatePicker(DateComponentsPanel parent) {
@@ -69,14 +70,14 @@ public class DatePicker {
 			}
 			calendarPanel.add(button[index]);
 		}
-		JPanel headerPanel = new JPanel(new BorderLayout());
+		headerPanel = new JPanel(new BorderLayout());
 		headerPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
-		
+
 		Button prevButton = new Button(" << ");
 		prevButton.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
 		prevButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				if(month == 0) {
+				if (month == 0) {
 					month = 11;
 					year--;
 				} else {
@@ -92,7 +93,7 @@ public class DatePicker {
 		Button nextButton = new Button(" >> ");
 		nextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				if(month == 11) {
+				if (month == 11) {
 					month = 0;
 					year++;
 				} else {
@@ -118,7 +119,8 @@ public class DatePicker {
 			button[index].setText("");
 		}
 		Calendar cal = Calendar.getInstance();
-		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
+				"October", "November", "December" };
 		cal.set(year, month, 1);
 		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 		int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -135,12 +137,24 @@ public class DatePicker {
 	 * @return date selected
 	 */
 	public String setPickedDate() {
-		if (day.equals("")){
+		if (day.equals("")) {
 			return day;
 		}
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month, Integer.parseInt(day));
 		return dateFormat.format(cal.getTime());
+	}
+
+	public JPanel getHeader() {
+		return headerPanel;
+	}
+
+	public JDialog getDialog() {
+		return dialog;
+	}
+
+	public void closeDialog() {
+		dialog.dispose();
 	}
 }

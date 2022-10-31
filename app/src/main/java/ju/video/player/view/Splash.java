@@ -20,7 +20,7 @@ import java.awt.Color;
 /**
  * This class is responsible for running the loading screen.
  *
- * @author Jose Antonio Romay Ayarachi 
+ * @author Jose Antonio Romay Ayarachi
  * @version 1.0
  */
 
@@ -46,7 +46,6 @@ public class Splash extends JFrame {
 
     public void initFrame() {
         frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
-
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/splash5r1.gif"));
         ImageIcon iconLog = new ImageIcon(this.getClass().getResource("/att2.png"));
         progress();
@@ -72,5 +71,9 @@ public class Splash extends JFrame {
         progressBar = new JProgressBar();
         progressBar.setForeground(new Color(0, 128, 128));
         progressBar.setBounds(80, 500, 700, 20);
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
 }

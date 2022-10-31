@@ -28,7 +28,7 @@ import java.awt.FlowLayout;
 /**
  * This class is responsible for running the view to convert.
  *
- * @author Jose Antonio Romay Ayarachi 
+ * @author Jose Antonio Romay Ayarachi
  * @version 1.0
  */
 
@@ -51,17 +51,17 @@ public class VideoConvertFrame extends JFrame {
 
     private JComboBox<String> comboType;
     private JComboBox<String> comboFormat;
+    JFrame frame;
 
     public VideoConvertFrame(String path) {
         formatController = new FormatConvertController(this);
         controller = new ConvertController(this);
         this.path = path;
         initFrame();
-
     }
 
     public void initFrame() {
-        JFrame frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
+        frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
         frame.add(IcoLabel());
         frame.add(TxtLabel());
         frame.add(panelFormat());
@@ -174,4 +174,7 @@ public class VideoConvertFrame extends JFrame {
         return path;
     }
 
+    public JFrame getFrame() {
+        return frame;
+    }
 }
