@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import ju.video.player.view.videoplayer.ControlButtonsGroup;
-import ju.video.player.view.videoplayer.MediaPlayerFrame;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 /**
@@ -28,7 +27,6 @@ public class ControlButtonsGroupTest {
     @Test
     public void shouldInitControlButtonsGroup() {
         EmbeddedMediaListPlayerComponent embeddedMediaListPlayerComponent = new EmbeddedMediaListPlayerComponent();
-        MediaPlayerFrame mediaPlayerFrame = new MediaPlayerFrame(null, embeddedMediaListPlayerComponent);
         ControlButtonsGroup controlButtonsGroup = new ControlButtonsGroup(embeddedMediaListPlayerComponent);
         assertEquals(5, controlButtonsGroup.getComponentCount());
     }
