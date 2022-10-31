@@ -12,23 +12,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ju.video.player.model.ListValidVideos;
+import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoplayer.MediaPlayerFrame;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class PlayMediaButtonController implements ActionListener {
     private EmbeddedMediaListPlayerComponent mediaPlayerComponent;
+    private PlayListFrame playListFrame;
     private int initialMedia = 0;
     
 
-    public PlayMediaButtonController(int initialMedia) {
+    public PlayMediaButtonController(PlayListFrame playListFrame, int initialMedia) {
         this.initialMedia = initialMedia;
+        this.playListFrame = playListFrame;
         mediaPlayerComponent = new EmbeddedMediaListPlayerComponent();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         createList();
-        new MediaPlayerFrame(mediaPlayerComponent);
+        playListFrame.setVisible(false);
+        new MediaPlayerFrame(playListFrame, mediaPlayerComponent);
     }
 
     public void createList() {

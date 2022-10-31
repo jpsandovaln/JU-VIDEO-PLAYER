@@ -26,8 +26,8 @@ public class MetaDataFrame {
         rl.add(textArea.getComponent(), 4, 1);
         DateField date = new DateField("Date", rl);
         rl.add(date.setRequired(false).getComponent(), 4, 1);
-        FolderChooserButton button = new FolderChooserButton(new VideoListPanel(), frame, textArea, date);
-        rl.add(button, 2, 0.5, ResponsiveLayout.ResponsiveConstants.CENTER);
+        //FolderChooserButton button = new FolderChooserButton(new VideoListPanel(), frame, textArea, date);
+        //rl.add(button, 2, 0.5, ResponsiveLayout.ResponsiveConstants.CENTER);
         Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();
         frame.setIconImage(icon);
         frame.setVisible(true);

@@ -22,15 +22,15 @@ import java.awt.Component;
 import java.text.ParseException;
 
 public class PlayListFrame {
+    private JFrame frame;
 
     public PlayListFrame() throws ParseException {
-        JFrame frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
-        //frame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
         frame.setLayout(null);
         FiltersPanel filtersPanel = new FiltersPanel();
         filtersPanel.setAlignmentY(Component.TOP_ALIGNMENT);
         frame.add(filtersPanel);
-        PlayListPanel playListPanel = new PlayListPanel();
+        PlayListPanel playListPanel = new PlayListPanel(this);
         playListPanel.setAlignmentY(Component.TOP_ALIGNMENT);
         frame.add(playListPanel);
 
@@ -39,6 +39,10 @@ public class PlayListFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
+    }
+
+    public void setVisible(Boolean isVisible) {
+        frame.setVisible(isVisible);
     }
     
 }

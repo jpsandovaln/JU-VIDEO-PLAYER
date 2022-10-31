@@ -17,15 +17,16 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import ju.video.player.view.commons.TitleLabel;
+import ju.video.player.view.playlist.PlayListFrame;
 
 public class PlayListPanel extends JPanel {
     
-    public PlayListPanel() {
+    public PlayListPanel(PlayListFrame playListFrame) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBounds(250, 0, 585, 600);
         //setBounds(0, 0, 200, 500);
         add(new TitleLabel("My PlayList"));
-        VideoListPanel videoListPanel = new VideoListPanel();
+        VideoListPanel videoListPanel = new VideoListPanel(playListFrame);
         ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
         add(examinePanel);
         add(videoListPanel);

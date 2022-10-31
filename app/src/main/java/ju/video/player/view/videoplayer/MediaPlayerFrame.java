@@ -14,18 +14,26 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 
 import ju.video.player.view.materialDesing.constants.Constant;
+import ju.video.player.view.playlist.PlayListFrame;
+import ju.video.player.view.videoplayer.VideoPlayerComponents.ControlButtonsGroup;
+import ju.video.player.view.videoplayer.VideoPlayerComponents.NameVideoText;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
-
+import uk.co.caprica.vlcj.player.embedded.fullscreen.adaptive.AdaptiveFullScreenStrategy;
 
 public class MediaPlayerFrame extends JFrame {
     EmbeddedMediaListPlayerComponent mediaComponent;
 
-    public MediaPlayerFrame(EmbeddedMediaListPlayerComponent mediaComponent) {
+    public MediaPlayerFrame(PlayListFrame playListFrame, EmbeddedMediaListPlayerComponent mediaComponent) {
         this.mediaComponent = mediaComponent;
-        
         initialize();
-        VideoPlayerPanel videoPlayerPanel = new VideoPlayerPanel(this);
-        add(videoPlayerPanel, BorderLayout.CENTER);
+        //VideoPlayerPanel videoPlayerPanel = new VideoPlayerPanel(this);
+        //add(videoPlayerPanel, BorderLayout.CENTER);
+        mediaComponent.mediaPlayer().fullScreen().strategy(new AdaptiveFullScreenStrategy(this));
+        ControlButtonsGroup controlButtonsGroup = new ControlButtonsGroup(mediaComponent);
+        NameVideoText namePanel = new NameVideoText(this, playListFrame);
+        add(namePanel, BorderLayout.NORTH);
+        add(mediaComponent, BorderLayout.CENTER);
+        add(controlButtonsGroup, BorderLayout.PAGE_END);
     }
     private void initialize() {
         Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();

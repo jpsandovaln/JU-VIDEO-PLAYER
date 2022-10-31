@@ -19,7 +19,7 @@ import ju.video.player.controller.PreviousButtonController;
 import ju.video.player.controller.StopButtonController;
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.Button;
-import ju.video.player.view.videoplayer.VideoPlayerPanel;
+import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
 public class ControlButtonsGroup extends JPanel {
     private PlayButtonController playButtonController;
@@ -28,20 +28,18 @@ public class ControlButtonsGroup extends JPanel {
     private PreviousButtonController previousButtonController;
     private NextButtonController nextButtonController;
     private FullScreenButtonController fullScreenButtonController;
-    VideoPlayerPanel videoPlayerPanel;
 
-    public ControlButtonsGroup(VideoPlayerPanel videoPlayerPanel) {
-        this.videoPlayerPanel = videoPlayerPanel;
+    public ControlButtonsGroup(EmbeddedMediaListPlayerComponent mediaComponent) {
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
 
-        playButtonController = new PlayButtonController(videoPlayerPanel.getMediaPlayer());
-        pauseButtonController = new PauseButtonController(videoPlayerPanel.getMediaPlayer());
-        stopButtonController = new StopButtonController(videoPlayerPanel.getMediaPlayer());
-        previousButtonController = new PreviousButtonController(videoPlayerPanel.getMediaPlayer());
-        nextButtonController = new NextButtonController(videoPlayerPanel.getMediaPlayer());
-        fullScreenButtonController = new FullScreenButtonController(videoPlayerPanel.getMediaPlayer());
+        playButtonController = new PlayButtonController(mediaComponent);
+        pauseButtonController = new PauseButtonController(mediaComponent);
+        stopButtonController = new StopButtonController(mediaComponent);
+        previousButtonController = new PreviousButtonController(mediaComponent);
+        nextButtonController = new NextButtonController(mediaComponent);
+        fullScreenButtonController = new FullScreenButtonController(mediaComponent);
 
         Button playButton = new Button("");
 		playButton.setIcon("/play.png", 20, 20);
