@@ -29,8 +29,8 @@ public class ExaminePanel extends JPanel {
     }
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        //setBounds(0, 0, 0, 600);
+        setSize(0, 30);
         setOpaque(false);
-        setAlignmentY(Component.TOP_ALIGNMENT);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 }

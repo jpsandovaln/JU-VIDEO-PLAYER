@@ -17,7 +17,6 @@ import java.text.ParseException;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
 
 import ju.video.player.controller.componentscontrollers.DatePickerController;

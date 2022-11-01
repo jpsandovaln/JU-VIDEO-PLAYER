@@ -17,7 +17,6 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
@@ -51,7 +50,6 @@ public class FiltersPanel extends JPanel {
         formatsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatsPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         ComboBox formatsBox = new ComboBox(createList());
-        //formatsBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatsPanel.add(formatsBox, BorderLayout.CENTER);
         formatsPanel.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.EAST);
 
