@@ -51,53 +51,85 @@ public class SizeFilterPanel extends JPanel {
             }
 
             public void setFileSizeValue() {
-                String text = minSizeField.getText();
-                try {
-                    double value = Double.parseDouble(text);
-                    ListValidVideos.getInstance().setMinFileSize(value);
-                } catch (Exception ex) {
-                    ListValidVideos.getInstance().setMinFileSize(0);
-                }
+                Runnable doAssist = new Runnable() {
+                    @Override
+                    public void run() {
+                        String text = minSizeField.getText();
+                        if (text == null || text.isEmpty()) {
+                            ListValidVideos.getInstance().setMaxFileSize(0);
+                            return;
+                        }
+                        try {
+                            double value = Double.parseDouble(text);
+                            ListValidVideos.getInstance().setMinFileSize(value);
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Minimum Size is invalid");
+                            ListValidVideos.getInstance().setMinFileSize(0);
+                            minSizeField.setText("");
+                        }
+                    }
+                };
+                SwingUtilities.invokeLater(doAssist);
             }
         });
+
         add(minSizeField);
+
         TextField maxSizeField = new TextField("Max Size (Mb)");
         maxSizeField.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
-        maxSizeField.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                char caracter = e.getKeyChar();
-                if (((caracter < '0') ||
-                        (caracter > '9')) &&
-                        (caracter != '\b')) {
-                    e.consume();  // ignore the key event
-                }
-            }
-        });
+        maxSizeField.addKeyListener(new
 
-        maxSizeField.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(DocumentEvent e) {
-                setFileSizeValue();
-            }
+                                            KeyAdapter() {
+                                                public void keyTyped(KeyEvent e) {
+                                                    char caracter = e.getKeyChar();
+                                                    if (((caracter < '0') ||
+                                                            (caracter > '9')) &&
+                                                            (caracter != '\b')) {
+                                                        e.consume();  // ignore the key event
+                                                    }
+                                                }
+                                            });
 
-            public void removeUpdate(DocumentEvent e) {
-                setFileSizeValue();
-            }
+        maxSizeField.getDocument().
 
-            public void insertUpdate(DocumentEvent e) {
-                setFileSizeValue();
-            }
+                addDocumentListener(new DocumentListener() {
+                    public void changedUpdate(DocumentEvent e) {
+                        setFileSizeValue();
+                    }
 
-            public void setFileSizeValue() {
-                String text = maxSizeField.getText();
-                try {
-                    double value = Double.parseDouble(text);
-                    ListValidVideos.getInstance().setMaxFileSize(value);
-                } catch (Exception e) {
-                    ListValidVideos.getInstance().setMaxFileSize(0);
-                }
-            }
-        });
+                    public void removeUpdate(DocumentEvent e) {
+                        setFileSizeValue();
+                    }
+
+                    public void insertUpdate(DocumentEvent e) {
+                        setFileSizeValue();
+                    }
+
+                    public void setFileSizeValue() {
+                        Runnable doAssist = new Runnable() {
+                            @Override
+                            public void run() {
+                                String text = maxSizeField.getText();
+                                if (text == null || text.isEmpty()) {
+                                    ListValidVideos.getInstance().setMaxFileSize(0);
+                                    return;
+                                }
+                                try {
+                                    double value = Double.parseDouble(text);
+                                    ListValidVideos.getInstance().setMaxFileSize(value);
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, "Maximum Size is invalid");
+                                    ListValidVideos.getInstance().setMaxFileSize(0);
+                                    maxSizeField.setText("");
+                                }
+                            }
+                        };
+                        SwingUtilities.invokeLater(doAssist);
+                    }
+                });
+
         add(maxSizeField);
+
         add(Box.createRigidArea(new Dimension(10, 0)));
     }
 

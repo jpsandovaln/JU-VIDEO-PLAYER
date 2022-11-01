@@ -16,5 +16,17 @@ import java.io.IOException;
  * @version 1.0
  */
 public interface Request {
+    /**
+     * It is responsible for constructing the body of the request and executing the request.
+     * @param path It is the directory where the file to be converted is located.
+     * @param format Is the format to which the file is to be converted.
+     * @throws IOException
+     */
     void sendPost(String path, String format) throws IOException;
+
+    /**
+     * It is responsible for returning the path of the converted file.
+     * @return A string with the path address of the converted file is returned.
+     */
+    String getOutputPath();
 }

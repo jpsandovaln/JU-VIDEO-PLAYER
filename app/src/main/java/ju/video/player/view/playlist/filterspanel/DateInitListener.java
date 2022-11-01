@@ -39,18 +39,29 @@ public class DateInitListener implements DocumentListener {
      */
 
     public void setInitDateValue(DocumentEvent e) {
-        String date = text.getText();
-        // java.text.SimpleDateFormat sdf = new
-        // java.text.SimpleDateFormat("dd-MM-yyyy");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        try {
-            // convert String to LocalDate
-            LocalDate localDate = LocalDate.parse(date, formatter);
-            ListValidVideos.getInstance().setInitDate(localDate);
-        } catch (Exception ex) {
-            ListValidVideos.getInstance().setInitDate(null);
-        }
+        Runnable doAssist = new Runnable() {
+            @Override
+            public void run() {
+                String date = text.getText();
 
+                if (date == null || date.isEmpty() || date.length() < 10) {
+                    ListValidVideos.getInstance().setInitDate(null);
+                    return;
+                }
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+                try {
+                    // convert String to LocalDate
+                    LocalDate localDate = LocalDate.parse(date, formatter);
+                    ListValidVideos.getInstance().setInitDate(localDate);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Initial date is invalid");
+                    text.setText("");
+                    ListValidVideos.getInstance().setInitDate(null);
+                }
+            }
+        };
+        SwingUtilities.invokeLater(doAssist);
     }
 
     public void setText(JTextField text) {

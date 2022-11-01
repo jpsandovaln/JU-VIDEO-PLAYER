@@ -21,7 +21,7 @@ import ju.video.player.model.request.VerifyRequest;
 public class ConvertFile {
     private String path;
     private String format;
-
+    private  Request request;
     /**
      * It is responsible for calling the convert method and receiving the necessary data for the conversion.
      * @param path Is the address of the file to be converted
@@ -39,7 +39,15 @@ public class ConvertFile {
      */
     private void convert() throws IOException {
         VerifyRequest verifyRequest = new VerifyRequest(format);
-        Request request = verifyRequest.getRequest();
+        request = verifyRequest.getRequest();
         request.sendPost(path, format);
+    }
+
+    /**
+     * It is responsible for returning the path of the converted file.
+     * @return A string with the path address of the converted file is returned.
+     */
+    public String getOutputPath() {
+        return request.getOutputPath();
     }
 }

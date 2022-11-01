@@ -47,7 +47,7 @@ public class VideoConvertFrame extends JFrame {
     private static final int HEIGHT_PANEL = 150;
 
     private static final int POSX_BUTTON = 280;
-    private static final int POSY_BUTTON = 460;
+    private static final int POSY_BUTTON = 420;
     private static final int WIDTH_BUTTON = 260;
     private static final int HEIGHT_BUTTON = 50;
 
@@ -58,6 +58,7 @@ public class VideoConvertFrame extends JFrame {
     private JComboBox<String> comboType;
     private JComboBox<String> comboFormat;
     private PlayListFrame playListFrame;
+    private JLabel outputPath;
     JFrame frame;
 
     public VideoConvertFrame(String path, PlayListFrame playListFrame) {
@@ -77,12 +78,14 @@ public class VideoConvertFrame extends JFrame {
         frame.add(panelFormat());
         frame.add(panelType());
         frame.add(buttonConv());
+        frame.add(outLabel());
         frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();
         frame.setIconImage(icon);
+        frame.setResizable(false);
 
     }
     private Button returnButon() {
@@ -112,6 +115,31 @@ public class VideoConvertFrame extends JFrame {
         labelT.setVisible(true);
         return labelT;
     }
+
+
+    /**
+     * It is responsible for displaying the conversion path address label.
+     * @return  Returns a Jlabel configured to be added to the frame
+     */
+    private JLabel outLabel() {
+        outputPath = new JLabel();
+        outputPath.setBounds(10, 500, 900, 30);
+        outputPath.setText("");
+        outputPath.setFont(UIFont.COMMON_FONT);
+        outputPath.setForeground(UIColor.COMPONETS_COLOR);
+        outputPath.setVisible(true);
+        return outputPath;
+    }
+
+    /**
+     * It is responsible for setting a message in the Jlabel, and refreshing the frame.
+     * @param newLabel Receives a string to configure the Jlabel of the path
+     */
+    public void setLabel(String newLabel) {
+        outputPath.setText(newLabel);
+        this.revalidate();
+    }
+
 
     public JButton buttonConv() {
         Button button = new Button("Convert");

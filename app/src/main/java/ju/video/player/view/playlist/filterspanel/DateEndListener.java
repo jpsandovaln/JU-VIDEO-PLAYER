@@ -42,16 +42,27 @@ public class DateEndListener implements DocumentListener {
      * @param e
      */
     public void setEndDateValue(DocumentEvent e) {
-        String date = text.getText();
-        // java.text.SimpleDateFormat sdf = new
-        // java.text.SimpleDateFormat("dd-MM-yyyy");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        try {
-            // convert String to LocalDate
-            LocalDate localDate = LocalDate.parse(date, formatter);
-            ListValidVideos.getInstance().setEndDate(localDate);
-        } catch (Exception ex) {
-            ListValidVideos.getInstance().setEndDate(null);
-        }
+        Runnable doAssist = new Runnable() {
+            @Override
+            public void run() {
+                // init
+                String date = text.getText();
+                if (date == null || date.isEmpty() || date.length() < 10) {
+                    ListValidVideos.getInstance().setInitDate(null);
+                    return;
+                }
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                try {
+                    // convert String to LocalDate
+                    LocalDate localDate = LocalDate.parse(date, formatter);
+                    ListValidVideos.getInstance().setEndDate(localDate);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Final date is invalid");
+                    ListValidVideos.getInstance().setEndDate(null);
+                }
+                // end
+            }
+        };
+        SwingUtilities.invokeLater(doAssist);
     }
 }

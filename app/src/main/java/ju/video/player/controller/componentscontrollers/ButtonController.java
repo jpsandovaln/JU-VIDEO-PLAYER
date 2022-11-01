@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Jala University.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jala University
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -37,13 +37,13 @@ public class ButtonController implements ActionListener {
     String pathVideoFile;
     String simplePath;
     VideoListPanel playListPanel;
-    ArrayList<String> listvalidVideos;
+    ArrayList<String> listValidVideos;
     ArrayList<String> listPathVideofile;
     ArrayList<String> simplePathFilename;
 
     public ButtonController(VideoListPanel playListPanel) {
         this.playListPanel = playListPanel;
-        listvalidVideos = new ArrayList<>();
+        listValidVideos = new ArrayList<>();
         listPathVideofile = new ArrayList<>();
         simplePathFilename = new ArrayList<>();
     }
@@ -51,7 +51,7 @@ public class ButtonController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //closeFrame();
-        listvalidVideos.clear();
+        listValidVideos.clear();
         listPathVideofile.clear();
         simplePathFilename.clear();
         // if the user presses the save button show the save dialog
@@ -86,10 +86,6 @@ public class ButtonController implements ActionListener {
         ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
         ListValidVideos.getInstance().setPlayListPanel(playListPanel);
         ListValidVideos.getInstance().applyFilters();
-        //showFilesSelectedFolder();
-        ;
-        //playListPanel.setPlayerLabel();
-        //new MainFrame(playListPanel);
     }
 
     public void showFilesSelectedFolder() {
@@ -127,12 +123,8 @@ public class ButtonController implements ActionListener {
                 }
                 if (verifyMetadataVideoFile != null) {
                     for (Format formats : Format.values()) {
-                        if (verifyMetadataVideoFile.equals(formats.getFormat())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
-                            listvalidVideos.add(listPathVideofile.get(index));
-                        /*if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())) {
-                            //listvalidVideos.add(pathOfTheSelectedFolder + listPathVideofile.get(index));
-                            System.out.println(pathOfTheSelectedFolder + listPathVideofile.get(index).substring(2));
-                            ListValidVideos.getInstance().addMedia(new File(pathOfTheSelectedFolder, listPathVideofile.get(index).substring(2)));*/
+                        if (verifyMetadataVideoFile.equals(formats.getFormat())) {
+                            listValidVideos.add(listPathVideofile.get(index));
                         }
                     }
                 }
@@ -142,7 +134,6 @@ public class ButtonController implements ActionListener {
                 System.out.println("Error: " + ioException.getMessage());
             }
         }
-        System.out.println(listvalidVideos);
     }
 
     public static String getpathOfTheSelectedFolder() {
@@ -157,7 +148,7 @@ public class ButtonController implements ActionListener {
     }
 
     public boolean verifySize(BasicFileAttributes attributes, int definedSize) {
-        if(attributes.size() <= definedSize || definedSize == 0){
+        if (attributes.size() <= definedSize || definedSize == 0) {
             return true;
         }
         return false;
@@ -166,15 +157,15 @@ public class ButtonController implements ActionListener {
     public boolean verifyDate(BasicFileAttributes attributes, String datem) {
         String creation = (attributes.creationTime()).toString();
         System.out.println(datem);
-        if(creation.contains(datem) || datem.equals((java.time.LocalDate.now()).toString())){
+        if (creation.contains(datem) || datem.equals((java.time.LocalDate.now()).toString())) {
             return true;
         }
         return false;
     }
 
-    public Path getCompletePath(int index){
+    public Path getCompletePath(int index) {
         File completePath = new File(simplePathFilename.get(index));
-        Path path = Paths.get(pathOfTheSelectedFolder + "\\" +completePath);
+        Path path = Paths.get(pathOfTheSelectedFolder + "\\" + completePath);
         return path;
     }
 }
