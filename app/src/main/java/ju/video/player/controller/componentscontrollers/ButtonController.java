@@ -123,12 +123,8 @@ public class ButtonController implements ActionListener {
                 }
                 if (verifyMetadataVideoFile != null) {
                     for (Format formats : Format.values()) {
-                        if (verifyMetadataVideoFile.equals(formats.getFormat())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())*/) {
+                        if (verifyMetadataVideoFile.equals(formats.getFormat())) {
                             listValidVideos.add(listPathVideofile.get(index));
-                        /*if (verifyMetadataVideoFile.equals(formats.getFormato())/*&&verifySize(attributes,Integer.parseInt(fileSize.getText()))&&verifyDate(attributes,dateField.toString())) {
-                            //listvalidVideos.add(pathOfTheSelectedFolder + listPathVideofile.get(index));
-                            System.out.println(pathOfTheSelectedFolder + listPathVideofile.get(index).substring(2));
-                            ListValidVideos.getInstance().addMedia(new File(pathOfTheSelectedFolder, listPathVideofile.get(index).substring(2)));*/
                         }
                     }
                 }
@@ -138,7 +134,6 @@ public class ButtonController implements ActionListener {
                 System.out.println("Error: " + ioException.getMessage());
             }
         }
-        System.out.println(listValidVideos);
     }
 
     public static String getpathOfTheSelectedFolder() {
