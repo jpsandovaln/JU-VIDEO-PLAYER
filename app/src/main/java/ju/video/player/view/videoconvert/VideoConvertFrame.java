@@ -56,6 +56,7 @@ public class VideoConvertFrame extends JFrame {
     private JComboBox<String> comboType;
     private JComboBox<String> comboFormat;
     private PlayListFrame playListFrame;
+    private JLabel outputPath;
     JFrame frame;
 
     public VideoConvertFrame(String path, PlayListFrame playListFrame) {
@@ -74,6 +75,7 @@ public class VideoConvertFrame extends JFrame {
         frame.add(panelFormat());
         frame.add(panelType());
         frame.add(buttonConv());
+        frame.add(outLabel());
         frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         frame.setLayout(null);
         frame.setVisible(true);
@@ -109,6 +111,31 @@ public class VideoConvertFrame extends JFrame {
         labelT.setVisible(true);
         return labelT;
     }
+
+
+    /**
+     * It is responsible for displaying the conversion path address label.
+     * @return  Returns a Jlabel configured to be added to the frame
+     */
+    private JLabel outLabel() {
+        outputPath = new JLabel();
+        outputPath.setBounds(120, 520, 650, 30);
+        outputPath.setText("");
+        outputPath.setFont(new Font("Serif", Font.PLAIN, 15));
+        outputPath.setForeground(Color.WHITE);
+        outputPath.setVisible(true);
+        return outputPath;
+    }
+
+    /**
+     * It is responsible for setting a message in the Jlabel, and refreshing the frame.
+     * @param newLabel Receives a string to configure the Jlabel of the path
+     */
+    public void setLabel(String newLabel) {
+        outputPath.setText(newLabel);
+        this.revalidate();
+    }
+
 
     public JButton buttonConv() {
         Button button = new Button("Convert");
