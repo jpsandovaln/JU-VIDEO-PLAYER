@@ -9,6 +9,7 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -30,6 +31,7 @@ public class ExaminePanel extends JPanel {
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         setSize(0, 30);
+        setMaximumSize(new Dimension(700,30));
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
     }

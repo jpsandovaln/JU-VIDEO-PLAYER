@@ -19,7 +19,7 @@ public class PlayListScrollPanel extends JScrollPane {
     private void initialize() {
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        setBounds(50, 30, 300, 400);
+        setBounds(50, 30, 300, 430);
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setBorder(BorderFactory.createTitledBorder(null, "PlayList",

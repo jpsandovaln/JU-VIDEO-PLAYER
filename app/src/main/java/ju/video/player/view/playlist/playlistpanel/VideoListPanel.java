@@ -9,7 +9,7 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import javax.swing.Box;
-
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
 
@@ -19,7 +19,6 @@ import ju.video.player.view.playlist.PlayListFrame;
 
 import java.awt.Dimension;
 import java.awt.Component;
-import java.awt.GridLayout;
 
 public class VideoListPanel extends JPanel {
 
@@ -34,9 +33,10 @@ public class VideoListPanel extends JPanel {
     }
 
     private void initialize() {
-        setLayout(new GridLayout(0, 1));
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setAlignmentX(Component.LEFT_ALIGNMENT);
-        setSize(700, 600);
+        setSize(700, 430);
+        setBounds(50, 30, 300, 430);
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         setForeground(UIColor.COMPONETS_COLOR);
     }
