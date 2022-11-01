@@ -13,7 +13,6 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import ju.video.player.view.commons.TitleLabel;
@@ -26,8 +25,6 @@ public class PlayListPanel extends JPanel {
         setBounds(270, 0, 545, 550);
         VideoListPanel videoListPanel = new VideoListPanel(playListFrame);
         ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
-        Component box = Box.createRigidArea(new Dimension(563, 673));
-        ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         setAlignmentY(Component.TOP_ALIGNMENT);
         setOpaque(false);
         PlayListScrollPanel scrollPane = new PlayListScrollPanel(videoListPanel);
@@ -38,6 +35,5 @@ public class PlayListPanel extends JPanel {
         add(examinePanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(scrollPane);
-        //add(box);
     }
 }

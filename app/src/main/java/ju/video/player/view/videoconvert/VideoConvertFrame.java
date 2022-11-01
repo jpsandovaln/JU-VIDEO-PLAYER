@@ -12,9 +12,10 @@ import javax.swing.JPanel;
 import ju.video.player.controller.ConvertController;
 import ju.video.player.controller.FormatConvertController;
 import ju.video.player.controller.componentscontrollers.BackButtonController;
-import ju.video.player.controller.componentscontrollers.ReturnButtonController;
+
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
+import ju.video.player.view.commons.UIFont;
 import ju.video.player.view.commons.constants.Constant;
 import ju.video.player.view.commons.display.FrameUtility;
 import ju.video.player.view.playlist.PlayListFrame;
@@ -26,8 +27,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Color;
+import java.io.File;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 /**
@@ -70,7 +72,8 @@ public class VideoConvertFrame extends JFrame {
         frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
         frame.add(returnButon());
         frame.add(IcoLabel());
-        frame.add(TxtLabel());
+        frame.add(TxtLabel("Input : " + new File(path).getName(), 240, 150));
+        frame.add(TxtLabel("Select an Output Format :", 240, 200));
         frame.add(panelFormat());
         frame.add(panelType());
         frame.add(buttonConv());
@@ -85,7 +88,7 @@ public class VideoConvertFrame extends JFrame {
     private Button returnButon() {
         Button returnButton = new Button("");
         returnButton.setIcon("back.png", 30, 30);
-        returnButton.setBounds(10, 10, 30, 30);
+        returnButton.setBounds(10, 10, 45, 35);
         returnButton.addActionListener(new BackButtonController(frame, playListFrame));
         returnButton.setVisible(true);
         return returnButton;
@@ -100,19 +103,18 @@ public class VideoConvertFrame extends JFrame {
         return label;
     }
 
-    private JLabel TxtLabel() {
+    private JLabel TxtLabel(String text, int posX, int posY) {
         JLabel labelT = new JLabel();
-        labelT.setBounds(230, 150, 450, 150);
-        labelT.setText("Select an Output Format");
-        labelT.setFont(new Font("Serif", Font.PLAIN, 40));
-        labelT.setForeground(Color.WHITE);
+        labelT.setBounds(posX, posY, 450, 200);
+        labelT.setText(text);
+        labelT.setFont(UIFont.COMMON_BIGGEST);
+        labelT.setForeground(UIColor.COMPONETS_COLOR);
         labelT.setVisible(true);
         return labelT;
     }
 
     public JButton buttonConv() {
         Button button = new Button("Convert");
-
         button.setBounds(POSX_BUTTON, POSY_BUTTON, WIDTH_BUTTON, HEIGHT_BUTTON);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setFont(new Font("Serif", Font.PLAIN, 25));
@@ -122,14 +124,15 @@ public class VideoConvertFrame extends JFrame {
     }
 
     public JPanel panelType() {
-
         comboFormat = new JComboBox();
         fillFormat((String) comboType.getSelectedItem());
-        comboFormat.setFont(new Font("Serif", Font.PLAIN, 30));
+        comboFormat.setFont(UIFont.COMMON_BIGGEST);
         comboFormat.setEditable(false);
-
+        comboFormat.setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
+        comboFormat.setForeground(UIColor.COMPONETS_COLOR);
+        comboFormat.setPreferredSize(new Dimension(150, 40));
         JPanel panelCombo = new JPanel();
-        panelCombo.setBounds(380, 290, WIDTH_PANEL, HEIGHT_PANEL);
+        panelCombo.setBounds(380, 330, WIDTH_PANEL, HEIGHT_PANEL);
         panelCombo.add(comboFormat);
         panelCombo.setLayout(new FlowLayout());
         panelCombo.setOpaque(false);
@@ -138,15 +141,17 @@ public class VideoConvertFrame extends JFrame {
     }
 
     public JPanel panelFormat() {
-
         comboType = new JComboBox();
         fillType();
-        comboType.addActionListener(formatController);
-        comboType.setFont(new Font("Serif", Font.PLAIN, 30));
+        comboType.setFont(UIFont.COMMON_BIGGEST);
         comboType.setEditable(false);
+        comboType.setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
+        comboType.setForeground(UIColor.COMPONETS_COLOR);
+        comboType.addActionListener(formatController);
+        comboType.setPreferredSize(new Dimension(150, 40));
 
         JPanel panelCombo = new JPanel();
-        panelCombo.setBounds(190, 290, WIDTH_PANEL, HEIGHT_PANEL);
+        panelCombo.setBounds(190, 330, WIDTH_PANEL, HEIGHT_PANEL);
         panelCombo.add(comboType);
         panelCombo.setLayout(new FlowLayout());
         panelCombo.setOpaque(false);
@@ -169,6 +174,8 @@ public class VideoConvertFrame extends JFrame {
             comboFormat.addItem("flv");
             comboFormat.addItem("mkv");
             comboFormat.addItem("avi");
+            comboFormat.addItem("mov");
+            comboFormat.addItem("mp4");
         } else if (select.equals("Audio")) {
             comboFormat.addItem("mp3");
             comboFormat.addItem("aac");
