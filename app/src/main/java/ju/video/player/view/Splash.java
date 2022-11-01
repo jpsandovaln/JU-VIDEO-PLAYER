@@ -12,6 +12,8 @@ import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.constants.Constant;
 import ju.video.player.view.commons.display.FrameUtility;
 import ju.video.player.view.playlist.PlayListFrame;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -49,11 +51,16 @@ public class Splash extends JFrame {
     public void initFrame() {
         frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/splash5r1.gif"));
-        ImageIcon iconLog = new ImageIcon(this.getClass().getResource("/att2.png"));
         progress();
+        JLabel logoLabel = new JLabel("");
+        ImageIcon logoIcon = new ImageIcon(this.getClass().getResource("/ATTPlayer.png"));
+        Icon convertIcon = new ImageIcon(logoIcon.getImage().getScaledInstance(500, 100,
+                    Image.SCALE_DEFAULT));
+        logoLabel.setIcon(convertIcon);
+        logoLabel.setBounds(170, 370, 500, 100);
 
+        frame.add(logoLabel);
         frame.add(image(icon, 220, 5, 380, 380));
-        frame.add(image(iconLog, 100, 225, 600, 400));
         frame.add(progressBar);
         frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         frame.setLayout(null);
