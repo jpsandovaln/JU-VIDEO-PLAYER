@@ -18,6 +18,13 @@ import ju.video.player.controller.componentscontrollers.ButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.TextField;
 
+/**
+ * It is the Panel search the directory
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class ExaminePanel extends JPanel {
 
     public ExaminePanel(VideoListPanel videoListPanel) {
@@ -28,6 +35,10 @@ public class ExaminePanel extends JPanel {
         examineButton.addActionListener(new ButtonController(videoListPanel));
         add(examineButton);
     }
+
+    /**
+     * Initialize the panel
+     */
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         setSize(0, 30);

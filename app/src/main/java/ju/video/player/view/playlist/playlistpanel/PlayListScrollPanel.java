@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2022 Jala University.
+ *
+ * This software is the confidential and proprieraty information of Jalasoft
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * Licence agreement you entered into with Jalasoft
+ */
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Component;
@@ -8,6 +16,13 @@ import javax.swing.border.TitledBorder;
 
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.UIFont;
+
+/**
+ * It is the Scroll panel fr add the elements of the playlist
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 
 public class PlayListScrollPanel extends JScrollPane {
 

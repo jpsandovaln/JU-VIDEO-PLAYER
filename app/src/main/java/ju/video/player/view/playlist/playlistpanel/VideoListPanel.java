@@ -20,6 +20,13 @@ import ju.video.player.view.playlist.PlayListFrame;
 import java.awt.Dimension;
 import java.awt.Component;
 
+/**
+ * It is the Panel where the elements of the play list are initialize
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class VideoListPanel extends JPanel {
 
     private PlayListFrame playListFrame;
@@ -32,6 +39,9 @@ public class VideoListPanel extends JPanel {
         add(box);
     }
 
+    /**
+     * Initialize the panel
+     */
     private void initialize() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -41,6 +51,9 @@ public class VideoListPanel extends JPanel {
         setForeground(UIColor.COMPONETS_COLOR);
     }
 
+    /**
+     * Update the panel according to the current ListValidVideos
+     */
     public void setPlayerLabel() {
         removeAll();
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {

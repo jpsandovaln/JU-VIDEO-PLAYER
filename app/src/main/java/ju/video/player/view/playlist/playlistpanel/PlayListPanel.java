@@ -18,6 +18,13 @@ import javax.swing.JPanel;
 import ju.video.player.view.commons.TitleLabel;
 import ju.video.player.view.playlist.PlayListFrame;
 
+/**
+ * It is the Panel where the play list is showed
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class PlayListPanel extends JPanel {
     
     public PlayListPanel(PlayListFrame playListFrame) {

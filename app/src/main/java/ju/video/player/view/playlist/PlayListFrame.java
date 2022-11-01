@@ -21,6 +21,13 @@ import java.awt.Image;
 import java.awt.Component;
 import java.text.ParseException;
 
+/**
+ * It is the Frame where initialize all components of the PlayList UI
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class PlayListFrame {
     private JFrame frame;
 
@@ -42,10 +49,16 @@ public class PlayListFrame {
         frame.setResizable(false);
     }
 
+    /**
+     * @param isVisible new value for isVisible feature
+     */
     public void setVisible(Boolean isVisible) {
         frame.setVisible(isVisible);
     }
 
+    /**
+     * @return current frame
+     */
     public JFrame getFrame() {
         return frame;
     }
