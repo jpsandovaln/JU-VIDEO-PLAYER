@@ -8,12 +8,10 @@
  */
 package ju.video.player.view.playlist.playlistpanel;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 
 import javax.swing.JPanel;
 import javax.swing.JComponent;
-import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.UIColor;
@@ -21,14 +19,9 @@ import ju.video.player.view.playlist.PlayListFrame;
 
 import java.awt.Dimension;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridLayout;
 
 public class VideoListPanel extends JPanel {
-
-    private static final String TITLE = "Play List";
-    private static final String NAME = "Arial";
-    private static final int SIZE = 12;
 
     private PlayListFrame playListFrame;
 
@@ -44,10 +37,8 @@ public class VideoListPanel extends JPanel {
         setLayout(new GridLayout(0, 1));
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setSize(700, 600);
-        Font font = new Font(NAME, Font.BOLD, SIZE);
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         setForeground(UIColor.COMPONETS_COLOR);
-        setBorder(BorderFactory.createTitledBorder(null, TITLE, TitledBorder.LEFT, 0, font, UIColor.COMPONETS_COLOR));
     }
 
     public void setPlayerLabel() {

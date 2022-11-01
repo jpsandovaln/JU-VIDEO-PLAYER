@@ -15,8 +15,6 @@ import java.awt.Image;
 
 import ju.video.player.view.commons.constants.Constant;
 import ju.video.player.view.playlist.PlayListFrame;
-import ju.video.player.view.videoplayer.ControlButtonsGroup;
-import ju.video.player.view.videoplayer.NameVideoText;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.fullscreen.adaptive.AdaptiveFullScreenStrategy;
 

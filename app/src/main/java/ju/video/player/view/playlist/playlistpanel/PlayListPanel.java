@@ -30,14 +30,14 @@ public class PlayListPanel extends JPanel {
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
         setAlignmentY(Component.TOP_ALIGNMENT);
         setOpaque(false);
+        PlayListScrollPanel scrollPane = new PlayListScrollPanel(videoListPanel);
 
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(new TitleLabel("My PlayList"));
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(examinePanel);
         add(Box.createRigidArea(new Dimension(0, 10)));
-        add(videoListPanel);
-        
-        add(box);
+        add(scrollPane);
+        //add(box);
     }
 }
