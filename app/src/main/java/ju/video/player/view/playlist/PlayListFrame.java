@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.constants.Constant;
-import ju.video.player.view.materialDesing.display.FrameUtility;
+import ju.video.player.view.commons.constants.Constant;
+import ju.video.player.view.commons.display.FrameUtility;
 import ju.video.player.view.playlist.filterspanel.FiltersPanel;
 import ju.video.player.view.playlist.playlistpanel.PlayListPanel;
 
@@ -21,18 +21,16 @@ import java.awt.Image;
 import java.awt.Component;
 import java.text.ParseException;
 
-public class PlayListFrame extends JFrame {
-
-    JFrame frame;
+public class PlayListFrame {
+    private JFrame frame;
 
     public PlayListFrame() throws ParseException {
-        frame = new JFrame();
         frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
         frame.setLayout(null);
         FiltersPanel filtersPanel = new FiltersPanel();
         filtersPanel.setAlignmentY(Component.TOP_ALIGNMENT);
         frame.add(filtersPanel);
-        PlayListPanel playListPanel = new PlayListPanel();
+        PlayListPanel playListPanel = new PlayListPanel(this);
         playListPanel.setAlignmentY(Component.TOP_ALIGNMENT);
         frame.add(playListPanel);
 
@@ -44,4 +42,12 @@ public class PlayListFrame extends JFrame {
 
     }
 
+    public void setVisible(Boolean isVisible) {
+        frame.setVisible(isVisible);
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+    
 }

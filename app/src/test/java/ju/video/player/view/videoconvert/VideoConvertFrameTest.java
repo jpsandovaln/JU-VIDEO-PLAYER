@@ -24,7 +24,7 @@ public class VideoConvertFrameTest {
 
     @Test
     public void shouldSetVideoConvertFrame() {
-        VideoConvertFrame videoConvertFrame = new VideoConvertFrame(path);
+        VideoConvertFrame videoConvertFrame = new VideoConvertFrame(path, null);
         assertEquals(0, videoConvertFrame.getX());
         assertEquals(0, videoConvertFrame.getY());
         assertEquals(1, videoConvertFrame.getComponentCount());

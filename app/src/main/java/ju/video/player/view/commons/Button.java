@@ -12,9 +12,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import java.awt.Image;
+import ju.video.player.view.commons.constants.Constant;
 
-import ju.video.player.view.materialDesing.constants.Constant;
+import java.awt.Image;
 
 
 public class Button extends JButton {

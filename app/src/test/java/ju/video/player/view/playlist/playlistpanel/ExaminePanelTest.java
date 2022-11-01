@@ -22,7 +22,7 @@ import static org.junit.Assert.assertFalse;
 public class ExaminePanelTest {
     @Test
     public void shouldSetExaminePanel() {
-        VideoListPanel videoListPanel = new VideoListPanel();
+        VideoListPanel videoListPanel = new VideoListPanel(null);
         ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
         assertEquals(2, examinePanel.getComponentCount());
         assertFalse(examinePanel.isOpaque());

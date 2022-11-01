@@ -23,7 +23,7 @@ public class VideoListPanelTest {
 
     @Test
     public void shouldInitVideoListPanel() {
-        VideoListPanel videoListPanel = new VideoListPanel();
+        VideoListPanel videoListPanel = new VideoListPanel(null);
         assertEquals(1, videoListPanel.getComponentCount());
     }
 

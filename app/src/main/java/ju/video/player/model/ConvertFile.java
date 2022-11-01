@@ -9,6 +9,9 @@
 package ju.video.player.model;
 
 import java.io.IOException;
+
+import ju.video.player.model.request.Request;
+import ju.video.player.model.request.VerifyRequest;
 /**
  * It is responsible for managing the request to the converter service depending on the type of file to be converted.
  *

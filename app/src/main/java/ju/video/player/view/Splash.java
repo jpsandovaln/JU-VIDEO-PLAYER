@@ -9,13 +9,15 @@
 package ju.video.player.view;
 
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.display.FrameUtility;
+import ju.video.player.view.commons.constants.Constant;
+import ju.video.player.view.commons.display.FrameUtility;
 import ju.video.player.view.playlist.PlayListFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import java.awt.Color;
+import java.awt.Image;
 
 /**
  * This class is responsible for running the loading screen.
@@ -57,6 +59,8 @@ public class Splash extends JFrame {
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        Image iconApp = new ImageIcon(Constant.RESOURCES_IMAGES + "\\icon.png").getImage();
+        frame.setIconImage(iconApp);
     }
 
     private JLabel image(ImageIcon icono, int posX, int posY, int Width, int Height) {

@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 public class PlayListPanelTest {
     @Test
     public void shouldSetPlayListPanel() {
-        PlayListPanel playListPanel = new PlayListPanel();
+        PlayListPanel playListPanel = new PlayListPanel(null);
         assertEquals(4, playListPanel.getComponentCount());
         assertEquals(585, playListPanel.getWidth());
         assertEquals(600, playListPanel.getHeight());

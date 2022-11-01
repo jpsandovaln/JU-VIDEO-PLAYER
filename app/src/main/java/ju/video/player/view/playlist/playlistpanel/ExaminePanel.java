@@ -13,7 +13,7 @@ import java.awt.Component;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import ju.video.player.controller.ButtonController;
+import ju.video.player.controller.componentscontrollers.ButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.TextField;
 

@@ -16,10 +16,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ju.video.player.controller.PlayConvertButtonController;
-import ju.video.player.controller.PlayMediaButtonController;
+import ju.video.player.controller.componentscontrollers.PlayConvertButtonController;
+import ju.video.player.controller.componentscontrollers.PlayMediaButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
+import ju.video.player.view.playlist.PlayListFrame;
 
 /**
  * It is the Panel for each File that is showed in the play list
@@ -30,17 +31,16 @@ import ju.video.player.view.commons.UIColor;
 
 public class MediaPanel extends JPanel{
 
-    public MediaPanel(String mediaName, int index) {
+    public MediaPanel(String mediaName, int index, PlayListFrame playListFrame) {
         initPanel();
         JLabel name = new JLabel(mediaName);
         name.setForeground(UIColor.COMPONETS_COLOR);
         Button playButton = new Button("");
 		playButton.setIcon("play.png", 20, 20);
-        playButton.addActionListener(new PlayMediaButtonController(index));
-
+        playButton.addActionListener(new PlayMediaButtonController(playListFrame, index));
         Button convertButton = new Button("");
         convertButton.setIcon("/convert.png", 20, 20);
-        convertButton.addActionListener(new PlayConvertButtonController(mediaName));
+        convertButton.addActionListener(new PlayConvertButtonController(mediaName, playListFrame));
 		
         add(name);
         add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));

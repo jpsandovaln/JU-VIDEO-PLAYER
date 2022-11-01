@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
 
-import ju.video.player.controller.DatePickerController;
+import ju.video.player.controller.componentscontrollers.DatePickerController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.UIFont;

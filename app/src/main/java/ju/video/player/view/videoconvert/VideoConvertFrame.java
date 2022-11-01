@@ -11,9 +11,13 @@ package ju.video.player.view.videoconvert;
 import javax.swing.JPanel;
 import ju.video.player.controller.ConvertController;
 import ju.video.player.controller.FormatConvertController;
+import ju.video.player.controller.componentscontrollers.BackButtonController;
+import ju.video.player.controller.componentscontrollers.ReturnButtonController;
+import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
-import ju.video.player.view.materialDesing.components.utils.RoundedBorder;
-import ju.video.player.view.materialDesing.display.FrameUtility;
+import ju.video.player.view.commons.constants.Constant;
+import ju.video.player.view.commons.display.FrameUtility;
+import ju.video.player.view.playlist.PlayListFrame;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,6 +25,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -43,7 +48,6 @@ public class VideoConvertFrame extends JFrame {
     private static final int POSY_BUTTON = 460;
     private static final int WIDTH_BUTTON = 260;
     private static final int HEIGHT_BUTTON = 50;
-    private static final int RADIUS_BUTTON = 20;
 
     private ConvertController controller;
     private FormatConvertController formatController;
@@ -51,17 +55,20 @@ public class VideoConvertFrame extends JFrame {
 
     private JComboBox<String> comboType;
     private JComboBox<String> comboFormat;
+    private PlayListFrame playListFrame;
     JFrame frame;
 
-    public VideoConvertFrame(String path) {
+    public VideoConvertFrame(String path, PlayListFrame playListFrame) {
         formatController = new FormatConvertController(this);
-        controller = new ConvertController(this);
+        controller = new ConvertController(this, playListFrame);
         this.path = path;
+        this.playListFrame = playListFrame;
         initFrame();
     }
 
     public void initFrame() {
         frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
+        frame.add(returnButon());
         frame.add(IcoLabel());
         frame.add(TxtLabel());
         frame.add(panelFormat());
@@ -71,7 +78,17 @@ public class VideoConvertFrame extends JFrame {
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();
+        frame.setIconImage(icon);
 
+    }
+    private Button returnButon() {
+        Button returnButton = new Button("");
+        returnButton.setIcon("back.png", 30, 30);
+        returnButton.setBounds(10, 10, 30, 30);
+        returnButton.addActionListener(new BackButtonController(frame, playListFrame));
+        returnButton.setVisible(true);
+        return returnButton;
     }
 
     private JLabel IcoLabel() {
@@ -94,15 +111,11 @@ public class VideoConvertFrame extends JFrame {
     }
 
     public JButton buttonConv() {
-        JButton button = new JButton();
-        RoundedBorder border = new RoundedBorder(RADIUS_BUTTON);
+        Button button = new Button("Convert");
 
-        button.setBorder(border);
         button.setBounds(POSX_BUTTON, POSY_BUTTON, WIDTH_BUTTON, HEIGHT_BUTTON);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setText("Convert");
         button.setFont(new Font("Serif", Font.PLAIN, 25));
-        button.setBackground(UIColor.PRIMARY_COLOR);
         button.addActionListener(controller);
         button.setVisible(true);
         return button;

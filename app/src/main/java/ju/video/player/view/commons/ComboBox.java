@@ -11,9 +11,7 @@ package ju.video.player.view.commons;
 import ju.video.player.model.ListValidVideos;
 
 import javax.swing.JComboBox;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -39,6 +37,9 @@ public class ComboBox extends JComboBox<String> implements ItemListener {
                 ListValidVideos.getInstance().setFormatSelected(itemSelected);
             }
         });
+        setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
+        setForeground(UIColor.COMPONETS_COLOR);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 
     /**

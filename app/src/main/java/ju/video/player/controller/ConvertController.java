@@ -8,6 +8,7 @@
  */
 package ju.video.player.controller;
 
+import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoconvert.VideoConvertFrame;
 import ju.video.player.model.ConvertFile;
 
@@ -24,16 +25,19 @@ import java.io.IOException;
 
 public class ConvertController implements ActionListener {
     private VideoConvertFrame convertFrame;
+    private PlayListFrame playListFrame;
 
-    public ConvertController(VideoConvertFrame convertVideo) {
+    public ConvertController(VideoConvertFrame convertVideo, PlayListFrame playListFrame) {
         this.convertFrame = convertVideo;
+        this.playListFrame = playListFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        playListFrame.setVisible(true);
+        convertFrame.getFrame().dispose();
         try {
-            new ConvertFile(convertFrame.getPath(),convertFrame.getFormat().getSelectedItem().toString());
+            new ConvertFile(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
         } catch (IOException e1) {
             e1.printStackTrace();
         }

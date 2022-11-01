@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.UIColor;
+import ju.video.player.view.playlist.PlayListFrame;
 
 import java.awt.Dimension;
 import java.awt.Component;
@@ -29,7 +30,10 @@ public class VideoListPanel extends JPanel {
     private static final String NAME = "Arial";
     private static final int SIZE = 12;
 
-    public VideoListPanel() {
+    private PlayListFrame playListFrame;
+
+    public VideoListPanel(PlayListFrame playListFrame) {
+        this.playListFrame = playListFrame;
         initialize();
         add(Box.createRigidArea(new Dimension(700, 470))); 
     }
@@ -45,7 +49,7 @@ public class VideoListPanel extends JPanel {
     public void setPlayerLabel() {
         removeAll();
         for (int index = 0; index < ListValidVideos.getInstance().getVideoList().size(); index++) {
-            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index), index);
+            MediaPanel mediaPanel = new MediaPanel(ListValidVideos.getInstance().getVideoList().get(index), index, playListFrame);
             mediaPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
             add(mediaPanel);
         }
