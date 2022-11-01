@@ -26,18 +26,21 @@ import java.io.IOException;
 public class ConvertController implements ActionListener {
     private VideoConvertFrame convertFrame;
     private PlayListFrame playListFrame;
-
+    private ConvertFile convertFile;
     public ConvertController(VideoConvertFrame convertVideo, PlayListFrame playListFrame) {
         this.convertFrame = convertVideo;
         this.playListFrame = playListFrame;
     }
 
+    /**
+     * It is responsible for performing the conversion when receiving an event, and configuring a Videoconvertframe label.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        playListFrame.setVisible(true);
-        convertFrame.getFrame().dispose();
         try {
-            new ConvertFile(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
+            convertFile = new ConvertFile(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
+            convertFrame.setLabel(convertFile.getOutputPath());
         } catch (IOException e1) {
             e1.printStackTrace();
         }
