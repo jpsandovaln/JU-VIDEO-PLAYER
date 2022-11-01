@@ -31,11 +31,13 @@ public class AudioRequest implements Request {
     private static final String HTTP_GET = "http://localhost:5000/downloadFile/";
     private String path;
     private String newFormat;
-
+    private String outputPath;
     /**
-     * The constructor is responsible for creating the Downloads directory in the project.
+     * The constructor is responsible for creating the Downloads directory in the project and
+     * initialize outputPath variable.
      */
     public AudioRequest () {
+        outputPath = "Successful conversion: ";
         createDirectory();
     }
 
@@ -70,6 +72,15 @@ public class AudioRequest implements Request {
     }
 
     /**
+     * It is responsible for returning the path of the converted file.
+     * @return A string with the path address of the converted file is returned.
+     */
+    @Override
+    public String getOutputPath() {
+        return outputPath;
+    }
+
+    /**
      * Is responsible for performing a request to obtain the converted file.
      * @throws IOException
      */
@@ -86,6 +97,7 @@ public class AudioRequest implements Request {
             byte[] bytes = new byte[2048];
             int length;
             OutputStream out = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
+            outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
             while ((length = in.read(bytes)) != -1) {
                 out.write(bytes, 0, length);
             }
