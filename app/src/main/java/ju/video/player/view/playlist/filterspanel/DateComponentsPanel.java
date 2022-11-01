@@ -32,7 +32,6 @@ import ju.video.player.view.commons.UIFont;
 
 public class DateComponentsPanel extends JPanel {
     final JTextField text = new JTextField(20);
-
     public DateComponentsPanel(String title, DateInitListener dateInitListener) throws ParseException {
         dateInitListener.setText(text);
         initDateComponentsPanel(title, dateInitListener);
