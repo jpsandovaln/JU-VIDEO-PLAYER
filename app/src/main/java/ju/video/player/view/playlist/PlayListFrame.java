@@ -39,7 +39,7 @@ public class PlayListFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
-
+        frame.setResizable(false);
     }
 
     public void setVisible(Boolean isVisible) {

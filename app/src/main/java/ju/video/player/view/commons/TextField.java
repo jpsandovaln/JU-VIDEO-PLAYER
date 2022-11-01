@@ -18,6 +18,7 @@ import java.awt.Font;
 public class TextField extends JFormattedTextField  {
     private static final String NAME = "Arial";
     private static final int SIZE = 12;
+    private Font font = new Font(NAME, Font.BOLD, SIZE); 
 
     public TextField(String name) {
         initPanel(name);
@@ -28,11 +29,14 @@ public class TextField extends JFormattedTextField  {
     }
 
     public void initPanel(String name) {
-        Font font = new Font(NAME, Font.BOLD, SIZE); 
         setForeground(UIColor.COMPONETS_COLOR);
         setSize(100, 14);
         setFont(font);
         setBorder(BorderFactory.createTitledBorder(null, name, TitledBorder.LEFT, 0, font, UIColor.COMPONETS_COLOR));
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
+    }
+
+    public void setTitle(String title) {
+        setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.LEFT, 0, font, UIColor.COMPONETS_COLOR));
     }
 }
