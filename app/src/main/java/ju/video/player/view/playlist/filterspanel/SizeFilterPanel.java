@@ -24,7 +24,7 @@ public class SizeFilterPanel extends JPanel {
 
     public SizeFilterPanel() {
         initPanel();
-        add(Box.createRigidArea(new Dimension(10, 0)));
+        add(Box.createRigidArea(new Dimension(20, 0)));
         TextField minSizeField = new TextField("Min Size (Mb)");
         minSizeField.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         minSizeField.addKeyListener(new KeyAdapter() {
@@ -135,7 +135,7 @@ public class SizeFilterPanel extends JPanel {
 
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        setBounds(0, 0, 200, 500);
+        setSize(200, 500);
         setOpaque(false);
     }
 

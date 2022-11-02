@@ -21,4 +21,6 @@ public class UIFont {
     public static final Font TITLE_FONT = new Font("Impact", Font.BOLD, 25);
     public static final Font SUBTITLE_FONT = new Font("Arial", Font.BOLD, 18);
     public static final Font COMMON_FONT = new Font("Arial", Font.BOLD, 13); 
+    public static final Font COMMON_BIGGER = new Font("Arial", Font.BOLD, 18);
+    public static final Font COMMON_BIGGEST = new Font("Arial", Font.BOLD, 25);
 }

@@ -9,6 +9,7 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -16,6 +17,13 @@ import javax.swing.JPanel;
 import ju.video.player.controller.componentscontrollers.ButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.TextField;
+
+/**
+ * It is the Panel search the directory
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 
 public class ExaminePanel extends JPanel {
 
@@ -27,10 +35,15 @@ public class ExaminePanel extends JPanel {
         examineButton.addActionListener(new ButtonController(videoListPanel));
         add(examineButton);
     }
+
+    /**
+     * Initialize the panel
+     */
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        //setBounds(0, 0, 0, 600);
+        setSize(0, 30);
+        setMaximumSize(new Dimension(700,30));
         setOpaque(false);
-        setAlignmentY(Component.TOP_ALIGNMENT);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 }

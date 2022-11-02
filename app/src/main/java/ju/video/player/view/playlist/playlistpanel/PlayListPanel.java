@@ -13,27 +13,34 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import ju.video.player.view.commons.TitleLabel;
 import ju.video.player.view.playlist.PlayListFrame;
 
+/**
+ * It is the Panel where the play list is showed
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
+
 public class PlayListPanel extends JPanel {
     
     public PlayListPanel(PlayListFrame playListFrame) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setBounds(250, 0, 585, 600);
-        add(new TitleLabel("My PlayList"));
+        setBounds(270, 0, 545, 550);
         VideoListPanel videoListPanel = new VideoListPanel(playListFrame);
         ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
-        add(examinePanel);
-        add(videoListPanel);
-        Component box = Box.createRigidArea(new Dimension(563, 673));
-        ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
-        add(box);
-        //setBackground(new Color (40, 49, 73));
         setAlignmentY(Component.TOP_ALIGNMENT);
         setOpaque(false);
+        PlayListScrollPanel scrollPane = new PlayListScrollPanel(videoListPanel);
+
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(new TitleLabel("My PlayList"));
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(examinePanel);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(scrollPane);
     }
 }

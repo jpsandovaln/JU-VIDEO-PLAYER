@@ -9,6 +9,7 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Dimension;
+import java.awt.Component;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -43,7 +44,7 @@ public class MediaPanel extends JPanel{
         convertButton.addActionListener(new PlayConvertButtonController(mediaName, playListFrame));
 		
         add(name);
-        add(Box.createRigidArea(new Dimension(400 - name.getText().length()*7, 0)));
+        add(Box.createHorizontalGlue());
         add(playButton);
         add(Box.createRigidArea(new Dimension(5, 0)));
         add(convertButton);
@@ -54,8 +55,10 @@ public class MediaPanel extends JPanel{
      */
     public void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        setBorder(BorderFactory.createLineBorder(UIColor.COMPONETS_COLOR));
+        setSize(700,600);
+        setBorder(BorderFactory.createLineBorder(UIColor.SECONDARY_BACKGROUNG_COLOR));
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 
 }

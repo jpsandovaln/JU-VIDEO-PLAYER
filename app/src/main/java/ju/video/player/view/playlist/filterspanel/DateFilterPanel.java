@@ -28,7 +28,7 @@ public class DateFilterPanel extends JPanel {
 
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setBounds(0, 0, 200, 500);
+        setSize(180, 500);
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
     }
