@@ -9,6 +9,7 @@
 
 package ju.video.player.commons;
 
+import ju.video.player.commons.exceptions.FilterFilesException;
 import ju.video.player.model.Format;
 import ju.video.player.utils.FileUtil;
 
@@ -21,7 +22,6 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class FilterFiles {
 
     private String filesFolder;
@@ -32,7 +32,8 @@ public class FilterFiles {
 
     private String formatSelected;
 
-    public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
+    public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate,
+            String formatSelected) {
         this.filesFolder = filesFolder;
         this.initSize = initSize;
         this.endSize = endSize;
@@ -45,9 +46,10 @@ public class FilterFiles {
      * Return a list of files filtered according the criteria entered by the user.
      *
      * @return
+     * @throws FilterFilesException
      * @throws IOException
      */
-    public List<String> getListFiles() throws IOException {
+    public List<String> getListFiles() throws FilterFilesException {
         File paths = new File(filesFolder);
         String[] nameFiles = paths.list();
         List<String> listFilesName = new ArrayList<>();
@@ -58,7 +60,12 @@ public class FilterFiles {
                     File file2 = new File(file, fileName2);
                 }
             } else {
-                BasicFileAttributes attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+                BasicFileAttributes attributes = null;
+                try {
+                    attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+                } catch (Exception e) {
+                    throw new FilterFilesException("It's not possible to read one of the files", e);
+                }
                 if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
                         && verifyDate(attributes, initDate, endDate)
                         && verifyFormatSelected(file, formatSelected)) {
@@ -67,23 +74,30 @@ public class FilterFiles {
             }
         }
         return listFilesName;
+
     }
 
     /**
      * Verify the file belongs to the format selected in the Combobox.
      *
-     * @param file, is to verify if has the format required by the user.
+     * @param file,           is to verify if has the format required by the user.
      * @param formatSelected, it is the format requerired by the user.
      * @return True or False if the file accomplish with the format.
+     * @throws FilterFilesException
      * @throws IOException
      */
-    public boolean verifyFormatSelected(File file, String formatSelected) throws IOException {
-        if (formatSelected == null || formatSelected.isEmpty()) {
-            return true;
+    public boolean verifyFormatSelected(File file, String formatSelected) throws FilterFilesException {
+        try {
+            if (formatSelected == null || formatSelected.isEmpty()) {
+                return true;
+            }
+            String fileContentType = Files.probeContentType(file.toPath());
+            Format format = Format.fromString(fileContentType);
+            return formatSelected.equals(format.getFormat());
+        } catch (Exception e) {
+            throw new FilterFilesException("The format of the file is not valid", e);
         }
-        String fileContentType = Files.probeContentType(file.toPath());
-        Format format = Format.fromString(fileContentType);
-        return formatSelected.equals(format.getFormat());
+
     }
 
     /**
@@ -91,16 +105,23 @@ public class FilterFiles {
      *
      * @param file
      * @return
+     * @throws FilterFilesException
      * @throws IOException
      */
-    public boolean verifyIsMediaFile(File file) throws IOException {
-        String fileContentType = Files.probeContentType(file.toPath());
-        Format formats = Format.fromString(fileContentType);
-        return formats != null;
+    public boolean verifyIsMediaFile(File file) throws FilterFilesException {
+        try {
+            String fileContentType = Files.probeContentType(file.toPath());
+            Format formats = Format.fromString(fileContentType);
+            return formats != null;
+        } catch (Exception e) {
+            throw new FilterFilesException("The file is not a media file", e);
+        }
+
     }
 
     /**
-     * Verify if the file accomplish with the criteria of minimun size and maximum size.
+     * Verify if the file accomplish with the criteria of minimun size and maximum
+     * size.
      *
      * @param attributes
      * @param initSize
@@ -128,6 +149,7 @@ public class FilterFiles {
             return true;
         }
         LocalDate creationDate = attributes.lastModifiedTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return (creationDate.isAfter(initDate) || creationDate.isEqual(initDate)) && (creationDate.isBefore(endDate) || creationDate.isEqual(endDate));
+        return (creationDate.isAfter(initDate) || creationDate.isEqual(initDate))
+                && (creationDate.isBefore(endDate) || creationDate.isEqual(endDate));
     }
 }

@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
+import ju.video.player.commons.exceptions.FilterFilesException;
+import ju.video.player.commons.logger.At18Logger;
 import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
@@ -24,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * It is a enum of all the accepted formats with its respective mime type
@@ -33,6 +36,7 @@ import java.util.ArrayList;
  */
 
 public class ButtonController implements ActionListener {
+    private Logger log = new At18Logger().getLogger();
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
     String simplePath;
@@ -50,42 +54,48 @@ public class ButtonController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //closeFrame();
-        listValidVideos.clear();
-        listPathVideofile.clear();
-        simplePathFilename.clear();
-        // if the user presses the save button show the save dialog
-        String com = e.getActionCommand();
+        // closeFrame();
+        try {
+            listValidVideos.clear();
+            listPathVideofile.clear();
+            simplePathFilename.clear();
+            // if the user presses the save button show the save dialog
+            String com = e.getActionCommand();
 
-        if (com.equals("save")) {
-            // create an object of JFileChooser class
-            JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-            // set the selection mode to directories only
-            jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            if (com.equals("save")) {
+                // create an object of JFileChooser class
+                JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+                // set the selection mode to directories only
+                jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
-            // invoke the showsSaveDialog function to show the save dialog
-            int invoke = jfileChooser.showSaveDialog(null);
-            if (invoke == JFileChooser.APPROVE_OPTION) {
-                // set the label to the path of the selected directory
-                pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
+                // invoke the showsSaveDialog function to show the save dialog
+                int invoke = jfileChooser.showSaveDialog(null);
+                if (invoke == JFileChooser.APPROVE_OPTION) {
+                    // set the label to the path of the selected directory
+                    pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
+                }
             }
-        }
-        // if the user presses the open dialog show the open dialog
-        else {
-            // create an object of JFileChooser class
-            JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-            // set the selection mode to directories only
-            jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            // invoke the showsOpenDialog function to show the save dialog
-            int invoke = jfileChooser.showOpenDialog(null);
-            if (invoke == JFileChooser.APPROVE_OPTION) {
-                // set the label to the path of the selected directory
-                pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
+            // if the user presses the open dialog show the open dialog
+            else {
+                // create an object of JFileChooser class
+                JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+                // set the selection mode to directories only
+                jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                // invoke the showsOpenDialog function to show the save dialog
+                int invoke = jfileChooser.showOpenDialog(null);
+                if (invoke == JFileChooser.APPROVE_OPTION) {
+                    // set the label to the path of the selected directory
+                    pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
+                }
             }
+            ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
+            ListValidVideos.getInstance().setPlayListPanel(playListPanel);
+            ListValidVideos.getInstance().applyFilters();
+        } catch (FilterFilesException ex) {
+            log.warning(ex.getMessage());
+            ex.printStackTrace();
         }
-        ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
-        ListValidVideos.getInstance().setPlayListPanel(playListPanel);
-        ListValidVideos.getInstance().applyFilters();
+
     }
 
     public void showFilesSelectedFolder() {
@@ -115,7 +125,8 @@ public class ButtonController implements ActionListener {
             File videoPath = new File(listPathVideofile.get(index));
             try {
                 verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());
-                BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index), BasicFileAttributes.class);
+                BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index),
+                        BasicFileAttributes.class);
                 try {
                     printBasicAttributes(attributes);
                 } catch (Exception e) {
@@ -128,8 +139,9 @@ public class ButtonController implements ActionListener {
                         }
                     }
                 }
-                // grab the list of valid videos and set it to the class of video list valid videos
-                //ListValidVideos.getInstance().setVideoList(listvalidVideos);
+                // grab the list of valid videos and set it to the class of video list valid
+                // videos
+                // ListValidVideos.getInstance().setVideoList(listvalidVideos);
             } catch (IOException ioException) {
                 System.out.println("Error: " + ioException.getMessage());
             }

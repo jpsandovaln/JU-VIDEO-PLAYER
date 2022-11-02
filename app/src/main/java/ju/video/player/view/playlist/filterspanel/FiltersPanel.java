@@ -41,7 +41,7 @@ import javax.swing.JLabel;
 
 public class FiltersPanel extends JPanel {
 
-    public FiltersPanel() throws ParseException {
+    public FiltersPanel()  {
         initPanel();
         JLabel logoLabel = new JLabel("");
         ImageIcon logoIcon = new ImageIcon(this.getClass().getResource("/ATTPlayer.png"));
@@ -61,7 +61,7 @@ public class FiltersPanel extends JPanel {
         ComboBox formatsBox = new ComboBox(createList());
         formatsPanel.add(formatsBox, BorderLayout.CENTER);
         formatsPanel.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.EAST);
-        
+
         add(Box.createRigidArea(new Dimension(0, 15)));
         add(logoLabel);
         add(Box.createRigidArea(new Dimension(0, 15)));
@@ -94,7 +94,7 @@ public class FiltersPanel extends JPanel {
     }
 
     /**
-     * Create a list of accepted formats 
+     * Create a list of accepted formats
      *
      * @return list of formats
      */
