@@ -11,9 +11,12 @@ package ju.video.player.view.playlist.playlistpanel;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileSystemView;
 
+import ju.video.player.controller.componentscontrollers.AddButtonController;
 import ju.video.player.controller.componentscontrollers.ButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.TextField;
@@ -26,14 +29,19 @@ import ju.video.player.view.commons.TextField;
  */
 
 public class ExaminePanel extends JPanel {
+    private TextField pathField = new TextField("Path");
 
     public ExaminePanel(VideoListPanel videoListPanel) {
         initPanel();
-        TextField pathField = new TextField("Path");
+        pathField.setText(FileSystemView.getFileSystemView().getHomeDirectory().toString());
         add(pathField);
         Button examineButton = new Button("Examine");
-        examineButton.addActionListener(new ButtonController(videoListPanel));
+        examineButton.addActionListener(new ButtonController(this));
         add(examineButton);
+        Button addButton = new Button("Add");
+        addButton.addActionListener(new AddButtonController(videoListPanel, pathField));
+        add(Box.createRigidArea(new Dimension(5, 0)));
+        add(addButton);
     }
 
     /**
@@ -45,5 +53,15 @@ public class ExaminePanel extends JPanel {
         setMaximumSize(new Dimension(700,30));
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
+    }
+
+    /**
+     * Edit the content of the TextField
+     * 
+     * New path for the TextField
+     * @param text 
+     */
+    public void setFieldText(String text) {
+        pathField.setText(text);
     }
 }

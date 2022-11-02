@@ -14,8 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
 import ju.video.player.model.Format;
-import ju.video.player.model.ListValidVideos;
-import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
+import ju.video.player.view.playlist.playlistpanel.ExaminePanel;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,13 +35,16 @@ public class ButtonController implements ActionListener {
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
     String simplePath;
-    VideoListPanel playListPanel;
+    
+    //VideoListPanel playListPanel;
     ArrayList<String> listValidVideos;
     ArrayList<String> listPathVideofile;
     ArrayList<String> simplePathFilename;
+    ExaminePanel examinePanel;
 
-    public ButtonController(VideoListPanel playListPanel) {
-        this.playListPanel = playListPanel;
+    //public ButtonController(VideoListPanel playListPanel) {
+    public ButtonController(ExaminePanel examinePanel) {
+        this.examinePanel = examinePanel;
         listValidVideos = new ArrayList<>();
         listPathVideofile = new ArrayList<>();
         simplePathFilename = new ArrayList<>();
@@ -83,9 +85,10 @@ public class ButtonController implements ActionListener {
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
             }
         }
-        ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
-        ListValidVideos.getInstance().setPlayListPanel(playListPanel);
-        ListValidVideos.getInstance().applyFilters();
+        examinePanel.setFieldText(pathOfTheSelectedFolder);
+        //ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
+        //ListValidVideos.getInstance().setPlayListPanel(playListPanel);
+        //ListValidVideos.getInstance().applyFilters();
     }
 
     public void showFilesSelectedFolder() {
