@@ -9,7 +9,9 @@
 
 package ju.video.player.commons;
 
+import ju.video.player.commons.exceptions.ContentFileException;
 import ju.video.player.commons.exceptions.FilterFilesException;
+import ju.video.player.commons.exceptions.ListVideosException;
 import ju.video.player.model.Format;
 import ju.video.player.utils.FileUtil;
 
@@ -50,31 +52,36 @@ public class FilterFiles {
      * @throws IOException
      */
     public List<String> getListFiles() throws FilterFilesException {
-        File paths = new File(filesFolder);
-        String[] nameFiles = paths.list();
-        List<String> listFilesName = new ArrayList<>();
-        for (String fileName : nameFiles) {
-            File file = new File(filesFolder, fileName);
-            if (file.isDirectory()) {
-                for (String fileName2 : file.list()) {
-                    File file2 = new File(file, fileName2);
-                }
-            } else {
-                BasicFileAttributes attributes = null;
-                try {
-                    attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-                } catch (Exception e) {
-                    throw new FilterFilesException("It's not possible to read one of the files", e);
-                }
-                if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
-                        && verifyDate(attributes, initDate, endDate)
-                        && verifyFormatSelected(file, formatSelected)) {
-                    listFilesName.add(fileName);
+        try {
+            File paths = new File(filesFolder);
+            String[] nameFiles = paths.list();
+            List<String> listFilesName = new ArrayList<>();
+            for (String fileName : nameFiles) {
+                File file = new File(filesFolder, fileName);
+                if (file.isDirectory()) {
+                    for (String fileName2 : file.list()) {
+                        File file2 = new File(file, fileName2);
+                    }
+                } else {
+                    BasicFileAttributes attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+                    if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
+                            && verifyDate(attributes, initDate, endDate)
+                            && verifyFormatSelected(file, formatSelected)) {
+                        listFilesName.add(fileName);
+                    }
                 }
             }
+            if (listFilesName.isEmpty()) {
+                throw new ListVideosException("There are no files of the supported formats in the folder");
+            }
+            return listFilesName;
+        } catch (ContentFileException e) {
+            throw new FilterFilesException(e.getMessage(),e);
+        } catch (ListVideosException e) {
+            throw new FilterFilesException(e.getMessage(),e);
+        } catch (Exception e) {
+            throw new FilterFilesException("It's not possible to read one of the files",e);
         }
-        return listFilesName;
-
     }
 
     /**
@@ -84,9 +91,10 @@ public class FilterFiles {
      * @param formatSelected, it is the format requerired by the user.
      * @return True or False if the file accomplish with the format.
      * @throws FilterFilesException
+     * @throws ContentFileException
      * @throws IOException
      */
-    public boolean verifyFormatSelected(File file, String formatSelected) throws FilterFilesException {
+    public boolean verifyFormatSelected(File file, String formatSelected) throws ContentFileException {
         try {
             if (formatSelected == null || formatSelected.isEmpty()) {
                 return true;
@@ -95,9 +103,8 @@ public class FilterFiles {
             Format format = Format.fromString(fileContentType);
             return formatSelected.equals(format.getFormat());
         } catch (Exception e) {
-            throw new FilterFilesException("The format of the file is not valid", e);
+            throw new ContentFileException("The content type of the file is not valid", e);
         }
-
     }
 
     /**
@@ -106,17 +113,17 @@ public class FilterFiles {
      * @param file
      * @return
      * @throws FilterFilesException
+     * @throws ContentFileException
      * @throws IOException
      */
-    public boolean verifyIsMediaFile(File file) throws FilterFilesException {
+    public boolean verifyIsMediaFile(File file) throws ContentFileException {
         try {
             String fileContentType = Files.probeContentType(file.toPath());
             Format formats = Format.fromString(fileContentType);
             return formats != null;
         } catch (Exception e) {
-            throw new FilterFilesException("The file is not a media file", e);
+            throw new ContentFileException("The content type of the file is not valid", e);
         }
-
     }
 
     /**

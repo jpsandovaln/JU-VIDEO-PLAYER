@@ -44,7 +44,7 @@ import javax.swing.JLabel;
  */
 
 public class FiltersPanel extends JPanel {
-    private Logger log = new At18Logger().getLogger();
+    //private Logger log = new At18Logger().getLogger();
 
     public FiltersPanel() {
         initPanel();
@@ -63,7 +63,7 @@ public class FiltersPanel extends JPanel {
             try {
                 ListValidVideos.getInstance().applyFilters();
             } catch (FilterFilesException ex) {
-                log.warning(ex.getMessage());
+                //log.warning(ex.getMessage());
                 ex.printStackTrace();
             }
         });

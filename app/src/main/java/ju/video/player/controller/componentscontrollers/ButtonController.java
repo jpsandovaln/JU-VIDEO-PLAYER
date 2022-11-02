@@ -36,7 +36,7 @@ import java.util.logging.Logger;
  */
 
 public class ButtonController implements ActionListener {
-    private Logger log = new At18Logger().getLogger();
+    //private Logger log = new At18Logger().getLogger();
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
     String simplePath;
@@ -92,7 +92,7 @@ public class ButtonController implements ActionListener {
             ListValidVideos.getInstance().setPlayListPanel(playListPanel);
             ListValidVideos.getInstance().applyFilters();
         } catch (FilterFilesException ex) {
-            log.warning(ex.getMessage());
+            //log.warning(ex.getMessage());
             ex.printStackTrace();
         }
 
