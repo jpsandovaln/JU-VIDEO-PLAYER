@@ -10,11 +10,11 @@
 package ju.video.player.model;
 
 import ju.video.player.commons.FilterFiles;
+import ju.video.player.commons.exceptions.FilterFilesException;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -45,19 +45,16 @@ public class ListValidVideos {
 
     /**
      * Set the list of files filtered to the Panel.
+     * @throws FilterFilesException if there is a problem with the filters
      */
-    public void applyFilters() {
+    public void applyFilters() throws FilterFilesException {
         FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
         if(pathOfTheSelectedFolder == null || !(new File(pathOfTheSelectedFolder)).exists()) {
             JOptionPane.showMessageDialog(null, "Playlist empty");
             return;
         }
-        try {
-            videoList = filterFiles.getListFiles();
-            playListPanel.setPlayerLabel();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        videoList = filterFiles.getListFiles();
+        playListPanel.setPlayerLabel();
     }
 
     public void setFormatSelected(String formatSelected) {

@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.text.ParseException;
+import java.util.logging.Logger;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
@@ -20,7 +21,10 @@ import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.xml.crypto.dsig.spec.XPathType.Filter;
 
+import ju.video.player.commons.exceptions.FilterFilesException;
+import ju.video.player.commons.logger.At18Logger;
 import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Button;
@@ -40,8 +44,9 @@ import javax.swing.JLabel;
  */
 
 public class FiltersPanel extends JPanel {
+    //private Logger log = new At18Logger().getLogger();
 
-    public FiltersPanel() throws ParseException {
+    public FiltersPanel() {
         initPanel();
         JLabel logoLabel = new JLabel("");
         ImageIcon logoIcon = new ImageIcon(this.getClass().getResource("/ATTPlayer.png"));
@@ -54,14 +59,21 @@ public class FiltersPanel extends JPanel {
         applyFiltersButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
-        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
+        applyFiltersButton.addActionListener(e -> {
+            try {
+                ListValidVideos.getInstance().applyFilters();
+            } catch (FilterFilesException ex) {
+                //log.warning(ex.getMessage());
+                ex.printStackTrace();
+            }
+        });
         JPanel formatsPanel = new JPanel(new BorderLayout());
         formatsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatsPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         ComboBox formatsBox = new ComboBox(createList());
         formatsPanel.add(formatsBox, BorderLayout.CENTER);
         formatsPanel.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.EAST);
-        
+
         add(Box.createRigidArea(new Dimension(0, 15)));
         add(logoLabel);
         add(Box.createRigidArea(new Dimension(0, 15)));
@@ -94,7 +106,7 @@ public class FiltersPanel extends JPanel {
     }
 
     /**
-     * Create a list of accepted formats 
+     * Create a list of accepted formats
      *
      * @return list of formats
      */

@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Jala University.
- * 
+ *
  * This software is the confidential and proprieraty information of Jalasoft
  * ("Confidential Information"). You shall not disclose such Confidential
  * Information and shall use it only in accordance with the terms of the
@@ -35,19 +35,19 @@ import ju.video.player.view.commons.UIFont;
 public class DateComponentsPanel extends JPanel {
     final TextField text = new TextField("");
 
-    public DateComponentsPanel(String title, DateInitListener dateInitListener) throws ParseException {
+    public DateComponentsPanel(String title, DateInitListener dateInitListener) {
         text.setTitle(title);
         dateInitListener.setText(text);
         initDateComponentsPanel(title, dateInitListener);
     }
 
-    public DateComponentsPanel(String title, DateEndListener dateEndListener) throws ParseException {
+    public DateComponentsPanel(String title, DateEndListener dateEndListener) {
         text.setTitle(title);
         dateEndListener.setText(text);
         initDateComponentsPanel(title, dateEndListener);
     }
 
-    public void initDateComponentsPanel(String title, DocumentListener dateListener) throws ParseException {
+    public void initDateComponentsPanel(String title, DocumentListener dateListener) {
         initPanel();
         JLabel label = new JLabel(title);
         label.setFont(UIFont.COMMON_FONT);
