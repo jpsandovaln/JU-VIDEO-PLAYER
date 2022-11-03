@@ -8,6 +8,8 @@
  */
 package ju.video.player.model.request;
 import java.io.*;
+
+import ju.video.player.commons.exceptions.*;
 import org.apache.http.HttpResponse;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -36,7 +38,7 @@ public class AudioRequest implements Request {
      * The constructor is responsible for creating the Downloads directory in the project and
      * initialize outputPath variable.
      */
-    public AudioRequest () {
+    public AudioRequest() {
         outputPath = "Successful conversion: ";
         createDirectory();
     }
@@ -48,27 +50,33 @@ public class AudioRequest implements Request {
      * @throws IOException
      */
     @Override
-    public void sendPost(String path, String format) throws IOException {
+    public void sendPost(String path, String format) throws AudioRequestException {
         this.path = path;
         this.newFormat = format;
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(HTTP_POST);
-        FileBody bin = new FileBody(new File(path));
-        StringBody bitrate = new StringBody("");
-        StringBody channels = new StringBody("");
-        StringBody samplingFrequency  = new StringBody("");
-        StringBody outFormat = new StringBody(newFormat);
+        try {
+            validateFormat();
+            validatePath();
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(HTTP_POST);
+            FileBody bin = new FileBody(new File(path));
+            StringBody bitrate = new StringBody("");
+            StringBody channels = new StringBody("");
+            StringBody samplingFrequency  = new StringBody("");
+            StringBody outFormat = new StringBody(newFormat);
 
-        MultipartEntity reqEntity = new MultipartEntity();
-        reqEntity.addPart("file", bin);
-        reqEntity.addPart("bitrate", bitrate);
-        reqEntity.addPart("channels", channels);
-        reqEntity.addPart("sampling frequency", samplingFrequency);
-        reqEntity.addPart("format", outFormat);
-        httppost.setEntity(reqEntity);
-        HttpResponse response = httpclient.execute(httppost);
-        HttpEntity resEntity = response.getEntity();
-        sendGet();
+            MultipartEntity reqEntity = new MultipartEntity();
+            reqEntity.addPart("file", bin);
+            reqEntity.addPart("bitrate", bitrate);
+            reqEntity.addPart("channels", channels);
+            reqEntity.addPart("sampling frequency", samplingFrequency);
+            reqEntity.addPart("format", outFormat);
+            httppost.setEntity(reqEntity);
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity resEntity = response.getEntity();
+            sendGet();
+        } catch (Exception e) {
+            throw new AudioRequestException(e);
+        }
     }
 
     /**
@@ -84,25 +92,30 @@ public class AudioRequest implements Request {
      * Is responsible for performing a request to obtain the converted file.
      * @throws IOException
      */
-    private void sendGet() throws IOException {
-        URL url = new URL(HTTP_GET + getName(path));
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.connect();
-        int responseCode = conn.getResponseCode();
-        if (responseCode != 200) {
-            throw new RuntimeException("An error has occurred: " + responseCode);
-        } else {
-            InputStream in = conn.getInputStream();
-            byte[] bytes = new byte[2048];
-            int length;
-            OutputStream out = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
-            outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
-            while ((length = in.read(bytes)) != -1) {
-                out.write(bytes, 0, length);
+    private void sendGet() throws AudioRequestException{
+        try {
+            URL url = new URL(HTTP_GET + getName(path));
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("An error has occurred: " + responseCode);
+            } else {
+                InputStream in = conn.getInputStream();
+                byte[] bytes = new byte[2048];
+                int length;
+                OutputStream out = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
+                outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
+                while ((length = in.read(bytes)) != -1) {
+                    out.write(bytes, 0, length);
+                }
+                out.close();
             }
-            out.close();
+        } catch (Exception e) {
+            throw new AudioRequestException("Failed to get the converted file", e);
         }
+
     }
 
     /**
@@ -135,5 +148,26 @@ public class AudioRequest implements Request {
     private String separateFormat(String name) {
         String[] parts = name.split("\\.");
         return parts[0];
+    }
+    private void validatePath() throws InvalidPathException {
+        File file = new File (path);
+        if (path == null) {
+            throw new InvalidPathException("The path is null");
+        }
+        if (path.equals("")) {
+            throw new InvalidPathException("The Path is empty");
+        }
+        if (!file.isFile()) {
+            throw new InvalidPathException("File does not exist");
+        }
+
+    }
+    private void validateFormat() throws InvalidFormatException {
+        if (newFormat == null) {
+            throw new InvalidFormatException("The Format is null");
+        }
+        if (newFormat.equals("")) {
+            throw new InvalidFormatException("The Format is empty");
+        }
     }
 }
