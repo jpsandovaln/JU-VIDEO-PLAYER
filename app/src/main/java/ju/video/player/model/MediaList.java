@@ -8,12 +8,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
-
 public class MediaList {
     private static MediaList instance;
     private List<File> mediaList;
-    private VideoListPanel playListPanel;
 
     private MediaList() {
         this.mediaList = new ArrayList<>();
@@ -33,7 +30,6 @@ public class MediaList {
         }
         try {
             makeList(pathOfTheSelectedFolder);
-            //playListPanel.setPlayerLabel();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -42,7 +38,6 @@ public class MediaList {
     public void makeList(String filesFolder) throws IOException {
         File paths = new File(filesFolder);
         String[] nameFiles = paths.list();
-        //List<File> listFiles = new ArrayList<>();
         for (String fileName : nameFiles) {
             File file = new File(filesFolder, fileName);
             if (!file.isDirectory() && verifyIsMediaFile(file)) {
@@ -55,10 +50,6 @@ public class MediaList {
         String fileContentType = Files.probeContentType(file.toPath());
         Format formats = Format.fromString(fileContentType);
         return formats != null;
-    }
-
-    public void setPlayListPanel(VideoListPanel playListPanel) {
-        this.playListPanel = playListPanel;
     }
 
     public List<File> getMediaList() {

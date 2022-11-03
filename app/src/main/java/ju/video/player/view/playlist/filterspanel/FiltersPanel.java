@@ -52,9 +52,12 @@ public class FiltersPanel extends JPanel {
         DateFilterPanel dateFilterPanel = new DateFilterPanel();
         Button applyFiltersButton = new Button("Apply Filters");
         applyFiltersButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
+        Button restoreFiltersButton = new Button("Restore Filters");
+        restoreFiltersButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        restoreFiltersButton.addActionListener(e -> ListValidVideos.getInstance().restoreFilters(this));
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
-        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         JPanel formatsPanel = new JPanel(new BorderLayout());
         formatsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatsPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
@@ -80,6 +83,8 @@ public class FiltersPanel extends JPanel {
         add(formatsPanel);
         add(Box.createRigidArea(new Dimension(0, 15)));
         add(applyFiltersButton);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(restoreFiltersButton);
         add(box);
     }
 

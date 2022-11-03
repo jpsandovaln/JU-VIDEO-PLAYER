@@ -10,6 +10,12 @@
 package ju.video.player.model;
 
 import ju.video.player.commons.FilterFiles;
+import ju.video.player.view.commons.ComboBox;
+import ju.video.player.view.commons.TextField;
+import ju.video.player.view.playlist.filterspanel.DateComponentsPanel;
+import ju.video.player.view.playlist.filterspanel.FiltersPanel;
+import ju.video.player.view.playlist.filterspanel.SizeFilterPanel;
+import ju.video.player.view.playlist.filterspanel.DateFilterPanel;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import java.io.File;
@@ -17,6 +23,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JPanel;
 
 public class ListValidVideos {
     private static ListValidVideos instance;
@@ -101,5 +109,19 @@ public class ListValidVideos {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public void restoreFilters(FiltersPanel filtersPanel) {
+        ((TextField) ((SizeFilterPanel) filtersPanel.getComponent(7)).getComponent(1)).setText("");
+        ((TextField) ((SizeFilterPanel) filtersPanel.getComponent(7)).getComponent(2)).setText("");
+        minFileSize = 0;
+        maxFileSize = 0;
+        ((TextField) ((DateComponentsPanel) ((DateFilterPanel) filtersPanel.getComponent(11)).getComponent(0)).getComponent(0)).setText("");
+        ((TextField) ((DateComponentsPanel) ((DateFilterPanel) filtersPanel.getComponent(11)).getComponent(2)).getComponent(0)).setText("");
+        initDate = null;
+        endDate = null;
+        ((ComboBox) ((JPanel) filtersPanel.getComponent(15)).getComponent(0)).setSelectedItem("All formats");
+        formatSelected = null;
+        applyFilters();
     }
 }
