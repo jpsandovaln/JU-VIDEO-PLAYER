@@ -58,7 +58,7 @@ public class DateComponentsPanel extends JPanel {
         text.getDocument().addDocumentListener(dateListener);
         JPanel buttonPanel = new JPanel();
 		Button buttonIcon = new Button("");
-        buttonIcon.setIcon("calendar-icon.png", 20, 20);
+        buttonIcon.setIcon("/calendar-icon.png", 20, 20);
 		buttonIcon.addActionListener(new DatePickerController(this, text));
         buttonPanel.setOpaque(false);
         buttonPanel.setSize(0, 20);

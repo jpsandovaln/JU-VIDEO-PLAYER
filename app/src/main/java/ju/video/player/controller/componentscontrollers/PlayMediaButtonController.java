@@ -36,12 +36,10 @@ public class PlayMediaButtonController implements ActionListener {
     }
 
     public void createList() {
-        //mediaPlayerComponent.removeAll();
         int listSize = ListValidVideos.getInstance().getVideoList().size();
         for (int position = 0; position < listSize; position++) {
             int index = (initialMedia + position) < listSize ? initialMedia + position: (initialMedia + position) - listSize;
-            String path = ListValidVideos.getInstance().getPathOfTheSelectedFolder() + "\\" + ListValidVideos.getInstance().getVideoList().get(index);
-            System.out.println(path);
+            String path = ListValidVideos.getInstance().getVideoList().get(index).getAbsolutePath();
             mediaPlayerComponent.mediaListPlayer().list().media().add(path);
         }
     }
