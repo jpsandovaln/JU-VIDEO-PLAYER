@@ -45,32 +45,20 @@ public class ButtonController implements ActionListener {
         listValidVideos.clear();
         listPathVideofile.clear();
         simplePathFilename.clear();
-        // if the user presses the save button show the save dialog
         String com = e.getActionCommand();
 
         if (com.equals("save")) {
-            // create an object of JFileChooser class
             JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-            // set the selection mode to directories only
             jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-            // invoke the showsSaveDialog function to show the save dialog
             int invoke = jfileChooser.showSaveDialog(null);
             if (invoke == JFileChooser.APPROVE_OPTION) {
-                // set the label to the path of the selected directory
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
             }
-        }
-        // if the user presses the open dialog show the open dialog
-        else {
-            // create an object of JFileChooser class
+        } else {
             JFileChooser jfileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-            // set the selection mode to directories only
             jfileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            // invoke the showsOpenDialog function to show the save dialog
             int invoke = jfileChooser.showOpenDialog(null);
             if (invoke == JFileChooser.APPROVE_OPTION) {
-                // set the label to the path of the selected directory
                 pathOfTheSelectedFolder = jfileChooser.getSelectedFile().getAbsolutePath();
             }
         }
