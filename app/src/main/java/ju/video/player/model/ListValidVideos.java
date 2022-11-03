@@ -12,17 +12,15 @@ package ju.video.player.model;
 import ju.video.player.commons.FilterFiles;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListValidVideos {
     private static ListValidVideos instance;
-    private List<String> videoList;
+    private List<File> videoList;
     private double minFileSize = 0;
     private double maxFileSize = 0;
     private String pathOfTheSelectedFolder;
@@ -47,11 +45,12 @@ public class ListValidVideos {
      * Set the list of files filtered to the Panel.
      */
     public void applyFilters() {
-        FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
-        if(pathOfTheSelectedFolder == null || !(new File(pathOfTheSelectedFolder)).exists()) {
+        //FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
+        FilterFiles filterFiles = new FilterFiles(minFileSize, maxFileSize, initDate, endDate, formatSelected);
+        /*if(pathOfTheSelectedFolder == null || !(new File(pathOfTheSelectedFolder)).exists()) {
             JOptionPane.showMessageDialog(null, "Playlist empty");
             return;
-        }
+        }*/
         try {
             videoList = filterFiles.getListFiles();
             playListPanel.setPlayerLabel();
@@ -64,7 +63,7 @@ public class ListValidVideos {
         this.formatSelected = formatSelected;
     }
 
-    public List<String> getVideoList() {
+    public List<File> getVideoList() {
         return this.videoList;
     }
 

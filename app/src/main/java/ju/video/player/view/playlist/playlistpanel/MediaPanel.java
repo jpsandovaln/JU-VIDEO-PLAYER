@@ -9,6 +9,7 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Dimension;
+import java.io.File;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
@@ -32,16 +33,16 @@ import ju.video.player.view.playlist.PlayListFrame;
 
 public class MediaPanel extends JPanel{
 
-    public MediaPanel(String mediaName, int index, PlayListFrame playListFrame) {
+    public MediaPanel(File file, int index, PlayListFrame playListFrame) {
         initPanel();
-        JLabel name = new JLabel(mediaName);
+        JLabel name = new JLabel(file.getName());
         name.setForeground(UIColor.COMPONETS_COLOR);
         Button playButton = new Button("");
 		playButton.setIcon("play.png", 20, 20);
         playButton.addActionListener(new PlayMediaButtonController(playListFrame, index));
         Button convertButton = new Button("");
         convertButton.setIcon("/convert.png", 20, 20);
-        convertButton.addActionListener(new PlayConvertButtonController(mediaName, playListFrame));
+        convertButton.addActionListener(new PlayConvertButtonController(file, playListFrame));
 		
         add(name);
         add(Box.createHorizontalGlue());

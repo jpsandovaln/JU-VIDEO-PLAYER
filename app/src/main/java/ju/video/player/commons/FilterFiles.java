@@ -10,6 +10,7 @@
 package ju.video.player.commons;
 
 import ju.video.player.model.Format;
+import ju.video.player.model.MediaList;
 import ju.video.player.utils.FileUtil;
 
 import java.io.File;
@@ -32,8 +33,10 @@ public class FilterFiles {
 
     private String formatSelected;
 
-    public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
-        this.filesFolder = filesFolder;
+    
+    //public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
+    public FilterFiles(double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
+        //this.filesFolder = filesFolder;
         this.initSize = initSize;
         this.endSize = endSize;
         this.initDate = initDate;
@@ -47,12 +50,13 @@ public class FilterFiles {
      * @return
      * @throws IOException
      */
-    public List<String> getListFiles() throws IOException {
-        File paths = new File(filesFolder);
-        String[] nameFiles = paths.list();
-        List<String> listFilesName = new ArrayList<>();
-        for (String fileName : nameFiles) {
-            File file = new File(filesFolder, fileName);
+    public List<File> getListFiles() throws IOException {
+        //File paths = new File(filesFolder);
+        //String[] nameFiles = paths.list();
+        List<File> listFiles = MediaList.getInstance().getMediaList();
+        List<File> listFilteredFiles = new ArrayList<>();
+        for (File file : listFiles) {
+            //File file = new File(filesFolder, fileName);
             if (file.isDirectory()) {
                 for (String fileName2 : file.list()) {
                     File file2 = new File(file, fileName2);
@@ -62,11 +66,11 @@ public class FilterFiles {
                 if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
                         && verifyDate(attributes, initDate, endDate)
                         && verifyFormatSelected(file, formatSelected)) {
-                    listFilesName.add(fileName);
+                            listFilteredFiles.add(file);
                 }
             }
         }
-        return listFilesName;
+        return listFilteredFiles;
     }
 
     /**

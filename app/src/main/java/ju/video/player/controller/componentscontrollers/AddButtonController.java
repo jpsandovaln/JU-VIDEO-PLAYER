@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ju.video.player.model.ListValidVideos;
+import ju.video.player.model.MediaList;
 import ju.video.player.view.commons.TextField;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
@@ -19,7 +20,9 @@ public class AddButtonController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String selectedPath = textField.getText();
-        ListValidVideos.getInstance().setPathOfTheSelectedFolder(selectedPath);
+        //MediaList.getInstance().setPathOfTheSelectedFolder(selectedPath);
+        //MediaList.getInstance().setPlayListPanel(playListPanel);
+        MediaList.getInstance().addFilesFromFolder(selectedPath);
         ListValidVideos.getInstance().setPlayListPanel(playListPanel);
         ListValidVideos.getInstance().applyFilters();
     }
