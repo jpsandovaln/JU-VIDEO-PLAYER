@@ -9,7 +9,6 @@
 
 package ju.video.player.model;
 
-import ju.video.player.commons.FilterFiles;
 import ju.video.player.view.commons.ComboBox;
 import ju.video.player.view.commons.TextField;
 import ju.video.player.view.playlist.filterspanel.DateComponentsPanel;
@@ -54,12 +53,7 @@ public class ListValidVideos {
      * @throws FilterFilesException if there is a problem with the filters
      */
     public void applyFilters() {
-        //FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
         FilterFiles filterFiles = new FilterFiles(minFileSize, maxFileSize, initDate, endDate, formatSelected);
-        /*if(pathOfTheSelectedFolder == null || !(new File(pathOfTheSelectedFolder)).exists()) {
-            JOptionPane.showMessageDialog(null, "Playlist empty");
-            return;
-        }*/
         try {
             videoList = filterFiles.getListFiles();
             playListPanel.setPlayerLabel();

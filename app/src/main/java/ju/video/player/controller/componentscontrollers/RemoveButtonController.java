@@ -30,7 +30,7 @@ public class RemoveButtonController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MediaList.removeFile(file);
+        MediaList.getInstance().removeFile(file);
         ListValidVideos.getInstance().applyFilters();
     }
 

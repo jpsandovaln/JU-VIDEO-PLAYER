@@ -49,7 +49,7 @@ public class FiltersPanel extends JPanel {
         logoLabel.setIcon(convertIcon);
         SizeFilterPanel sizeFilterPanel = new SizeFilterPanel();
         DateFilterPanel dateFilterPanel = new DateFilterPanel();
-        Button applyFiltersButton = new Button("Apply Filters");
+        Button applyFiltersButton = new Button("  Apply Filters  ");
         applyFiltersButton.setAlignmentX(Component.LEFT_ALIGNMENT);
         applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         Button restoreFiltersButton = new Button("Restore Filters");

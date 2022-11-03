@@ -16,7 +16,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import ju.video.player.commons.exceptions.ContentFileException;
 /**
  * It is the original list of files that the user is gonna add before apply the filters.
  *
@@ -25,7 +24,7 @@ import ju.video.player.commons.exceptions.ContentFileException;
  */
 public class MediaList {
     private static MediaList instance;
-    private static List<File> mediaList;
+    private List<File> mediaList;
 
     private MediaList() {
         this.mediaList = new ArrayList<>();
@@ -102,7 +101,7 @@ public class MediaList {
      * 
      * @param file
      */
-    public static void removeFile(File file) {
+    public void removeFile(File file) {
         mediaList.remove(file);
     }
 }

@@ -7,13 +7,11 @@
  * license agreement you entered into with Jala University
  */
 
-package ju.video.player.commons;
+package ju.video.player.model;
 
 import ju.video.player.commons.exceptions.ContentFileException;
 import ju.video.player.commons.exceptions.FilterFilesException;
 import ju.video.player.commons.exceptions.ListVideosException;
-import ju.video.player.model.Format;
-import ju.video.player.model.MediaList;
 import ju.video.player.utils.FileUtil;
 
 import java.io.File;
@@ -24,6 +22,13 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * It is responsible of filter the files
+ *
+ * @author Maria Hurtado
+ * @version 1.0
+ */
+
 public class FilterFiles {
 
     private double initSize;
@@ -33,9 +38,7 @@ public class FilterFiles {
 
     private String formatSelected;
 
-    //public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
     public FilterFiles(double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
-        //this.filesFolder = filesFolder;
         this.initSize = initSize;
         this.endSize = endSize;
         this.initDate = initDate;
