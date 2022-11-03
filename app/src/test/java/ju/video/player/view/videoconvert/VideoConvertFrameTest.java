@@ -21,13 +21,20 @@ import org.junit.Test;
 
 public class VideoConvertFrameTest {
     String path = "test";
+    VideoConvertFrame videoConvertFrame = new VideoConvertFrame(path, null);
 
     @Test
-    public void shouldSetVideoConvertFrame() {
-        VideoConvertFrame videoConvertFrame = new VideoConvertFrame(path, null);
+    public void shouldVerifyPositionX() {
         assertEquals(0, videoConvertFrame.getX());
-        assertEquals(0, videoConvertFrame.getY());
-        assertEquals(1, videoConvertFrame.getComponentCount());
+    }
 
+    @Test
+    public void shouldVerifyPositionY() {
+        assertEquals(0, videoConvertFrame.getY());
+    }
+
+    @Test
+    public void shouldCountComponents() {
+        assertEquals(1, videoConvertFrame.getComponentCount());
     }
 }

@@ -24,12 +24,21 @@ import org.junit.Test;
 public class FiltersPanelTest {
 
     @Test
-    public void ShouldShowTheFilstersPanel() throws ParseException {
+    public void ShouldVerifyWidth() throws ParseException {
         FiltersPanel filstersPanel = new FiltersPanel();
         assertEquals(250, filstersPanel.getWidth());
-        assertEquals(600, filstersPanel.getHeight());
-        assertEquals(filstersPanel, filstersPanel);
-        assertEquals(16, filstersPanel.getComponentCount());
+
     }
 
+    @Test
+    public void ShouldVerifyHeight() throws ParseException {
+        FiltersPanel filstersPanel = new FiltersPanel();
+        assertEquals(600, filstersPanel.getHeight());
+    }
+
+    @Test
+    public void ShouldCountComponents() throws ParseException {
+        FiltersPanel filstersPanel = new FiltersPanel();
+        assertEquals(19, filstersPanel.getComponentCount());
+    }
 }

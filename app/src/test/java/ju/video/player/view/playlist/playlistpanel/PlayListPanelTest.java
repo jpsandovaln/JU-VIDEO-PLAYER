@@ -19,11 +19,20 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class PlayListPanelTest {
+    PlayListPanel playListPanel = new PlayListPanel(null);
+
     @Test
-    public void shouldSetPlayListPanel() {
-        PlayListPanel playListPanel = new PlayListPanel(null);
-        assertEquals(4, playListPanel.getComponentCount());
-        assertEquals(585, playListPanel.getWidth());
-        assertEquals(600, playListPanel.getHeight());
+    public void shouldCountComponents() {
+        assertEquals(6, playListPanel.getComponentCount());
+    }
+
+    @Test
+    public void shouldVerifyWidth() {
+        assertEquals(545, playListPanel.getWidth());
+    }
+
+    @Test
+    public void shouldVerifyHeight() {
+        assertEquals(550, playListPanel.getHeight());
     }
 }

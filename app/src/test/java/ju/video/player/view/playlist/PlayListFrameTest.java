@@ -24,11 +24,26 @@ import org.junit.Test;
 
 public class PlayListFrameTest {
     @Test
-    public void shouldShowPlayListFrame() throws ParseException {
+    public void shouldVerifyWidth() throws ParseException {
         PlayListFrame playListFrame = new PlayListFrame();
         assertEquals(850, playListFrame.getFrame().getWidth());
+    }
+
+    @Test
+    public void shouldVerifyHeight() throws ParseException {
+        PlayListFrame playListFrame = new PlayListFrame();
         assertEquals(600, playListFrame.getFrame().getHeight());
+    }
+
+    @Test
+    public void shouldCountComponents() throws ParseException {
+        PlayListFrame playListFrame = new PlayListFrame();
         assertEquals(1, playListFrame.getFrame().getComponentCount());
+    }
+
+    @Test
+    public void shouldVerifyIsVisible() throws ParseException {
+        PlayListFrame playListFrame = new PlayListFrame();
         assertTrue(playListFrame.getFrame().isVisible());
     }
 }

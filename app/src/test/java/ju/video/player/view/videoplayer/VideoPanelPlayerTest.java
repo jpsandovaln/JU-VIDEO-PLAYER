@@ -23,12 +23,16 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
  */
 
 public class VideoPanelPlayerTest {
-    @Test
-    public void shouldSetVideoPanelPlayer() {
-        EmbeddedMediaListPlayerComponent embeddedMediaListPlayerComponent = new EmbeddedMediaListPlayerComponent();
-        MediaPlayerFrame mediaPlayerFrame = new MediaPlayerFrame(null, embeddedMediaListPlayerComponent);
-        assertEquals(1, mediaPlayerFrame.getComponentCount());
-        assertTrue(mediaPlayerFrame.isVisible());
+    EmbeddedMediaListPlayerComponent embeddedMediaListPlayerComponent = new EmbeddedMediaListPlayerComponent();
+    MediaPlayerFrame mediaPlayerFrame = new MediaPlayerFrame(null, embeddedMediaListPlayerComponent);
 
+    @Test
+    public void shouldCountComponents() {
+        assertEquals(1, mediaPlayerFrame.getComponentCount());
+    }
+
+    @Test
+    public void shouldVerifyIfVisible() {
+        assertTrue(mediaPlayerFrame.isVisible());
     }
 }

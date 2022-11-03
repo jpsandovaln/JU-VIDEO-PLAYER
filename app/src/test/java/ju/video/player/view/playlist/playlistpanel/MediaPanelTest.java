@@ -19,13 +19,22 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class MediaPanelTest {
+    String mediaName = "test";
+    int index = 2;
+    MediaPanel mediaPanel = new MediaPanel(mediaName, index, null);
+
     @Test
-    public void shouldSetMediaPanel() {
-        String mediaName = "test";
-        int index = 2;
-        MediaPanel mediaPanel = new MediaPanel(mediaName, index, null);
+    public void shouldCountComponents() {
         assertEquals(5, mediaPanel.getComponentCount());
-        assertEquals(0, mediaPanel.getWidth());
-        assertEquals(0, mediaPanel.getHeight());
+    }
+
+    @Test
+    public void shouldVerifyWidth() {
+        assertEquals(700, mediaPanel.getWidth());
+    }
+
+    @Test
+    public void shouldVerifyHeight() {
+        assertEquals(600, mediaPanel.getHeight());
     }
 }
