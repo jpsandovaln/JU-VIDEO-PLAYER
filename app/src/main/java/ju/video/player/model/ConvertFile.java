@@ -44,7 +44,7 @@ public class ConvertFile {
         try {
             VerifyRequest verifyRequest = new VerifyRequest(format);
             request = verifyRequest.getRequest();
-            request.sendPost(path, format);
+            request.sendPostRequest(path, format);
         } catch (AudioRequestException | VideoRequestException e) {
             throw new RequestException(e);
         }

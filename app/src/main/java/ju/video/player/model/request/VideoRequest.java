@@ -55,15 +55,15 @@ public class VideoRequest implements  Request{
      * @throws VideoRequestException
      */
     @Override
-    public void sendPost(String path, String format) throws VideoRequestException {
+    public void sendPostRequest(String path, String format) throws VideoRequestException {
         this.path = path;
         this.newFormat = format;
         try {
             validateFormat();
             validatePath();
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(HTTP_POST);
-            FileBody bin = new FileBody(new File(path));
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(HTTP_POST);
+            FileBody binaryFile = new FileBody(new File(path));
             StringBody outName = new StringBody(separateFormat(getName(path)));
             StringBody outFormat = new StringBody("." + format);
             StringBody volume = new StringBody("");
@@ -77,7 +77,7 @@ public class VideoRequest implements  Request{
             StringBody size = new StringBody("");
             StringBody cropVideo = new StringBody("");
             MultipartEntity reqEntity = new MultipartEntity();
-            reqEntity.addPart("file", bin);
+            reqEntity.addPart("file", binaryFile);
             reqEntity.addPart("outName", outName);
             reqEntity.addPart("outFormat", outFormat);
             reqEntity.addPart("volume", volume);
@@ -90,10 +90,10 @@ public class VideoRequest implements  Request{
             reqEntity.addPart("color", color);
             reqEntity.addPart("size", size);
             reqEntity.addPart("cropVideo", cropVideo);
-            httppost.setEntity(reqEntity);
-            HttpResponse response = httpclient.execute(httppost);
+            httpPost.setEntity(reqEntity);
+            HttpResponse response = httpClient.execute(httpPost);
             HttpEntity resEntity = response.getEntity();
-            sendGet();
+            sendGetRequest();
         } catch (Exception e) {
             throw new VideoRequestException(e);
         }
@@ -112,25 +112,25 @@ public class VideoRequest implements  Request{
      * Is responsible for performing a request to obtain the converted file.
      * @throws VideoRequestException
      */
-    private void sendGet() throws VideoRequestException {
+    private void sendGetRequest() throws VideoRequestException {
         try {
             URL url = new URL(HTTP_GET + getName(path));
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.connect();
-            int responseCode = conn.getResponseCode();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
                 throw new VideoRequestException("An error has occurred: " + responseCode);
             } else {
-                InputStream in = conn.getInputStream();
+                InputStream inputStream = connection.getInputStream();
                 byte[] bytes = new byte[2048];
                 int length;
-                OutputStream out = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
+                OutputStream outputStream = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
                 outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
-                while ((length = in.read(bytes)) != -1) {
-                    out.write(bytes, 0, length);
+                while ((length = inputStream.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, length);
                 }
-                out.close();
+                outputStream.close();
             }
         } catch (Exception e) {
             throw new VideoRequestException("Failed to get the converted file", e);

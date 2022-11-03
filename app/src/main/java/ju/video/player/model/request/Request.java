@@ -26,7 +26,7 @@ public interface Request {
      * @param format Is the format to which the file is to be converted.
      * @throws IOException
      */
-    void sendPost(String path, String format) throws AudioRequestException, VideoRequestException;
+    void sendPostRequest(String path, String format) throws AudioRequestException, VideoRequestException;
 
     /**
      * It is responsible for returning the path of the converted file.

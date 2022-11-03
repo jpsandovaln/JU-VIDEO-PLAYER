@@ -50,30 +50,30 @@ public class AudioRequest implements Request {
      * @throws AudioRequestException
      */
     @Override
-    public void sendPost(String path, String format) throws AudioRequestException {
+    public void sendPostRequest(String path, String format) throws AudioRequestException {
         this.path = path;
         this.newFormat = format;
         try {
             validateFormat();
             validatePath();
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(HTTP_POST);
-            FileBody bin = new FileBody(new File(path));
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(HTTP_POST);
+            FileBody binaryFile = new FileBody(new File(path));
             StringBody bitrate = new StringBody("");
             StringBody channels = new StringBody("");
             StringBody samplingFrequency  = new StringBody("");
             StringBody outFormat = new StringBody(newFormat);
 
             MultipartEntity reqEntity = new MultipartEntity();
-            reqEntity.addPart("file", bin);
+            reqEntity.addPart("file", binaryFile);
             reqEntity.addPart("bitrate", bitrate);
             reqEntity.addPart("channels", channels);
             reqEntity.addPart("sampling frequency", samplingFrequency);
             reqEntity.addPart("format", outFormat);
-            httppost.setEntity(reqEntity);
-            HttpResponse response = httpclient.execute(httppost);
+            httpPost.setEntity(reqEntity);
+            HttpResponse response = httpClient.execute(httpPost);
             HttpEntity resEntity = response.getEntity();
-            sendGet();
+            sendGetRequest();
         } catch (Exception e) {
             throw new AudioRequestException(e);
         }
@@ -92,25 +92,25 @@ public class AudioRequest implements Request {
      * Is responsible for performing a request to obtain the converted file.
      * @throws AudioRequestException
      */
-    private void sendGet() throws AudioRequestException{
+    private void sendGetRequest() throws AudioRequestException{
         try {
             URL url = new URL(HTTP_GET + getName(path));
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.connect();
-            int responseCode = conn.getResponseCode();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
                 throw new RuntimeException("An error has occurred: " + responseCode);
             } else {
-                InputStream in = conn.getInputStream();
+                InputStream inputStream = connection.getInputStream();
                 byte[] bytes = new byte[2048];
                 int length;
-                OutputStream out = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
+                OutputStream outputStream = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
                 outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
-                while ((length = in.read(bytes)) != -1) {
-                    out.write(bytes, 0, length);
+                while ((length = inputStream.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, length);
                 }
-                out.close();
+                outputStream.close();
             }
         } catch (Exception e) {
             throw new AudioRequestException("Failed to get the converted file", e);
