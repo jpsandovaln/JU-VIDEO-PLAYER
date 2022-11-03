@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.text.ParseException;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
@@ -41,7 +40,7 @@ import javax.swing.JLabel;
 
 public class FiltersPanel extends JPanel {
 
-    public FiltersPanel() throws ParseException {
+    public FiltersPanel() {
         initPanel();
         JLabel logoLabel = new JLabel("");
         ImageIcon logoIcon = new ImageIcon(this.getClass().getResource("/ATTPlayer.png"));
@@ -58,13 +57,14 @@ public class FiltersPanel extends JPanel {
         restoreFiltersButton.addActionListener(e -> ListValidVideos.getInstance().restoreFilters(this));
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
+        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         JPanel formatsPanel = new JPanel(new BorderLayout());
         formatsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatsPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
         ComboBox formatsBox = new ComboBox(createList());
         formatsPanel.add(formatsBox, BorderLayout.CENTER);
         formatsPanel.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.EAST);
-        
+
         add(Box.createRigidArea(new Dimension(0, 15)));
         add(logoLabel);
         add(Box.createRigidArea(new Dimension(0, 15)));
@@ -99,7 +99,7 @@ public class FiltersPanel extends JPanel {
     }
 
     /**
-     * Create a list of accepted formats 
+     * Create a list of accepted formats
      *
      * @return list of formats
      */

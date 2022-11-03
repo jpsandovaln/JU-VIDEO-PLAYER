@@ -113,6 +113,7 @@ public class VideoConvertFrame extends JFrame {
         labelT.setBounds(posX, posY, 450, 200);
         labelT.setText(text);
         labelT.setFont(UIFont.COMMON_BIGGEST);
+        labelT.setBorder(null);
         labelT.setForeground(UIColor.COMPONETS_COLOR);
         labelT.setVisible(true);
         return labelT;
@@ -125,12 +126,12 @@ public class VideoConvertFrame extends JFrame {
      */
     private JTextField outLabel() {
         outputPath = new JTextField();
-        outputPath.setBounds(10, 500, 900, 30);
+        outputPath.setBounds(10, 500, 810, 30);
         outputPath.setText("");
         outputPath.setEditable(false);
         outputPath.setFont(UIFont.COMMON_FONT);
         outputPath.setForeground(UIColor.COMPONETS_COLOR);
-        outputPath.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
+        outputPath.setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         outputPath.setVisible(true);
         return outputPath;
     }

@@ -16,10 +16,10 @@ import ju.video.player.view.playlist.filterspanel.DateComponentsPanel;
 import ju.video.player.view.playlist.filterspanel.FiltersPanel;
 import ju.video.player.view.playlist.filterspanel.SizeFilterPanel;
 import ju.video.player.view.playlist.filterspanel.DateFilterPanel;
+import ju.video.player.commons.exceptions.FilterFilesException;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +51,7 @@ public class ListValidVideos {
 
     /**
      * Set the list of files filtered to the Panel.
+     * @throws FilterFilesException if there is a problem with the filters
      */
     public void applyFilters() {
         //FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
@@ -62,7 +63,7 @@ public class ListValidVideos {
         try {
             videoList = filterFiles.getListFiles();
             playListPanel.setPlayerLabel();
-        } catch (IOException e) {
+        } catch (FilterFilesException e) {
             throw new RuntimeException(e);
         }
     }

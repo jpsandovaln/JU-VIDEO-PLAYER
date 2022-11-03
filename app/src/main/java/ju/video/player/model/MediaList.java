@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+
+import ju.video.player.commons.exceptions.ContentFileException;
 /**
  * It is the original list of files that the user is gonna add before apply the filters.
  *

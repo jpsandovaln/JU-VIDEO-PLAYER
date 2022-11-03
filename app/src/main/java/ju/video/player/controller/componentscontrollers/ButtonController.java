@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
+import ju.video.player.commons.exceptions.FilterFilesException;
+import ju.video.player.commons.logger.At18Logger;
 import ju.video.player.model.Format;
 import ju.video.player.view.playlist.playlistpanel.ExaminePanel;
 
@@ -23,6 +25,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * It is a enum of all the accepted formats with its respective mime type
@@ -32,6 +35,7 @@ import java.util.ArrayList;
  */
 
 public class ButtonController implements ActionListener {
+    //private Logger log = new At18Logger().getLogger();
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
     String simplePath;
@@ -52,7 +56,7 @@ public class ButtonController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //closeFrame();
+        // closeFrame();
         listValidVideos.clear();
         listPathVideofile.clear();
         simplePathFilename.clear();
@@ -118,7 +122,8 @@ public class ButtonController implements ActionListener {
             File videoPath = new File(listPathVideofile.get(index));
             try {
                 verifyMetadataVideoFile = Files.probeContentType(videoPath.toPath());
-                BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index), BasicFileAttributes.class);
+                BasicFileAttributes attributes = Files.readAttributes(getCompletePath(index),
+                        BasicFileAttributes.class);
                 try {
                     printBasicAttributes(attributes);
                 } catch (Exception e) {
@@ -131,8 +136,9 @@ public class ButtonController implements ActionListener {
                         }
                     }
                 }
-                // grab the list of valid videos and set it to the class of video list valid videos
-                //ListValidVideos.getInstance().setVideoList(listvalidVideos);
+                // grab the list of valid videos and set it to the class of video list valid
+                // videos
+                // ListValidVideos.getInstance().setVideoList(listvalidVideos);
             } catch (IOException ioException) {
                 System.out.println("Error: " + ioException.getMessage());
             }
