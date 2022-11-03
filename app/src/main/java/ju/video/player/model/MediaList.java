@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class MediaList {
     private static MediaList instance;
-    private List<File> mediaList;
+    private static List<File> mediaList;
 
     private MediaList() {
         this.mediaList = new ArrayList<>();
@@ -54,5 +54,9 @@ public class MediaList {
 
     public List<File> getMediaList() {
         return mediaList;
+    }
+
+    public static void removeFile(File file) {
+        mediaList.remove(file);
     }
 }
