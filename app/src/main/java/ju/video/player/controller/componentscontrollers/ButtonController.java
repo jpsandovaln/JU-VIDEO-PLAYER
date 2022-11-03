@@ -13,19 +13,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
-import ju.video.player.commons.exceptions.FilterFilesException;
-import ju.video.player.commons.logger.At18Logger;
-import ju.video.player.model.Format;
 import ju.video.player.view.playlist.playlistpanel.ExaminePanel;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * It is a enum of all the accepted formats with its respective mime type
@@ -35,18 +25,14 @@ import java.util.logging.Logger;
  */
 
 public class ButtonController implements ActionListener {
-    //private Logger log = new At18Logger().getLogger();
     static String pathOfTheSelectedFolder;
     String pathVideoFile;
     String simplePath;
-    
-    //VideoListPanel playListPanel;
     ArrayList<String> listValidVideos;
     ArrayList<String> listPathVideofile;
     ArrayList<String> simplePathFilename;
     ExaminePanel examinePanel;
 
-    //public ButtonController(VideoListPanel playListPanel) {
     public ButtonController(ExaminePanel examinePanel) {
         this.examinePanel = examinePanel;
         listValidVideos = new ArrayList<>();
@@ -56,7 +42,6 @@ public class ButtonController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // closeFrame();
         listValidVideos.clear();
         listPathVideofile.clear();
         simplePathFilename.clear();
@@ -90,8 +75,5 @@ public class ButtonController implements ActionListener {
             }
         }
         examinePanel.setFieldText(pathOfTheSelectedFolder);
-        //ListValidVideos.getInstance().setPathOfTheSelectedFolder(pathOfTheSelectedFolder);
-        //ListValidVideos.getInstance().setPlayListPanel(playListPanel);
-        //ListValidVideos.getInstance().applyFilters();
     }
 }
