@@ -9,11 +9,15 @@
 package ju.video.player.model.request;
 
 import java.io.*;
+
+import ju.video.player.commons.exceptions.*;
 import org.apache.http.HttpResponse;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
@@ -48,45 +52,51 @@ public class VideoRequest implements  Request{
      * It is responsible for constructing the body of the request and executing the request.
      * @param path It is the directory where the file to be converted is located.
      * @param format Is the format to which the file is to be converted.
-     * @throws IOException
+     * @throws VideoRequestException
      */
     @Override
-    public void sendPost(String path, String format) throws IOException{
+    public void sendPostRequest(String path, String format) throws VideoRequestException {
         this.path = path;
         this.newFormat = format;
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(HTTP_POST);
-        FileBody bin = new FileBody(new File(path));
-        StringBody outName = new StringBody(separateFormat(getName(path)));
-        StringBody outFormat = new StringBody("." + format);
-        StringBody volume = new StringBody("");
-        StringBody removeAudio = new StringBody("");
-        StringBody videoBitrate = new StringBody("");
-        StringBody audioBitrate = new StringBody("");
-        StringBody videoFragment = new StringBody("");
-        StringBody rotate = new StringBody("");
-        StringBody fps = new StringBody("");
-        StringBody color = new StringBody("");
-        StringBody size = new StringBody("");
-        StringBody cropVideo = new StringBody("");
-        MultipartEntity reqEntity = new MultipartEntity();
-        reqEntity.addPart("file", bin);
-        reqEntity.addPart("outName", outName);
-        reqEntity.addPart("outFormat", outFormat);
-        reqEntity.addPart("volume", volume);
-        reqEntity.addPart("removeAudio", removeAudio);
-        reqEntity.addPart("videoBitrate", videoBitrate);
-        reqEntity.addPart("audioBitrate", audioBitrate);
-        reqEntity.addPart("videoFragment", videoFragment);
-        reqEntity.addPart("rotate", rotate);
-        reqEntity.addPart("fps", fps);
-        reqEntity.addPart("color", color);
-        reqEntity.addPart("size", size);
-        reqEntity.addPart("cropVideo", cropVideo);
-        httppost.setEntity(reqEntity);
-        HttpResponse response = httpclient.execute(httppost);
-        HttpEntity resEntity = response.getEntity();
-        sendGet();
+        try {
+            validateFormat();
+            validatePath();
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(HTTP_POST);
+            FileBody binaryFile = new FileBody(new File(path));
+            StringBody outName = new StringBody(separateFormat(getName(path)));
+            StringBody outFormat = new StringBody("." + format);
+            StringBody volume = new StringBody("");
+            StringBody removeAudio = new StringBody("");
+            StringBody videoBitrate = new StringBody("");
+            StringBody audioBitrate = new StringBody("");
+            StringBody videoFragment = new StringBody("");
+            StringBody rotate = new StringBody("");
+            StringBody fps = new StringBody("");
+            StringBody color = new StringBody("");
+            StringBody size = new StringBody("");
+            StringBody cropVideo = new StringBody("");
+            MultipartEntity reqEntity = new MultipartEntity();
+            reqEntity.addPart("file", binaryFile);
+            reqEntity.addPart("outName", outName);
+            reqEntity.addPart("outFormat", outFormat);
+            reqEntity.addPart("volume", volume);
+            reqEntity.addPart("removeAudio", removeAudio);
+            reqEntity.addPart("videoBitrate", videoBitrate);
+            reqEntity.addPart("audioBitrate", audioBitrate);
+            reqEntity.addPart("videoFragment", videoFragment);
+            reqEntity.addPart("rotate", rotate);
+            reqEntity.addPart("fps", fps);
+            reqEntity.addPart("color", color);
+            reqEntity.addPart("size", size);
+            reqEntity.addPart("cropVideo", cropVideo);
+            httpPost.setEntity(reqEntity);
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity resEntity = response.getEntity();
+            sendGetRequest();
+        } catch (Exception e) {
+            throw new VideoRequestException(e);
+        }
     }
 
     /**
@@ -100,29 +110,32 @@ public class VideoRequest implements  Request{
 
     /**
      * Is responsible for performing a request to obtain the converted file.
-     * @throws IOException
+     * @throws VideoRequestException
      */
-    private void sendGet() throws IOException {
-        URL url = new URL(HTTP_GET + getName(path));
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.connect();
-        int responseCode = conn.getResponseCode();
-        if (responseCode != 200) {
-            throw new RuntimeException("An error has occurred: " + responseCode);
-        } else {
-            InputStream in = conn.getInputStream();
-            byte[] bytes = new byte[2048];
-            int length;
-            OutputStream out = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
-            outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
-            while ((length = in.read(bytes)) != -1) {
-                out.write(bytes, 0, length);
+    private void sendGetRequest() throws VideoRequestException {
+        try {
+            URL url = new URL(HTTP_GET + getName(path));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                throw new VideoRequestException("An error has occurred: " + responseCode);
+            } else {
+                InputStream inputStream = connection.getInputStream();
+                byte[] bytes = new byte[2048];
+                int length;
+                OutputStream outputStream = new FileOutputStream("Download\\" + separateFormat(getName(path)) + "." + newFormat);
+                outputPath += System.getProperty("user.dir") + "\\Download\\" + separateFormat(getName(path)) + "." + newFormat;
+                while ((length = inputStream.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, length);
+                }
+                outputStream.close();
             }
-            out.close();
+        } catch (Exception e) {
+            throw new VideoRequestException("Failed to get the converted file", e);
         }
     }
-
     /**
      * It is responsible for creating a folder in the root of the project.
      */
@@ -153,5 +166,36 @@ public class VideoRequest implements  Request{
     private String separateFormat(String name) {
         String[] parts = name.split("\\.");
         return parts[0];
+    }
+
+    /**
+     * Responsible for verifying empty, null or non-existent paths.
+     * @throws InvalidPathException
+     */
+    private void validatePath() throws InvalidPathException {
+        File file = new File (path);
+        if (path == null) {
+            throw new InvalidPathException("The path is null");
+        }
+        if (path.equals("")) {
+            throw new InvalidPathException("The Path is empty");
+        }
+        if (!file.isFile()) {
+            throw new InvalidPathException("File does not exist");
+        }
+
+    }
+
+    /**
+     * Responsible for verifying null or empty formats
+     * @throws InvalidFormatException
+     */
+    private void validateFormat() throws InvalidFormatException {
+        if (newFormat == null) {
+            throw new InvalidFormatException("The Format is null");
+        }
+        if (newFormat.equals("")) {
+            throw new InvalidFormatException("The Format is empty");
+        }
     }
 }
