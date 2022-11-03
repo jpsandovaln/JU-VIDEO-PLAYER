@@ -31,7 +31,7 @@ import java.text.ParseException;
 public class PlayListFrame {
     private JFrame frame;
 
-    public PlayListFrame() throws ParseException {
+    public PlayListFrame() {
         frame = FrameUtility.build("ATT Player", 0, 0, 850, 600, true);
         frame.setLayout(null);
         FiltersPanel filtersPanel = new FiltersPanel();
@@ -62,5 +62,5 @@ public class PlayListFrame {
     public JFrame getFrame() {
         return frame;
     }
-    
+
 }

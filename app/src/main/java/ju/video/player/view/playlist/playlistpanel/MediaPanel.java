@@ -9,6 +9,7 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import java.awt.Dimension;
+import java.io.File;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 
 import ju.video.player.controller.componentscontrollers.PlayConvertButtonController;
 import ju.video.player.controller.componentscontrollers.PlayMediaButtonController;
+import ju.video.player.controller.componentscontrollers.RemoveButtonController;
 import ju.video.player.view.commons.Button;
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.playlist.PlayListFrame;
@@ -32,22 +34,27 @@ import ju.video.player.view.playlist.PlayListFrame;
 
 public class MediaPanel extends JPanel{
 
-    public MediaPanel(String mediaName, int index, PlayListFrame playListFrame) {
+    public MediaPanel(File file, int index, PlayListFrame playListFrame) {
         initPanel();
-        JLabel name = new JLabel(mediaName);
+        JLabel name = new JLabel(file.getName());
         name.setForeground(UIColor.COMPONETS_COLOR);
         Button playButton = new Button("");
-		playButton.setIcon("play.png", 20, 20);
+		playButton.setIcon("/play.png", 20, 20);
         playButton.addActionListener(new PlayMediaButtonController(playListFrame, index));
         Button convertButton = new Button("");
         convertButton.setIcon("/convert.png", 20, 20);
-        convertButton.addActionListener(new PlayConvertButtonController(mediaName, playListFrame));
+        convertButton.addActionListener(new PlayConvertButtonController(file, playListFrame));
+        Button removeButton = new Button("");
+        removeButton.setIcon("/remove.png", 20, 20);
+        removeButton.addActionListener(new RemoveButtonController(file));
 		
         add(name);
         add(Box.createHorizontalGlue());
         add(playButton);
         add(Box.createRigidArea(new Dimension(5, 0)));
         add(convertButton);
+        add(Box.createRigidArea(new Dimension(5, 0)));
+        add(removeButton);
     }
 
     /**

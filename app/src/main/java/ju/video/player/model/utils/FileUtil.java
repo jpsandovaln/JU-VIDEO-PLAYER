@@ -1,7 +1,5 @@
 package ju.video.player.model.utils;
 
-import java.nio.file.attribute.BasicFileAttributes;
-
 /**
  * Copyright (c) 2022 Jala University.
  *

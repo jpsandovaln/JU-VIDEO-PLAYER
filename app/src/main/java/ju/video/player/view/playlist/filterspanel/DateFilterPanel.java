@@ -13,7 +13,7 @@ import java.awt.*;
 import java.text.ParseException;
 
 public class DateFilterPanel extends JPanel {
-    public DateFilterPanel() throws ParseException {
+    public DateFilterPanel() {
         initPanel();
         DateInitListener dateInitListener = new DateInitListener();
         DateEndListener dateEndListener = new DateEndListener();

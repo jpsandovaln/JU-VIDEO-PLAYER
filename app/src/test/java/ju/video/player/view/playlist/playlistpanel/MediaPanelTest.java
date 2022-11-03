@@ -9,7 +9,14 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import ju.video.player.view.playlist.PlayListFrame;
+
 import static org.junit.Assert.assertEquals;
+
+import java.io.File;
 
 /**
  * This test is responsible for test MediaPanel class
@@ -19,13 +26,15 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class MediaPanelTest {
-    String mediaName = "test";
+
+    File mediaName = new File("", "");
     int index = 2;
-    MediaPanel mediaPanel = new MediaPanel(mediaName, index, null);
+    PlayListFrame playListFrame = new PlayListFrame();
+    MediaPanel mediaPanel = new MediaPanel(mediaName, index, playListFrame);
 
     @Test
     public void shouldCountComponents() {
-        assertEquals(5, mediaPanel.getComponentCount());
+        assertEquals(7, mediaPanel.getComponentCount());
     }
 
     @Test

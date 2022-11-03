@@ -9,6 +9,8 @@
 package ju.video.player.view.videoconvert;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import ju.video.player.controller.ConvertController;
 import ju.video.player.controller.FormatConvertController;
 import ju.video.player.controller.componentscontrollers.BackButtonController;
@@ -58,7 +60,7 @@ public class VideoConvertFrame extends JFrame {
     private JComboBox<String> comboType;
     private JComboBox<String> comboFormat;
     private PlayListFrame playListFrame;
-    private JLabel outputPath;
+    private JTextField outputPath;
     JFrame frame;
 
     public VideoConvertFrame(String path, PlayListFrame playListFrame) {
@@ -83,14 +85,14 @@ public class VideoConvertFrame extends JFrame {
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"\\icon.png").getImage();
+        Image icon = new ImageIcon(Constant.RESOURCES_IMAGES+"/icon.png").getImage();
         frame.setIconImage(icon);
         frame.setResizable(false);
 
     }
     private Button returnButon() {
         Button returnButton = new Button("");
-        returnButton.setIcon("back.png", 30, 30);
+        returnButton.setIcon("/back.png", 30, 30);
         returnButton.setBounds(10, 10, 45, 35);
         returnButton.addActionListener(new BackButtonController(frame, playListFrame));
         returnButton.setVisible(true);
@@ -111,6 +113,7 @@ public class VideoConvertFrame extends JFrame {
         labelT.setBounds(posX, posY, 450, 200);
         labelT.setText(text);
         labelT.setFont(UIFont.COMMON_BIGGEST);
+        labelT.setBorder(null);
         labelT.setForeground(UIColor.COMPONETS_COLOR);
         labelT.setVisible(true);
         return labelT;
@@ -121,12 +124,14 @@ public class VideoConvertFrame extends JFrame {
      * It is responsible for displaying the conversion path address label.
      * @return  Returns a Jlabel configured to be added to the frame
      */
-    private JLabel outLabel() {
-        outputPath = new JLabel();
-        outputPath.setBounds(10, 500, 900, 30);
+    private JTextField outLabel() {
+        outputPath = new JTextField();
+        outputPath.setBounds(10, 500, 810, 30);
         outputPath.setText("");
+        outputPath.setEditable(false);
         outputPath.setFont(UIFont.COMMON_FONT);
         outputPath.setForeground(UIColor.COMPONETS_COLOR);
+        outputPath.setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
         outputPath.setVisible(true);
         return outputPath;
     }
