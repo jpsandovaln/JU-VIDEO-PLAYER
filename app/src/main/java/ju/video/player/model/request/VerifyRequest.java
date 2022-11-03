@@ -34,6 +34,8 @@ public class VerifyRequest {
         videoFormats.add("flv");
         videoFormats.add("mkv");
         videoFormats.add("avi");
+        videoFormats.add("mov");
+        videoFormats.add("mp4");
     }
 
     /**
