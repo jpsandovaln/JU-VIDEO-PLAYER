@@ -9,20 +9,25 @@
 
 package ju.video.player.model;
 
-import ju.video.player.commons.FilterFiles;
+import ju.video.player.view.commons.ComboBox;
+import ju.video.player.view.commons.TextField;
+import ju.video.player.view.playlist.filterspanel.DateComponentsPanel;
+import ju.video.player.view.playlist.filterspanel.FiltersPanel;
+import ju.video.player.view.playlist.filterspanel.SizeFilterPanel;
+import ju.video.player.view.playlist.filterspanel.DateFilterPanel;
 import ju.video.player.commons.exceptions.FilterFilesException;
 import ju.video.player.view.playlist.playlistpanel.VideoListPanel;
 
-import javax.swing.*;
 import java.io.File;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 public class ListValidVideos {
     private static ListValidVideos instance;
-    private List<String> videoList;
+    private List<File> videoList;
     private double minFileSize = 0;
     private double maxFileSize = 0;
     private String pathOfTheSelectedFolder;
@@ -47,21 +52,21 @@ public class ListValidVideos {
      * Set the list of files filtered to the Panel.
      * @throws FilterFilesException if there is a problem with the filters
      */
-    public void applyFilters() throws FilterFilesException {
-        FilterFiles filterFiles = new FilterFiles(pathOfTheSelectedFolder, minFileSize, maxFileSize, initDate, endDate, formatSelected);
-        if(pathOfTheSelectedFolder == null || !(new File(pathOfTheSelectedFolder)).exists()) {
-            JOptionPane.showMessageDialog(null, "Playlist empty");
-            return;
+    public void applyFilters() {
+        FilterFiles filterFiles = new FilterFiles(minFileSize, maxFileSize, initDate, endDate, formatSelected);
+        try {
+            videoList = filterFiles.getListFiles();
+            playListPanel.setPlayerLabel();
+        } catch (FilterFilesException e) {
+            throw new RuntimeException(e);
         }
-        videoList = filterFiles.getListFiles();
-        playListPanel.setPlayerLabel();
     }
 
     public void setFormatSelected(String formatSelected) {
         this.formatSelected = formatSelected;
     }
 
-    public List<String> getVideoList() {
+    public List<File> getVideoList() {
         return this.videoList;
     }
 
@@ -99,5 +104,19 @@ public class ListValidVideos {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public void restoreFilters(FiltersPanel filtersPanel) {
+        ((TextField) ((SizeFilterPanel) filtersPanel.getComponent(7)).getComponent(1)).setText("");
+        ((TextField) ((SizeFilterPanel) filtersPanel.getComponent(7)).getComponent(2)).setText("");
+        minFileSize = 0;
+        maxFileSize = 0;
+        ((TextField) ((DateComponentsPanel) ((DateFilterPanel) filtersPanel.getComponent(11)).getComponent(0)).getComponent(0)).setText("");
+        ((TextField) ((DateComponentsPanel) ((DateFilterPanel) filtersPanel.getComponent(11)).getComponent(2)).getComponent(0)).setText("");
+        initDate = null;
+        endDate = null;
+        ((ComboBox) ((JPanel) filtersPanel.getComponent(15)).getComponent(0)).setSelectedItem("All formats");
+        formatSelected = null;
+        applyFilters();
     }
 }

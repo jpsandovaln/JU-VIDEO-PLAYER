@@ -17,5 +17,5 @@ package ju.video.player.view.commons.constants;
 
 public class Constant {
 	public static final String RESOURCES_DIRECTORY = "app/src/main/java/ju/video/player/view/materialDesing/resources/";
-	public static final String RESOURCES_IMAGES = "app/src/main/resources/";
+	public static final String RESOURCES_IMAGES = "app/src/main/resources";
 }

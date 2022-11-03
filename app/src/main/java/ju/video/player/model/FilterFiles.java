@@ -7,12 +7,11 @@
  * license agreement you entered into with Jala University
  */
 
-package ju.video.player.commons;
+package ju.video.player.model;
 
 import ju.video.player.commons.exceptions.ContentFileException;
 import ju.video.player.commons.exceptions.FilterFilesException;
 import ju.video.player.commons.exceptions.ListVideosException;
-import ju.video.player.model.Format;
 import ju.video.player.utils.FileUtil;
 
 import java.io.File;
@@ -23,9 +22,15 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * It is responsible of filter the files
+ *
+ * @author Maria Hurtado
+ * @version 1.0
+ */
+
 public class FilterFiles {
 
-    private String filesFolder;
     private double initSize;
     private double endSize;
     private LocalDate initDate;
@@ -33,9 +38,7 @@ public class FilterFiles {
 
     private String formatSelected;
 
-    public FilterFiles(String filesFolder, double initSize, double endSize, LocalDate initDate, LocalDate endDate,
-            String formatSelected) {
-        this.filesFolder = filesFolder;
+    public FilterFiles(double initSize, double endSize, LocalDate initDate, LocalDate endDate, String formatSelected) {
         this.initSize = initSize;
         this.endSize = endSize;
         this.initDate = initDate;
@@ -49,13 +52,13 @@ public class FilterFiles {
      * @return
      * @throws FilterFilesException if there is a problem with the filters
      */
-    public List<String> getListFiles() throws FilterFilesException {
+
+    public List<File> getListFiles() throws FilterFilesException {
         try {
-            File paths = new File(filesFolder);
-            String[] nameFiles = paths.list();
-            List<String> listFilesName = new ArrayList<>();
-            for (String fileName : nameFiles) {
-                File file = new File(filesFolder, fileName);
+            List<File> listFiles = MediaList.getInstance().getMediaList();
+            List<File> listFilteredFiles = new ArrayList<>();
+            for (File file : listFiles) {
+                //File file = new File(filesFolder, fileName);
                 if (file.isDirectory()) {
                     for (String fileName2 : file.list()) {
                         File file2 = new File(file, fileName2);
@@ -65,14 +68,14 @@ public class FilterFiles {
                     if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
                             && verifyDate(attributes, initDate, endDate)
                             && verifyFormatSelected(file, formatSelected)) {
-                        listFilesName.add(fileName);
+                                listFilteredFiles.add(file);
+                    }
+                    if (listFiles.isEmpty()) {
+                        throw new ListVideosException("There are no files of the supported formats in the folder");
                     }
                 }
             }
-            if (listFilesName.isEmpty()) {
-                throw new ListVideosException("There are no files of the supported formats in the folder");
-            }
-            return listFilesName;
+            return listFilteredFiles;
         } catch (ContentFileException e) {
             throw new FilterFilesException(e.getMessage(),e);
         } catch (ListVideosException e) {

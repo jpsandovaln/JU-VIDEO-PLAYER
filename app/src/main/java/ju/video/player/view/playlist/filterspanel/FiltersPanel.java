@@ -12,8 +12,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.text.ParseException;
-import java.util.logging.Logger;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
@@ -21,10 +19,7 @@ import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.xml.crypto.dsig.spec.XPathType.Filter;
 
-import ju.video.player.commons.exceptions.FilterFilesException;
-import ju.video.player.commons.logger.At18Logger;
 import ju.video.player.model.Format;
 import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.Button;
@@ -44,7 +39,6 @@ import javax.swing.JLabel;
  */
 
 public class FiltersPanel extends JPanel {
-    //private Logger log = new At18Logger().getLogger();
 
     public FiltersPanel() {
         initPanel();
@@ -55,18 +49,15 @@ public class FiltersPanel extends JPanel {
         logoLabel.setIcon(convertIcon);
         SizeFilterPanel sizeFilterPanel = new SizeFilterPanel();
         DateFilterPanel dateFilterPanel = new DateFilterPanel();
-        Button applyFiltersButton = new Button("Apply Filters");
+        Button applyFiltersButton = new Button("  Apply Filters  ");
         applyFiltersButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
+        Button restoreFiltersButton = new Button("Restore Filters");
+        restoreFiltersButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        restoreFiltersButton.addActionListener(e -> ListValidVideos.getInstance().restoreFilters(this));
         Component box = Box.createRigidArea(new Dimension(250, 600));
         ((JComponent) box).setAlignmentX(Component.LEFT_ALIGNMENT);
-        applyFiltersButton.addActionListener(e -> {
-            try {
-                ListValidVideos.getInstance().applyFilters();
-            } catch (FilterFilesException ex) {
-                //log.warning(ex.getMessage());
-                ex.printStackTrace();
-            }
-        });
+        applyFiltersButton.addActionListener(e -> ListValidVideos.getInstance().applyFilters());
         JPanel formatsPanel = new JPanel(new BorderLayout());
         formatsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         formatsPanel.setBackground(UIColor.SECONDARY_BACKGROUNG_COLOR);
@@ -92,6 +83,8 @@ public class FiltersPanel extends JPanel {
         add(formatsPanel);
         add(Box.createRigidArea(new Dimension(0, 15)));
         add(applyFiltersButton);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(restoreFiltersButton);
         add(box);
     }
 

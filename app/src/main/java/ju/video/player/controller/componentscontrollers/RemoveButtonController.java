@@ -12,23 +12,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import ju.video.player.view.playlist.PlayListFrame;
-import ju.video.player.view.videoconvert.VideoConvertFrame;
+import ju.video.player.model.ListValidVideos;
+import ju.video.player.model.MediaList;
 
-public class PlayConvertButtonController implements ActionListener {
+/**
+ * It is responsible for remove a element of the playlist
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
+public class RemoveButtonController implements ActionListener {
     private File file;
-    private PlayListFrame playListFrame;
 
-    public PlayConvertButtonController(File file, PlayListFrame playListFrame) {
+    public RemoveButtonController(File file) {
         this.file = file;
-        this.playListFrame = playListFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String path = file.getPath();
-        playListFrame.setVisible(false);
-        new VideoConvertFrame(path, playListFrame);
+        MediaList.getInstance().removeFile(file);
+        ListValidVideos.getInstance().applyFilters();
     }
 
 }
