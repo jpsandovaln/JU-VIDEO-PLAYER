@@ -8,6 +8,7 @@
  */
 package ju.video.player.controller;
 
+import ju.video.player.commons.exceptions.RequestException;
 import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoconvert.VideoConvertFrame;
 import ju.video.player.model.ConvertFile;
@@ -41,7 +42,7 @@ public class ConvertController implements ActionListener {
         try {
             convertFile = new ConvertFile(convertFrame.getPath(), convertFrame.getFormat().getSelectedItem().toString());
             convertFrame.setLabel(convertFile.getOutputPath());
-        } catch (IOException e1) {
+        } catch (RequestException e1) {
             e1.printStackTrace();
         }
 

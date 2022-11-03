@@ -8,7 +8,11 @@
  */
 package ju.video.player.model.request;
 
+import ju.video.player.commons.exceptions.*;
+
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Responsible for organizing the types of requests for the different types of conversions.
  *
@@ -22,7 +26,7 @@ public interface Request {
      * @param format Is the format to which the file is to be converted.
      * @throws IOException
      */
-    void sendPost(String path, String format) throws IOException;
+    void sendPost(String path, String format) throws AudioRequestException, VideoRequestException;
 
     /**
      * It is responsible for returning the path of the converted file.

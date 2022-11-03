@@ -7,6 +7,9 @@
  * Licence agreement you entered into with Jala University
  */
 package ju.video.player.model.request;
+import ju.video.player.commons.exceptions.InvalidFormatException;
+import ju.video.player.commons.exceptions.RequestException;
+
 import java.util.ArrayList;
 /**
  * Responsible for Verifying the type of request necessary for the consumption of the converter service.
@@ -40,14 +43,36 @@ public class VerifyRequest {
      * Is responsible for verifying if the format is video or audio.
      * @return Returns the request required for the conversion type
      */
-    public Request getRequest() {
-        if (audioFormats.contains(format)) {
-            return new AudioRequest();
+    public Request getRequest() throws RequestException {
+        try {
+            validateFormat();
+            if (audioFormats.contains(format)) {
+                return new AudioRequest();
+            }
+            if (videoFormats.contains(format)) {
+                return new VideoRequest();
+            }
+            return  null;
+        } catch (Exception e) {
+            throw new RequestException(e);
         }
-        if (videoFormats.contains(format)) {
-            return new VideoRequest();
+
+    }
+
+    /**
+     * Responsible for verifying null, empty or unsupported forms
+     * @throws InvalidFormatException
+     */
+    private void validateFormat() throws InvalidFormatException {
+        if (format == null) {
+            throw new InvalidFormatException("The format is null");
         }
-        return  null;
+        if (format.equals("")) {
+            throw new InvalidFormatException("The format is empty");
+        }
+        if (!videoFormats.contains(format) && !audioFormats.contains(format)) {
+            throw new InvalidFormatException("Format not supported");
+        }
     }
 }
 

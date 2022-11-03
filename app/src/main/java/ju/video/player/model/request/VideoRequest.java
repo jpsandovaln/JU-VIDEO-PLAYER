@@ -52,7 +52,7 @@ public class VideoRequest implements  Request{
      * It is responsible for constructing the body of the request and executing the request.
      * @param path It is the directory where the file to be converted is located.
      * @param format Is the format to which the file is to be converted.
-     * @throws IOException
+     * @throws VideoRequestException
      */
     @Override
     public void sendPost(String path, String format) throws VideoRequestException {
@@ -110,7 +110,7 @@ public class VideoRequest implements  Request{
 
     /**
      * Is responsible for performing a request to obtain the converted file.
-     * @throws IOException
+     * @throws VideoRequestException
      */
     private void sendGet() throws VideoRequestException {
         try {
@@ -167,6 +167,11 @@ public class VideoRequest implements  Request{
         String[] parts = name.split("\\.");
         return parts[0];
     }
+
+    /**
+     * Responsible for verifying empty, null or non-existent paths.
+     * @throws InvalidPathException
+     */
     private void validatePath() throws InvalidPathException {
         File file = new File (path);
         if (path == null) {
@@ -180,6 +185,11 @@ public class VideoRequest implements  Request{
         }
 
     }
+
+    /**
+     * Responsible for verifying null or empty formats
+     * @throws InvalidFormatException
+     */
     private void validateFormat() throws InvalidFormatException {
         if (newFormat == null) {
             throw new InvalidFormatException("The Format is null");

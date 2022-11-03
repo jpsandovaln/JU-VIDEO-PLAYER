@@ -38,7 +38,7 @@ public class AudioRequest implements Request {
      * The constructor is responsible for creating the Downloads directory in the project and
      * initialize outputPath variable.
      */
-    public AudioRequest() {
+    AudioRequest() {
         outputPath = "Successful conversion: ";
         createDirectory();
     }
@@ -47,7 +47,7 @@ public class AudioRequest implements Request {
      * It is responsible for constructing the body of the request and executing the request.
      * @param path It is the directory where the file to be converted is located.
      * @param format Is the format to which the file is to be converted.
-     * @throws IOException
+     * @throws AudioRequestException
      */
     @Override
     public void sendPost(String path, String format) throws AudioRequestException {
@@ -90,7 +90,7 @@ public class AudioRequest implements Request {
 
     /**
      * Is responsible for performing a request to obtain the converted file.
-     * @throws IOException
+     * @throws AudioRequestException
      */
     private void sendGet() throws AudioRequestException{
         try {
@@ -149,6 +149,11 @@ public class AudioRequest implements Request {
         String[] parts = name.split("\\.");
         return parts[0];
     }
+
+    /**
+     * Responsible for verifying empty, null or non-existent paths.
+     * @throws InvalidPathException
+     */
     private void validatePath() throws InvalidPathException {
         File file = new File (path);
         if (path == null) {
@@ -162,6 +167,11 @@ public class AudioRequest implements Request {
         }
 
     }
+
+    /**
+     * Responsible for verifying null or empty formats
+     * @throws InvalidFormatException
+     */
     private void validateFormat() throws InvalidFormatException {
         if (newFormat == null) {
             throw new InvalidFormatException("The Format is null");

@@ -10,6 +10,9 @@ package ju.video.player.model;
 
 import java.io.IOException;
 
+import ju.video.player.commons.exceptions.AudioRequestException;
+import ju.video.player.commons.exceptions.RequestException;
+import ju.video.player.commons.exceptions.VideoRequestException;
 import ju.video.player.model.request.Request;
 import ju.video.player.model.request.VerifyRequest;
 /**
@@ -28,19 +31,23 @@ public class ConvertFile {
      * @param format This is the format to which the file is to be converted.
      * @throws IOException
      */
-    public ConvertFile(String path, String format) throws IOException {
+    public ConvertFile(String path, String format) throws RequestException {
         this.path = path;
         this.format = format;
         convert();
     }
     /**
      * Is responsible for verifying the type of request needed for the conversion and executing the request.
-     * @throws IOException
+     * @throws RequestException
      */
-    private void convert() throws IOException {
-        VerifyRequest verifyRequest = new VerifyRequest(format);
-        request = verifyRequest.getRequest();
-        request.sendPost(path, format);
+    private void convert() throws RequestException {
+        try {
+            VerifyRequest verifyRequest = new VerifyRequest(format);
+            request = verifyRequest.getRequest();
+            request.sendPost(path, format);
+        } catch (AudioRequestException | VideoRequestException e) {
+            throw new RequestException(e);
+        }
     }
 
     /**
