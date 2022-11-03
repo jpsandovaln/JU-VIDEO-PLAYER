@@ -16,7 +16,6 @@ import ju.video.player.model.Format;
 import ju.video.player.utils.FileUtil;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDate;
@@ -48,8 +47,7 @@ public class FilterFiles {
      * Return a list of files filtered according the criteria entered by the user.
      *
      * @return
-     * @throws FilterFilesException
-     * @throws IOException
+     * @throws FilterFilesException if there is a problem with the filters
      */
     public List<String> getListFiles() throws FilterFilesException {
         try {
@@ -90,9 +88,7 @@ public class FilterFiles {
      * @param file,           is to verify if has the format required by the user.
      * @param formatSelected, it is the format requerired by the user.
      * @return True or False if the file accomplish with the format.
-     * @throws FilterFilesException
-     * @throws ContentFileException
-     * @throws IOException
+     * @throws ContentFileException if the content type of the file is not valid
      */
     public boolean verifyFormatSelected(File file, String formatSelected) throws ContentFileException {
         try {
@@ -112,9 +108,7 @@ public class FilterFiles {
      *
      * @param file
      * @return
-     * @throws FilterFilesException
-     * @throws ContentFileException
-     * @throws IOException
+     * @throws ContentFileException if the content type of the file is not valid
      */
     public boolean verifyIsMediaFile(File file) throws ContentFileException {
         try {

@@ -4,11 +4,9 @@
  */
 package ju.video.player;
 
-import java.text.ParseException;
 
 import ju.video.player.view.Splash;
 
-import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
