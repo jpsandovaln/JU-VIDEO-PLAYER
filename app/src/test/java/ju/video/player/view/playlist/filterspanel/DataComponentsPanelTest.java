@@ -1,3 +1,5 @@
+package ju.video.player.view.playlist.filterspanel;
+
 /**
  * Copyright (c) 2022 Jala University.
  * <p>
@@ -14,8 +16,6 @@
  * @version 1.0
  */
 
-package ju.video.player.view.playlist.filterspanel;
-
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -27,14 +27,38 @@ public class DataComponentsPanelTest {
     DateInitListener dateInitListener = new DateInitListener();
 
     @Test
-    public void initDateComponentsPanelTest() throws ParseException {
+    public void initCountComponents() throws ParseException {
         DateComponentsPanel dateComponentsPanel = new DateComponentsPanel(test, dateInitListener);
-        assertEquals(3, dateComponentsPanel.getComponentCount());
-        assertEquals(200, dateComponentsPanel.getWidth());
-        assertEquals(500, dateComponentsPanel.getHeight());
-        assertEquals(0, dateComponentsPanel.getX());
-        assertEquals(0, dateComponentsPanel.getY());
-        assertFalse(dateComponentsPanel.isOpaque());
+        assertEquals(2, dateComponentsPanel.getComponentCount());
+    }
 
+    @Test
+    public void initVerifyWidth() throws ParseException {
+        DateComponentsPanel dateComponentsPanel = new DateComponentsPanel(test, dateInitListener);
+        assertEquals(180, dateComponentsPanel.getWidth());
+    }
+
+    @Test
+    public void initVerifyHeight() throws ParseException {
+        DateComponentsPanel dateComponentsPanel = new DateComponentsPanel(test, dateInitListener);
+        assertEquals(100, dateComponentsPanel.getHeight());
+    }
+
+    @Test
+    public void initVerifyPositionX() throws ParseException {
+        DateComponentsPanel dateComponentsPanel = new DateComponentsPanel(test, dateInitListener);
+        assertEquals(0, dateComponentsPanel.getX());
+    }
+
+    @Test
+    public void initVerifyPositionY() throws ParseException {
+        DateComponentsPanel dateComponentsPanel = new DateComponentsPanel(test, dateInitListener);
+        assertEquals(0, dateComponentsPanel.getY());
+    }
+
+    @Test
+    public void initVerifyIfOpaque() throws ParseException {
+        DateComponentsPanel dateComponentsPanel = new DateComponentsPanel(test, dateInitListener);
+        assertFalse(dateComponentsPanel.isOpaque());
     }
 }

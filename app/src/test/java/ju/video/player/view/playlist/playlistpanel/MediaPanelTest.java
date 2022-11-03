@@ -9,6 +9,11 @@
 package ju.video.player.view.playlist.playlistpanel;
 
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import ju.video.player.view.playlist.PlayListFrame;
+
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
@@ -21,13 +26,24 @@ import java.io.File;
  */
 
 public class MediaPanelTest {
+
+    File mediaName = new File("", "");
+    int index = 2;
+    PlayListFrame playListFrame = new PlayListFrame();
+    MediaPanel mediaPanel = new MediaPanel(mediaName, index, playListFrame);
+
     @Test
-    public void shouldSetMediaPanel() {
-        File mediaName = new File("", "");
-        int index = 2;
-        MediaPanel mediaPanel = new MediaPanel(mediaName, index, null);
-        assertEquals(5, mediaPanel.getComponentCount());
+    public void shouldCountComponents() {
+        assertEquals(7, mediaPanel.getComponentCount());
+    }
+
+    @Test
+    public void shouldVerifyWidth() {
         assertEquals(700, mediaPanel.getWidth());
+    }
+
+    @Test
+    public void shouldVerifyHeight() {
         assertEquals(600, mediaPanel.getHeight());
     }
 }

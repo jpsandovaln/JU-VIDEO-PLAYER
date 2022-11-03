@@ -1,5 +1,3 @@
-package ju.video.player.view.playlist.filterspanel;
-
 /**
  * Copyright (c) 2022 Jala University.
  * <p>
@@ -8,6 +6,8 @@ package ju.video.player.view.playlist.filterspanel;
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
+package ju.video.player.view.playlist.filterspanel;
+
 import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
@@ -24,12 +24,21 @@ import org.junit.Test;
 public class FiltersPanelTest {
 
     @Test
-    public void ShouldShowTheFilstersPanel() throws ParseException {
+    public void ShouldVerifyWidth() throws ParseException {
         FiltersPanel filstersPanel = new FiltersPanel();
         assertEquals(250, filstersPanel.getWidth());
-        assertEquals(600, filstersPanel.getHeight());
-        assertEquals(filstersPanel, filstersPanel);
-        assertEquals(16, filstersPanel.getComponentCount());
+
     }
 
+    @Test
+    public void ShouldVerifyHeight() throws ParseException {
+        FiltersPanel filstersPanel = new FiltersPanel();
+        assertEquals(600, filstersPanel.getHeight());
+    }
+
+    @Test
+    public void ShouldCountComponents() throws ParseException {
+        FiltersPanel filstersPanel = new FiltersPanel();
+        assertEquals(19, filstersPanel.getComponentCount());
+    }
 }

@@ -20,11 +20,16 @@ import static org.junit.Assert.assertFalse;
  */
 
 public class ExaminePanelTest {
+    VideoListPanel videoListPanel = new VideoListPanel(null);
+    ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
+
     @Test
-    public void shouldSetExaminePanel() {
-        VideoListPanel videoListPanel = new VideoListPanel(null);
-        ExaminePanel examinePanel = new ExaminePanel(videoListPanel);
+    public void shouldCountComponents() {
         assertEquals(2, examinePanel.getComponentCount());
+    }
+
+    @Test
+    public void shouldVerifyIfOpaque() {
         assertFalse(examinePanel.isOpaque());
     }
 }

@@ -19,11 +19,21 @@ import org.junit.Test;
  * @version 1.0
  */
 public class SplashTest {
+    Splash splash = new Splash();
+
     @Test
-    public void shouldInitSplashFrame() {
-        Splash splash = new Splash();
+    public void shouldVerifyWidth() {
         assertEquals(850, splash.getFrame().getWidth());
+    }
+
+    @Test
+    public void shouldVerifyHeight() {
+
         assertEquals(600, splash.getFrame().getHeight());
+    }
+
+    @Test
+    public void shouldCountComponents() {
         assertEquals(1, splash.getFrame().getComponentCount());
     }
 }
