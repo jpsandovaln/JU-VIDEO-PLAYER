@@ -1,5 +1,3 @@
-package ju.video.player.view.playlist.filterspanel;
-
 /**
  * Copyright (c) 2022 Jala University.
  * <p>
@@ -8,6 +6,8 @@ package ju.video.player.view.playlist.filterspanel;
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
+package ju.video.player.view.playlist.filterspanel;
+
 import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
