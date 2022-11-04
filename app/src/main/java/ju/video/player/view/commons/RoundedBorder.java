@@ -19,13 +19,22 @@ import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.AbstractButton;
-
+/**
+ * It builds the UI border for the buttons.
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 class RoundedBorder extends BasicButtonUI {      
       
     public RoundedBorder() {
         super();
     }
       
+    /**
+     * Set the border of the button
+     * @param button
+     */
     public void roundButton(JButton button){
         button.setBorderPainted(false);
     }

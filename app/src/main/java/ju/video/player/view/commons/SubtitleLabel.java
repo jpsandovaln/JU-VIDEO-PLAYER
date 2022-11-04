@@ -15,6 +15,13 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * It creates a JLabel with the caracteristics of a Subtitle.
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
+
 public class SubtitleLabel extends JLabel {
     private static final int FONT_STYLE = 1;
     private static final int FONT_SIZE = 18;

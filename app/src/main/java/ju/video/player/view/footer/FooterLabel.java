@@ -1,6 +1,6 @@
 package ju.video.player.view.footer;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 public class FooterLabel extends JLabel {
     public FooterLabel() {

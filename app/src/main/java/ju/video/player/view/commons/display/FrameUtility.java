@@ -10,6 +10,12 @@ package ju.video.player.view.commons.display;
 
 import javax.swing.JFrame;
 
+/**
+ * It for build a JFrame
+ *
+ * @author Libertad Tobalada
+ * @version 1.0
+ */
 public class FrameUtility {
 
 	public static JFrame build(String name, int x, int y, int width, int height, boolean moveable) {

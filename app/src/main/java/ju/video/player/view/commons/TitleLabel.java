@@ -15,6 +15,12 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * It creates a JLabel with the caracteristics of a title.
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class TitleLabel extends JLabel {
     private static final int FONT_STYLE = 0;
     private static final int FONT_SIZE = 25;
