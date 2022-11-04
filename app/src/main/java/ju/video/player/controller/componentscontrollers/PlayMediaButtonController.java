@@ -16,6 +16,12 @@ import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoplayer.MediaPlayerFrame;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
+/**
+ * It initializes the PlayMediaFrame when user press the PlayMediaButton
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class PlayMediaButtonController implements ActionListener {
     private EmbeddedMediaListPlayerComponent mediaPlayerComponent;
     private PlayListFrame playListFrame;
@@ -35,6 +41,9 @@ public class PlayMediaButtonController implements ActionListener {
         new MediaPlayerFrame(playListFrame, mediaPlayerComponent);
     }
 
+    /**
+     * Create the playList for reproduce
+     */
     public void createList() {
         int listSize = ListValidVideos.getInstance().getVideoList().size();
         for (int position = 0; position < listSize; position++) {

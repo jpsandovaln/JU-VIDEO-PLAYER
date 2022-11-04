@@ -15,6 +15,12 @@ import java.io.File;
 import ju.video.player.view.playlist.PlayListFrame;
 import ju.video.player.view.videoconvert.VideoConvertFrame;
 
+/**
+ * It initializes the ConvertFrame when user press the ConvertButton
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class PlayConvertButtonController implements ActionListener {
     private File file;
     private PlayListFrame playListFrame;
