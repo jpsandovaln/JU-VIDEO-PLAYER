@@ -9,12 +9,11 @@
 
 package ju.video.player.model;
 
-import ju.video.player.commons.exceptions.ContentFileException;
-import ju.video.player.commons.exceptions.FilterFilesException;
-import ju.video.player.commons.exceptions.ListVideosException;
+import ju.video.player.commons.exceptions.*;
 import ju.video.player.utils.FileUtil;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDate;
@@ -68,7 +67,7 @@ public class FilterFiles {
                     if (verifyIsMediaFile(file) && verifySize(attributes, initSize, endSize)
                             && verifyDate(attributes, initDate, endDate)
                             && verifyFormatSelected(file, formatSelected)) {
-                                listFilteredFiles.add(file);
+                        listFilteredFiles.add(file);
                     }
                     if (listFiles.isEmpty()) {
                         throw new ListVideosException("There are no files of the supported formats in the folder");
@@ -77,11 +76,11 @@ public class FilterFiles {
             }
             return listFilteredFiles;
         } catch (ContentFileException e) {
-            throw new FilterFilesException(e.getMessage(),e);
+            throw new FilterFilesException(e.getMessage(), e);
         } catch (ListVideosException e) {
-            throw new FilterFilesException(e.getMessage(),e);
+            throw new FilterFilesException(e.getMessage(), e);
         } catch (Exception e) {
-            throw new FilterFilesException("It's not possible to read one of the files",e);
+            throw new FilterFilesException("It's not possible to read one of the files", e);
         }
     }
 
@@ -99,10 +98,9 @@ public class FilterFiles {
                 return true;
             }
             String fileContentType = Files.probeContentType(file.toPath());
-            Format format = Format.fromString(fileContentType);
-            return formatSelected.equals(format.getFormat());
+            return formatSelected.equals(fileContentType);
         } catch (Exception e) {
-            throw new ContentFileException("The content type of the file is not valid", e);
+            throw new ContentFileException("Unexpected error", e);
         }
     }
 
