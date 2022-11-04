@@ -25,7 +25,7 @@ public class ExaminePanelTest {
 
     @Test
     public void shouldCountComponents() {
-        assertEquals(2, examinePanel.getComponentCount());
+        assertEquals(4, examinePanel.getComponentCount());
     }
 
     @Test
