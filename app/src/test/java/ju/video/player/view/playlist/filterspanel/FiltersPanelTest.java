@@ -39,6 +39,6 @@ public class FiltersPanelTest {
     @Test
     public void ShouldCountComponents() throws ParseException {
         FiltersPanel filstersPanel = new FiltersPanel();
-        assertEquals(19, filstersPanel.getComponentCount());
+        assertEquals(21, filstersPanel.getComponentCount());
     }
 }
