@@ -93,6 +93,7 @@ public class VideoRequest implements  Request{
             reqEntity.addPart("color", color);
             reqEntity.addPart("size", size);
             reqEntity.addPart("cropVideo", cropVideo);
+            httpPost.setHeader("Authorization", "Bearer " + token);
             httpPost.setEntity(reqEntity);
             HttpResponse response = httpClient.execute(httpPost);
             HttpEntity resEntity = response.getEntity();
