@@ -15,6 +15,12 @@ import javax.swing.text.MaskFormatter;
 
 import java.awt.Font;
 
+/**
+ * It creates a JTextField with its features.
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class TextField extends JFormattedTextField  {
     private static final String NAME = "Arial";
     private static final int SIZE = 12;
@@ -28,6 +34,10 @@ public class TextField extends JFormattedTextField  {
         initPanel(name);
     }
 
+    /**
+     * Initialize the JText
+     * @param name
+     */
     public void initPanel(String name) {
         setForeground(UIColor.COMPONETS_COLOR);
         setSize(100, 14);
@@ -36,6 +46,10 @@ public class TextField extends JFormattedTextField  {
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
     }
 
+    /**
+     * Set the Title that appears in the border
+     * @param title
+     */
     public void setTitle(String title) {
         setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.LEFT, 0, font, UIColor.COMPONETS_COLOR));
     }

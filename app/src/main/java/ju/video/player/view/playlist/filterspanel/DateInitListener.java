@@ -11,12 +11,20 @@ package ju.video.player.view.playlist.filterspanel;
 
 import ju.video.player.model.ListValidVideos;
 
-import javax.swing.*;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * It gets the value of the Text field to apply the date filter
+ *
+ * @author Maria Hurtado
+ * @version 1.0
+ */
 public class DateInitListener implements DocumentListener {
     private JTextField text;
 
