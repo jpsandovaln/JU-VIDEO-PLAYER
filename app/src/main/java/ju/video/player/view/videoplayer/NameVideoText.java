@@ -41,6 +41,7 @@ public class NameVideoText extends JPanel {
 
     /**
      * For change the text of the media name field
+     * 
      * @param newVideoName
      */
     public void updateMediaName(String newVideoName){

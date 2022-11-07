@@ -68,12 +68,26 @@ public class MediaList {
         String[] nameFiles = paths.list();
         for (String fileName : nameFiles) {
             File file = new File(filesFolder, fileName);
-            if (!file.isDirectory() && verifyIsMediaFile(file)) {
+            if (!file.isDirectory() && verifyIsMediaFile(file) && verifyThereIsNotInList(file)) {
                 mediaList.add(file);
             }
         }
     }
     
+    /**
+     * Verify if the file is not already in the mediaList
+     * @param file input file
+     * @return true/false
+     */
+    private boolean verifyThereIsNotInList(File file) {
+        for (File fileInList : mediaList) {
+            if (file.equals(fileInList)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Verify if the file have a accepted format
      * 

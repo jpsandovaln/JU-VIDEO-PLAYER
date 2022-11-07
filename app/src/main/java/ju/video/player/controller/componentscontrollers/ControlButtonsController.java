@@ -41,7 +41,7 @@ public class ControlButtonsController {
     }
 
     /**
-     * handle the PlayButton behavior and actions
+     * Handle the PlayButton behavior and actions
      */
     public void playButtonAction() {
         if (isPlay) {

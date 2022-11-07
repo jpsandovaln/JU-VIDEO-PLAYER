@@ -58,6 +58,7 @@ public enum Format {
 
     /**
      * Verify if the parameter is equeals to some Format in the enum
+     * 
      * @param formatt
      * @return formatl
      */

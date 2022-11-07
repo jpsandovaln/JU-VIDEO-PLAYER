@@ -4,7 +4,6 @@
  */
 package ju.video.player;
 
-
 import ju.video.player.view.Splash;
 
 /**

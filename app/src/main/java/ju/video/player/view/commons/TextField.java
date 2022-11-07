@@ -36,6 +36,7 @@ public class TextField extends JFormattedTextField  {
 
     /**
      * Initialize the JText
+     * 
      * @param name
      */
     public void initPanel(String name) {
@@ -48,6 +49,7 @@ public class TextField extends JFormattedTextField  {
 
     /**
      * Set the Title that appears in the border
+     * 
      * @param title
      */
     public void setTitle(String title) {

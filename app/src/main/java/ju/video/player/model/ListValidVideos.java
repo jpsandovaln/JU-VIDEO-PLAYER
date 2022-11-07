@@ -118,6 +118,7 @@ public class ListValidVideos {
 
     /**
      * Restore all the filters element to the initial state
+     * 
      * @param filtersPanel
      */
     public void restoreFilters(FiltersPanel filtersPanel) {
@@ -128,6 +129,7 @@ public class ListValidVideos {
     
     /**
      * Restore the filters UI components to their initial state
+     * 
      * @param filtersPanel
      */
     private void restoreUIFilters(FiltersPanel filtersPanel) {
