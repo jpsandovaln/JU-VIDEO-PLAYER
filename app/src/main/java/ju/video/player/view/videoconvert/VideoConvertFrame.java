@@ -95,7 +95,8 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Initialize the retunr button
-     * @return
+     * 
+     * @return return JButton
      */
     private Button returnButon() {
         Button returnButton = new Button("");
@@ -108,7 +109,8 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Initialize the icon label
-     * @return
+     * 
+     * @return Icon JLabel
      */
     private JLabel IcoLabel() {
         ImageIcon iconf = new ImageIcon(this.getClass().getResource("/att1.png"));
@@ -121,6 +123,7 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Initialize the text label
+     * 
      * @param text
      * @param posX
      * @param posY
@@ -140,6 +143,7 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * It is responsible for displaying the conversion path address label.
+     * 
      * @return  Returns a Jlabel configured to be added to the frame
      */
     private JTextField outLabel() {
@@ -156,6 +160,7 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * It is responsible for setting a message in the Jlabel, and refreshing the frame.
+     * 
      * @param newLabel Receives a string to configure the Jlabel of the path
      */
     public void setLabel(String newLabel) {
@@ -166,7 +171,8 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Initialize the convert button
-     * @return
+     * 
+     * @return convert JButton
      */
     public JButton buttonConv() {
         Button button = new Button("Convert");
@@ -180,7 +186,8 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Initialize the panel type
-     * @return
+     * 
+     * @return type Jpanel
      */
     public JPanel panelType() {
         comboFormat = new JComboBox<String>();
@@ -201,7 +208,8 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Initialize the panel format
-     * @return
+     * 
+     * @return Format Jpanel
      */
     public JPanel panelFormat() {
         comboType = new JComboBox<String>();
@@ -224,7 +232,8 @@ public class VideoConvertFrame extends JFrame {
 
     /**
      * Get the selected format in the format comboBox
-     * @return
+     * 
+     * @return jcombobox of formats
      */
     public JComboBox<String> getFormat() {
         return this.comboFormat;
@@ -260,6 +269,8 @@ public class VideoConvertFrame extends JFrame {
     }
 
     /**
+     * GEt the type format comboBox
+     * 
      * @return format comboBox
      */
     public JComboBox<String> getTypeFormat() {
@@ -267,6 +278,8 @@ public class VideoConvertFrame extends JFrame {
     }
 
     /**
+     * Get the path of the selected file
+     * 
      * @return path of the input
      */
     public String getPath() {
@@ -274,6 +287,8 @@ public class VideoConvertFrame extends JFrame {
     }
 
     /**
+     * Get the prncipal converter frame
+     * 
      * @return convert frame
      */
     public JFrame getFrame() {
