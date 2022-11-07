@@ -35,9 +35,11 @@ import org.apache.http.HttpEntity;
 public class VideoRequest implements  Request{
     private static final String HTTP_POST = "http://localhost:5000/uploadVideo";
     private static final String HTTP_GET = "http://localhost:5000/downloadFile/";
+    private static final String HTTP_GET_TOKEN = "http://localhost:5000/getToken";
     private String path;
     private String newFormat;
     private String outputPath;
+    private String token;
 
     /**
      * The constructor is responsible for creating the Downloads directory in the project and
@@ -58,6 +60,7 @@ public class VideoRequest implements  Request{
     public void sendPostRequest(String path, String format) throws VideoRequestException {
         this.path = path;
         this.newFormat = format;
+        getToken();
         try {
             validateFormat();
             validatePath();
@@ -135,6 +138,37 @@ public class VideoRequest implements  Request{
         } catch (Exception e) {
             throw new VideoRequestException("Failed to get the converted file", e);
         }
+    }
+
+    /**
+     * It is responsible for obtaining a token to consume the Video converter service.
+     * @throws VideoRequestException
+     */
+    private void getToken() throws VideoRequestException{
+        try {
+            URL urlGetToken = new URL(HTTP_GET_TOKEN);
+            HttpURLConnection connection = (HttpURLConnection) urlGetToken.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("An error has occurred: " + responseCode);
+            } else {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = bufferedReader.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                bufferedReader.close();
+                String[] partsToken = response.toString().split(": ");
+                token = partsToken[1];
+            }
+        } catch (Exception e) {
+            throw new VideoRequestException("Failure to obtain token", e);
+        }
+
     }
     /**
      * It is responsible for creating a folder in the root of the project.

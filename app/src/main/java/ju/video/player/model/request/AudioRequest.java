@@ -31,9 +31,11 @@ import org.apache.http.HttpEntity;
 public class AudioRequest implements Request {
     private static final String HTTP_POST = "http://localhost:5000/uploadAudio";
     private static final String HTTP_GET = "http://localhost:5000/downloadFile/";
+    private static final String HTTP_GET_TOKEN = "http://localhost:5000/getToken";
     private String path;
     private String newFormat;
     private String outputPath;
+    private String token;
     /**
      * The constructor is responsible for creating the Downloads directory in the project and
      * initialize outputPath variable.
@@ -41,6 +43,7 @@ public class AudioRequest implements Request {
     AudioRequest() {
         outputPath = "Successful conversion: ";
         createDirectory();
+
     }
 
     /**
@@ -53,6 +56,7 @@ public class AudioRequest implements Request {
     public void sendPostRequest(String path, String format) throws AudioRequestException {
         this.path = path;
         this.newFormat = format;
+        getToken();
         try {
             validateFormat();
             validatePath();
@@ -70,6 +74,7 @@ public class AudioRequest implements Request {
             reqEntity.addPart("channels", channels);
             reqEntity.addPart("sampling frequency", samplingFrequency);
             reqEntity.addPart("format", outFormat);
+            httpPost.setHeader("Authorization", "Bearer " + token);
             httpPost.setEntity(reqEntity);
             HttpResponse response = httpClient.execute(httpPost);
             HttpEntity resEntity = response.getEntity();
@@ -114,6 +119,37 @@ public class AudioRequest implements Request {
             }
         } catch (Exception e) {
             throw new AudioRequestException("Failed to get the converted file", e);
+        }
+
+    }
+
+    /**
+     * It is responsible for obtaining a token to consume the Audio converter service.
+     * @throws AudioRequestException
+     */
+    private void getToken() throws AudioRequestException{
+        try {
+            URL urlGetToken = new URL(HTTP_GET_TOKEN);
+            HttpURLConnection connection = (HttpURLConnection) urlGetToken.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("An error has occurred: " + responseCode);
+            } else {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = bufferedReader.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                bufferedReader.close();
+                String[] partsToken = response.toString().split(": ");
+                token = partsToken[1];
+            }
+        } catch (Exception e) {
+            throw new AudioRequestException("Failure to obtain token", e);
         }
 
     }
