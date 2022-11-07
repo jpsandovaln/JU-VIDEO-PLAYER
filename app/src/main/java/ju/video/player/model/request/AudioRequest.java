@@ -48,6 +48,7 @@ public class AudioRequest implements Request {
 
     /**
      * It is responsible for constructing the body of the request and executing the request.
+     * 
      * @param path It is the directory where the file to be converted is located.
      * @param format Is the format to which the file is to be converted.
      * @throws AudioRequestException
@@ -86,6 +87,7 @@ public class AudioRequest implements Request {
 
     /**
      * It is responsible for returning the path of the converted file.
+     * 
      * @return A string with the path address of the converted file is returned.
      */
     @Override
@@ -95,6 +97,7 @@ public class AudioRequest implements Request {
 
     /**
      * Is responsible for performing a request to obtain the converted file.
+     * 
      * @throws AudioRequestException
      */
     private void sendGetRequest() throws AudioRequestException{
@@ -168,6 +171,7 @@ public class AudioRequest implements Request {
 
     /**
      * It is responsible for obtaining the name of the file to be converted from the path received.
+     * 
      * @param name Is the complete path of the file to convert
      * @return Returns the file name as a string
      */
@@ -178,6 +182,7 @@ public class AudioRequest implements Request {
 
     /**
      * Is responsible for separating the format from the name of the file to be converted
+     * 
      * @param name It is the name of the file with its format
      * @return Returns the file name
      */
@@ -188,6 +193,7 @@ public class AudioRequest implements Request {
 
     /**
      * Responsible for verifying empty, null or non-existent paths.
+     * 
      * @throws InvalidPathException
      */
     private void validatePath() throws InvalidPathException {
@@ -206,6 +212,7 @@ public class AudioRequest implements Request {
 
     /**
      * Responsible for verifying null or empty formats
+     * 
      * @throws InvalidFormatException
      */
     private void validateFormat() throws InvalidFormatException {

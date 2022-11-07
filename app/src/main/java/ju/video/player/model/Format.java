@@ -49,10 +49,19 @@ public enum Format {
         this.format = format;
     }
 
+    /**
+     * @return format
+     */
     public String getFormat() {
         return format;
     }
 
+    /**
+     * Verify if the parameter is equeals to some Format in the enum
+     * 
+     * @param formatt
+     * @return formatl
+     */
     public static Format fromString(String formatt) {
         for (Format format : Format.values()) {
             if (format.format.equalsIgnoreCase(formatt)) {

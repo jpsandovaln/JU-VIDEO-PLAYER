@@ -25,6 +25,12 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+/**
+ * It is a list with the media that is showed in the playList
+ *
+ * @author Sarai Alvarez
+ * @version 1.0
+ */
 public class ListValidVideos {
     private static ListValidVideos instance;
     private List<File> videoList;
@@ -41,6 +47,11 @@ public class ListValidVideos {
         this.videoList = new ArrayList<>();
     }
 
+    /**
+     * initialize the instance if there aren't and get the instance
+     * 
+     * @return instance
+     */
     public static ListValidVideos getInstance() {
         if (instance == null) {
             instance = new ListValidVideos();
@@ -50,6 +61,7 @@ public class ListValidVideos {
 
     /**
      * Set the list of files filtered to the Panel.
+     * 
      * @throws FilterFilesException if there is a problem with the filters
      */
     public void applyFilters() {
@@ -106,17 +118,38 @@ public class ListValidVideos {
         this.endDate = endDate;
     }
 
+    /**
+     * Restore all the filters element to the initial state
+     * 
+     * @param filtersPanel
+     */
     public void restoreFilters(FiltersPanel filtersPanel) {
+        restoreUIFilters(filtersPanel);
+        restoreFiltersValue();
+        applyFilters();
+    }
+    
+    /**
+     * Restore the filters UI components to their initial state
+     * 
+     * @param filtersPanel
+     */
+    private void restoreUIFilters(FiltersPanel filtersPanel) {
         ((TextField) ((SizeFilterPanel) filtersPanel.getComponent(7)).getComponent(1)).setText("");
         ((TextField) ((SizeFilterPanel) filtersPanel.getComponent(7)).getComponent(2)).setText("");
-        minFileSize = 0;
-        maxFileSize = 0;
         ((TextField) ((DateComponentsPanel) ((DateFilterPanel) filtersPanel.getComponent(11)).getComponent(0)).getComponent(0)).setText("");
         ((TextField) ((DateComponentsPanel) ((DateFilterPanel) filtersPanel.getComponent(11)).getComponent(2)).getComponent(0)).setText("");
+        ((ComboBox) ((JPanel) filtersPanel.getComponent(15)).getComponent(0)).setSelectedItem("All formats");
+    }
+
+    /**
+     * Restore the filters parameters to their initial values
+     */
+    private void restoreFiltersValue() {
+        minFileSize = 0;
+        maxFileSize = 0;
         initDate = null;
         endDate = null;
-        ((ComboBox) ((JPanel) filtersPanel.getComponent(15)).getComponent(0)).setSelectedItem("All formats");
         formatSelected = null;
-        applyFilters();
     }
 }

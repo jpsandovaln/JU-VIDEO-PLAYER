@@ -12,7 +12,6 @@ package ju.video.player.view.playlist.filterspanel;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.text.ParseException;
 
 import javax.swing.Box;
 import javax.swing.JLabel;

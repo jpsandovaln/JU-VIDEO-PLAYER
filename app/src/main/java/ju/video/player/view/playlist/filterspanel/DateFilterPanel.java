@@ -8,11 +8,22 @@
  */
 package ju.video.player.view.playlist.filterspanel;
 
-import javax.swing.*;
-import java.awt.*;
-import java.text.ParseException;
+import javax.swing.JPanel;
+import javax.swing.JComponent;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
 
+import java.awt.Component;
+import java.awt.Dimension;
+
+/**
+ * It is the panel where the date filters textfields are
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class DateFilterPanel extends JPanel {
+
     public DateFilterPanel() {
         initPanel();
         DateInitListener dateInitListener = new DateInitListener();
@@ -26,6 +37,9 @@ public class DateFilterPanel extends JPanel {
         add(finalDatePanel);
     }
 
+    /**
+     * Initialize the panel
+     */
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setSize(180, 500);

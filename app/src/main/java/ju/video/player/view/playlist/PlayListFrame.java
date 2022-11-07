@@ -19,7 +19,6 @@ import ju.video.player.view.playlist.playlistpanel.PlayListPanel;
 
 import java.awt.Image;
 import java.awt.Component;
-import java.text.ParseException;
 
 /**
  * It is the Frame where initialize all components of the PlayList UI
