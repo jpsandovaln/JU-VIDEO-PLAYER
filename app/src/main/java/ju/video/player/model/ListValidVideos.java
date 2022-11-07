@@ -49,6 +49,7 @@ public class ListValidVideos {
 
     /**
      * initialize the instance if there aren't and get the instance
+     * 
      * @return instance
      */
     public static ListValidVideos getInstance() {
@@ -60,6 +61,7 @@ public class ListValidVideos {
 
     /**
      * Set the list of files filtered to the Panel.
+     * 
      * @throws FilterFilesException if there is a problem with the filters
      */
     public void applyFilters() {
