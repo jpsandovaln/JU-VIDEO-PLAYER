@@ -1,5 +1,3 @@
-package ju.video.player.model.utils;
-
 /**
  * Copyright (c) 2022 Jala University.
  *
@@ -8,6 +6,15 @@ package ju.video.player.model.utils;
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with Jala University
  */
+package ju.video.player.model.utils;
+
+/**
+ * Responsible for convert kb to Mb.
+ *
+ * @author Fernanda Aguilar
+ * @version 1.0
+ */
+
 public class FileUtil {
 
     public static double convertKBToMB(long fileSizeInBytes) {

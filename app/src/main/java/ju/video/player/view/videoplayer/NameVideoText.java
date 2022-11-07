@@ -39,6 +39,11 @@ public class NameVideoText extends JPanel {
         setBackground(UIColor.PRIMARY_BACKGROUNG_COLOR);
     }
 
+    /**
+     * For change the text of the media name field
+     * 
+     * @param newVideoName
+     */
     public void updateMediaName(String newVideoName){
         videoName.setText(newVideoName);
     }

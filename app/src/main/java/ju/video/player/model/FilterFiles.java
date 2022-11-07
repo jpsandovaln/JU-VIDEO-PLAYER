@@ -9,11 +9,12 @@
 
 package ju.video.player.model;
 
-import ju.video.player.commons.exceptions.*;
-import ju.video.player.utils.FileUtil;
+import ju.video.player.commons.exceptions.ContentFileException;
+import ju.video.player.commons.exceptions.FilterFilesException;
+import ju.video.player.commons.exceptions.ListVideosException;
+import ju.video.player.model.utils.FileUtil;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDate;

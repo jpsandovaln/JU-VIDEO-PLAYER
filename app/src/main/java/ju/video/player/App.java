@@ -4,10 +4,14 @@
  */
 package ju.video.player;
 
-
 import ju.video.player.view.Splash;
 
-
+/**
+ * Class Main for Run the program
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 public class App {
     public static void main(String[] args) {
         new Splash();

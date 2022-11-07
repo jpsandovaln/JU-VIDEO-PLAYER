@@ -10,6 +10,12 @@ package ju.video.player.view.commons;
 
 import java.awt.Color;
 
+/**
+ * It stablishes the Color constants
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class UIColor {
     public static final Color PRIMARY_COLOR = new Color (0, 217, 194); 
     public static final Color SECONDARY_COLOR = new Color (0, 129, 138); 

@@ -13,13 +13,24 @@ import ju.video.player.model.ListValidVideos;
 import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.TextField;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.Box;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.BoxLayout;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.*;
+
+import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * It is the panel where the size filters textfields are
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class SizeFilterPanel extends JPanel {
 
     public SizeFilterPanel() {
@@ -33,7 +44,7 @@ public class SizeFilterPanel extends JPanel {
                 if (((caracter < '0') ||
                         (caracter > '9')) &&
                         (caracter != '\b')) {
-                    e.consume();  // ignore the key event
+                    e.consume();
                 }
             }
         });
@@ -127,6 +138,9 @@ public class SizeFilterPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(10, 0)));
     }
 
+    /**
+     * Initialize the panel
+     */
     private void initPanel() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         setSize(200, 500);

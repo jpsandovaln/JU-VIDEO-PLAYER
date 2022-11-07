@@ -18,6 +18,12 @@ import ju.video.player.view.playlist.PlayListFrame;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.fullscreen.adaptive.AdaptiveFullScreenStrategy;
 
+/**
+ * It is the frame for the mediaplayer
+ *
+ * @author Adriana Olivera
+ * @version 1.0
+ */
 public class MediaPlayerFrame extends JFrame {
     EmbeddedMediaListPlayerComponent mediaComponent;
 

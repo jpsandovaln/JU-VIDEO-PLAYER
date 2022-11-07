@@ -16,6 +16,12 @@ import ju.video.player.controller.componentscontrollers.ControlButtonsController
 import ju.video.player.view.commons.Button;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent;
 
+/**
+ * It is the panel for all the player control buttons
+ *
+ * @author Rodrigo Valda
+ * @version 1.0
+ */
 public class ControlButtonsGroup extends JPanel {
     private Button playButton;
     private Button stopButton;

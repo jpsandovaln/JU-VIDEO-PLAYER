@@ -18,7 +18,7 @@ import ju.video.player.view.commons.UIColor;
 import ju.video.player.view.commons.UIFont;
 
 /**
- * It is the Scroll panel fr add the elements of the playlist
+ * It is the Scroll panel for add the elements of the playlist
  *
  * @author Adriana Olivera
  * @version 1.0
@@ -31,6 +31,9 @@ public class PlayListScrollPanel extends JScrollPane {
         initialize();
     }
 
+    /**
+     * Initialize the panel
+     */
     private void initialize() {
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);

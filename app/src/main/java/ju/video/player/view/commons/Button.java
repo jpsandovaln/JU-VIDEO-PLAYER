@@ -16,7 +16,12 @@ import ju.video.player.view.commons.constants.Constant;
 
 import java.awt.Image;
 
-
+/**
+ * It creates a JButton with its respectives features.
+ *
+ * @author Adriana Olivera Ordoñez
+ * @version 1.0
+ */
 public class Button extends JButton {
 
     public Button(String text) {
@@ -27,6 +32,13 @@ public class Button extends JButton {
         setOpaque(false);
     }
 
+    /**
+     * Set the icon of the button
+     * 
+     * @param path location of the image
+     * @param width 
+     * @param height
+     */
     public void setIcon(String path, int width, int height) {
         ImageIcon convertImage = new ImageIcon(Constant.RESOURCES_IMAGES + path);
         Icon convertIcon = new ImageIcon(convertImage.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));

@@ -48,6 +48,9 @@ public class Splash extends JFrame {
 
     }
 
+    /**
+     * Initialize the frame
+     */
     public void initFrame() {
         frame = FrameUtility.build("ATT Player", 0, 0, WIDTH_FRAME, HEIGHT_FRAME, true);
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/splash5r1.gif"));
