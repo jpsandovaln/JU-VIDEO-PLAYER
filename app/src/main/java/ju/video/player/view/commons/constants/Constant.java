@@ -6,21 +6,16 @@
  * Information and shall use it only in accordance with the terms of the
  * Licence agreement you entered into with Jalasoft
  */
-package ju.video.player.view.footer;
-
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
+package ju.video.player.view.commons.constants;
 
 /**
- * It creates the panel with the footer text
+ * It is for stablish the directories constants
  *
- * @author Roberto Fernandez
+ * @author Libertad Tobalada
  * @version 1.0
  */
-public class FooterPanel extends JPanel {
-    public FooterPanel() {
-        add(new FooterLabel(), BorderLayout.EAST);
-        setBackground(Color.GRAY);
-    }
+
+public class Constant {
+	public static final String RESOURCES_DIRECTORY = "app/src/main/java/ju/video/player/view/materialDesing/resources/";
+	public static final String RESOURCES_IMAGES = "app/src/main/resources";
 }
